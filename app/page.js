@@ -18,7 +18,8 @@ const listings = [
   title: "Cocon Bohème",
   subtitle: "Appartement chaleureux et confortable à Narbonne",
   description:
-    "Un logement pensé pour un séjour simple, fluide et agréable, avec une ambiance soignée et un emplacement pratique à deux pas de la gare.",
+    description:
+  "Appartement chaleureux et confortable à Narbonne, le Cocon Bohème séduit par son atmosphère douce, sa décoration soignée et son emplacement pratique à proximité immédiate des transports.",
   badge: "Élégance cosy",
   features: ["2 chambres", "Arrivée autonome", "Wifi", "Proche gare"],
   cta: "Voir sur Airbnb",
@@ -31,7 +32,8 @@ const listings = [
     title: "Rome Antique Moderne",
     subtitle: "L’appartement signature HTS Habitat",
     description:
-      "Une expérience immersive qui mêle inspiration romaine, décoration premium et confort moderne pour créer un séjour vraiment mémorable.",
+      description:
+  "Un appartement signature au caractère affirmé, mêlant inspiration antique et confort contemporain pour offrir un séjour original, élégant et mémorable à Narbonne.",
     badge: "Expérience signature",
     features: ["1 chambre", "Canapé convertible", "Décor premium", "Ambiance à thème"],
     cta: "Découvrir l’univers",
@@ -85,12 +87,13 @@ export default function HomePage() {
         <div className="container hero-grid">
           <div>
             <span className="pill">Hébergements de caractère à Narbonne</span>
-            <h1>Un site qui inspire confiance, valorise tes logements et donne envie de réserver.</h1>
+            <h1>Séjours premium à Narbonne, entre confort, caractère et identité.</h1>
             <p className="lead">
-              HTS Habitat propose des séjours pensés avec identité, cohérence et exigence.
-              L’idée n’est pas seulement de montrer des appartements, mais de faire ressentir
-              un univers premium et différenciant.
-            </p>
+              <p className="lead">
+             HTS Habitat vous accueille dans des appartements soigneusement décorés,
+             pensés pour offrir un séjour confortable, fluide et mémorable à deux pas
+              du centre et de la gare de Narbonne.
+             </p>
 
             <div className="hero-actions">
               <a href="#logements" className="btn btn-dark">Découvrir les logements</a>
@@ -119,11 +122,11 @@ export default function HomePage() {
                 <Star size={16} />
                 <span>Signature HTS Habitat</span>
               </div>
-              <h2>Des séjours avec une vraie identité</h2>
+              <h2>Des appartements qui ont une vraie âme</h2>
               <p>
-                Une présentation élégante, un univers cohérent et des logements qui ne
-                ressemblent pas à une annonce standard.
-              </p>
+               Chaque logement HTS Habitat a été imaginé pour offrir plus qu’un simple
+               hébergement : une ambiance, du confort et une vraie personnalité.
+             </p>
             </div>
 
             <div className="mini-grid">
@@ -145,17 +148,18 @@ export default function HomePage() {
       <section id="marque" className="section container two-col">
         <div>
           <div className="section-kicker">La marque</div>
-          <h2>Un mélange de site vitrine, d’image premium et d’accès rapide à la réservation.</h2>
+         <h2>Deux univers, une même exigence de qualité</h2>
         </div>
         <div className="copy-stack">
-          <p>
-            Le but de ce site est de donner plus de poids à HTS Habitat : montrer que tu n’es
-            pas juste un hôte, mais une vraie marque avec une vision, un univers et une exigence claire.
-          </p>
-          <p>
-            Il peut servir à rassurer, séduire, présenter tes logements, mettre en avant leur
-            différence et envoyer les visiteurs vers les plateformes de réservation.
-          </p>
+         <p>
+         HTS Habitat propose à Narbonne des appartements à l’identité soignée,
+          pensés pour allier confort, autonomie et atmosphère chaleureuse.
+        </p>
+        <p>
+       Que vous veniez pour quelques jours, un séjour en famille, un déplacement
+       ou une escapade dans la région, l’objectif reste le même : vous offrir une
+        expérience simple, élégante et agréable du début à la fin.
+       </p>
         </div>
       </section>
 
@@ -165,10 +169,10 @@ export default function HomePage() {
             <div className="section-kicker">Les logements</div>
             <h2>Deux univers, une même exigence</h2>
           </div>
-          <p>
-            Chaque appartement a sa propre ambiance, mais tous suivent la même logique :
-            identité forte, confort et sensation de qualité.
-          </p>
+         <p>
+         Deux appartements, deux ambiances, mais toujours la même attention portée
+         au confort, à la décoration et à la qualité du séjour.
+       </p>
         </div>
 
         <div className="listing-grid">
@@ -217,23 +221,23 @@ src={listing.image || "/cocon-hero.jpg"}
         <div className="reason-box">
           <div className="section-head compact">
             <div>
-              <div className="section-kicker">Pourquoi ce site fonctionne</div>
-              <h2>Il combine image, clarté et conversion</h2>
+              <div className="section-kicker">Nos atouts</div>
+              <h2>Pourquoi choisir HTS Habitat</h2>
             </div>
           </div>
 
           <div className="reason-grid">
             <div className="reason-card">
               <BedDouble size={18} />
-              <div>Présenter</div>
+              <div>Décoration soignée</div>
             </div>
             <div className="reason-card">
               <Star size={18} />
-              <div>Valoriser</div>
+              <div>Arrivée autonome</div>
             </div>
             <div className="reason-card">
               <CalendarDays size={18} />
-              <div>Faire réserver</div>
+              <div>Emplacement pratique</div>
             </div>
           </div>
         </div>
@@ -243,10 +247,10 @@ src={listing.image || "/cocon-hero.jpg"}
         <div className="container reservation-grid">
           <div>
             <div className="section-kicker light">Réservation</div>
-            <h2>Réserver en quelques clics</h2>
+            <h2>Réservez facilement votre séjour</h2>
             <p className="light-copy">
-              Cette section est faite pour rediriger tes visiteurs vers les plateformes où tu
-              acceptes les réservations, ou vers un contact direct selon ton choix.
+             Retrouvez nos appartements sur les principales plateformes de réservation
+            et choisissez l’option qui vous convient le mieux pour organiser votre séjour à Narbonne.
             </p>
           </div>
 
@@ -277,7 +281,7 @@ src={listing.image || "/cocon-hero.jpg"}
             </div>
             <div className="reservation-card">
               <div className="reservation-title">Réservation directe</div>
-              <p>Tu peux aussi ajouter un formulaire, WhatsApp ou une demande de disponibilité personnalisée.</p>
+              <p>Une réservation directe pourra bientôt être proposée pour encore plus de simplicité.</p>
               <button className="btn btn-outline-light">Activer le contact direct</button>
             </div>
           </div>
@@ -313,11 +317,11 @@ src={listing.image || "/cocon-hero.jpg"}
         <div className="contact-box">
           <div>
             <div className="section-kicker">Contact</div>
-            <h2>Fais exister HTS Habitat comme une vraie marque</h2>
-            <p>
-              Cette base peut maintenant être enrichie avec tes vraies photos, tes liens Airbnb et Booking,
-              tes textes officiels, tes coordonnées et ton identité visuelle.
-            </p>
+            <h2>Contactez HTS Habitat</h2>
+           <p>
+            Une question sur un logement, une disponibilité ou votre séjour à Narbonne ?
+           Nous restons disponibles pour vous répondre rapidement.
+           </p>
           </div>
 
           <div className="contact-card">
@@ -325,7 +329,7 @@ src={listing.image || "/cocon-hero.jpg"}
             <div className="contact-line"><Phone size={18} /><span>06.01.38.04.41</span></div>
             <div className="contact-line"><Train size={18} /><span>Narbonne, proche gare et centre-ville</span></div>
             <div className="contact-action">
-              <button className="btn btn-dark">Demander une mise en ligne</button>
+              <button className="btn btn-dark">Nous contacter</button>
             </div>
           </div>
         </div>
