@@ -37,35 +37,24 @@ const listings = [
     features: ["1 chambre", "Canapé convertible", "Décor premium", "Ambiance à thème"],
     cta: "Découvrir l’univers",
   },
-];},
-  {
-    title: "Rome Antique Moderne",
-    subtitle: "L’appartement signature HTS Habitat",
-    description:
-      description:
-  "Un appartement signature au caractère affirmé, mêlant inspiration antique et confort contemporain pour offrir un séjour original, élégant et mémorable à Narbonne.",
-    badge: "Expérience signature",
-    features: ["1 chambre", "Canapé convertible", "Décor premium", "Ambiance à thème"],
-    cta: "Découvrir l’univers",
-  },
 ];
 
 const faq = [
   {
     q: "Comment réserver un logement ?",
-    a: "Le site peut rediriger vers Airbnb, Booking.com ou une page de contact directe selon la stratégie que tu veux adopter.",
+    a: "Vous pouvez réserver votre séjour directement via Airbnb ou Booking.com selon le logement choisi.",
   },
   {
     q: "Les logements sont-ils proches du centre et des transports ?",
-    a: "Oui, l’emplacement est pratique pour accéder rapidement à la gare, au centre-ville et aux points d’intérêt de Narbonne.",
+    a: "Oui, nos appartements bénéficient d’un emplacement pratique à proximité de la gare et permettent de rejoindre facilement le centre de Narbonne.",
   },
   {
     q: "Peut-on arriver en autonomie ?",
-    a: "Oui, le fonctionnement est pensé pour offrir une arrivée autonome simple, fluide et rassurante.",
+    a: "Oui, l’arrivée autonome est proposée pour rendre votre séjour plus simple et plus flexible.",
   },
   {
     q: "HTS Habitat propose-t-il une expérience haut de gamme ?",
-    a: "Oui, le positionnement repose sur des logements différenciants, une présentation soignée et une attention portée aux détails du séjour.",
+    a: "HTS Habitat mise sur une décoration soignée, une ambiance affirmée et un séjour confortable pensé dans le détail.",
   },
 ];
 
@@ -86,7 +75,9 @@ export default function HomePage() {
             <a href="#marque">La marque</a>
             <a href="#reservation">Réserver</a>
             <a href="#faq">FAQ</a>
-            <a href="#contact" className="nav-cta">Contact</a>
+            <a href="#contact" className="nav-cta">
+              Contact
+            </a>
           </nav>
         </div>
       </header>
@@ -99,15 +90,18 @@ export default function HomePage() {
             <span className="pill">Hébergements de caractère à Narbonne</span>
             <h1>Séjours premium à Narbonne, entre confort, caractère et identité.</h1>
             <p className="lead">
-              <p className="lead">
-             HTS Habitat vous accueille dans des appartements soigneusement décorés,
-             pensés pour offrir un séjour confortable, fluide et mémorable à deux pas
+              HTS Habitat vous accueille dans des appartements soigneusement décorés,
+              pensés pour offrir un séjour confortable, fluide et mémorable à deux pas
               du centre et de la gare de Narbonne.
-             </p>
+            </p>
 
             <div className="hero-actions">
-              <a href="#logements" className="btn btn-dark">Découvrir les logements</a>
-              <a href="#reservation" className="btn btn-light">Voir la réservation</a>
+              <a href="#logements" className="btn btn-dark">
+                Découvrir les logements
+              </a>
+              <a href="#reservation" className="btn btn-light">
+                Voir la réservation
+              </a>
             </div>
 
             <div className="stats-grid">
@@ -134,9 +128,9 @@ export default function HomePage() {
               </div>
               <h2>Des appartements qui ont une vraie âme</h2>
               <p>
-               Chaque logement HTS Habitat a été imaginé pour offrir plus qu’un simple
-               hébergement : une ambiance, du confort et une vraie personnalité.
-             </p>
+                Chaque logement HTS Habitat a été imaginé pour offrir plus qu’un simple
+                hébergement : une ambiance, du confort et une vraie personnalité.
+              </p>
             </div>
 
             <div className="mini-grid">
@@ -148,7 +142,7 @@ export default function HomePage() {
               <div className="mini-card">
                 <ShieldCheck size={18} />
                 <div className="mini-title">Expérience rassurante</div>
-                <p>Arrivée autonome, communication claire et expérience pensée dans le détail.</p>
+                <p>Arrivée autonome, communication claire et séjour pensé dans le détail.</p>
               </div>
             </div>
           </div>
@@ -158,18 +152,18 @@ export default function HomePage() {
       <section id="marque" className="section container two-col">
         <div>
           <div className="section-kicker">La marque</div>
-         <h2>Deux univers, une même exigence de qualité</h2>
+          <h2>Deux univers, une même exigence de qualité</h2>
         </div>
         <div className="copy-stack">
-         <p>
-         HTS Habitat propose à Narbonne des appartements à l’identité soignée,
-          pensés pour allier confort, autonomie et atmosphère chaleureuse.
-        </p>
-        <p>
-       Que vous veniez pour quelques jours, un séjour en famille, un déplacement
-       ou une escapade dans la région, l’objectif reste le même : vous offrir une
-        expérience simple, élégante et agréable du début à la fin.
-       </p>
+          <p>
+            HTS Habitat propose à Narbonne des appartements à l’identité soignée,
+            pensés pour allier confort, autonomie et atmosphère chaleureuse.
+          </p>
+          <p>
+            Que vous veniez pour quelques jours, un séjour en famille, un déplacement
+            ou une escapade dans la région, l’objectif reste le même : vous offrir une
+            expérience simple, élégante et agréable du début à la fin.
+          </p>
         </div>
       </section>
 
@@ -179,48 +173,54 @@ export default function HomePage() {
             <div className="section-kicker">Les logements</div>
             <h2>Deux univers, une même exigence</h2>
           </div>
-         <p>
-         Deux appartements, deux ambiances, mais toujours la même attention portée
-         au confort, à la décoration et à la qualité du séjour.
-       </p>
+          <p>
+            Deux appartements, deux ambiances, mais toujours la même attention portée
+            au confort, à la décoration et à la qualité du séjour.
+          </p>
         </div>
 
         <div className="listing-grid">
           {listings.map((listing) => (
             <article key={listing.title} className="listing-card">
               <img
-src={listing.image || "/cocon-hero.jpg"}
-  alt={listing.title}
-  className="listing-image-real"
-/>
+                src={listing.image || "/cocon-hero.jpg"}
+                alt={listing.title}
+                className="listing-image-real"
+              />
+
               <div className="listing-content">
                 <span className="badge">{listing.badge}</span>
                 <h3>{listing.title}</h3>
                 <div className="subtitle">{listing.subtitle}</div>
                 <p>{listing.description}</p>
+
                 <div className="feature-row">
                   {listing.features.map((feature) => (
-                    <span key={feature} className="feature">{feature}</span>
+                    <span key={feature} className="feature">
+                      {feature}
+                    </span>
                   ))}
                 </div>
+
                 <div className="button-row">
-  <a
-    href={listing.airbnbLink || "#"}
-    target="_blank"
-    rel="noreferrer"
-    className="btn btn-dark"
-  >
-    {listing.cta}
-  </a>
-  <a
-    href={listing.bookingLink || "#"}
-    target="_blank"
-    rel="noreferrer"
-    className="btn btn-light"
-  >
-    Voir sur Booking
-  </a>
-</div>
+                  <a
+                    href={listing.airbnbLink || "#"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-dark"
+                  >
+                    {listing.cta}
+                  </a>
+
+                  <a
+                    href={listing.bookingLink || "#"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-light"
+                  >
+                    Voir sur Booking
+                  </a>
+                </div>
               </div>
             </article>
           ))}
@@ -242,7 +242,7 @@ src={listing.image || "/cocon-hero.jpg"}
               <div>Décoration soignée</div>
             </div>
             <div className="reason-card">
-              <Star size={18} />
+              <ShieldCheck size={18} />
               <div>Arrivée autonome</div>
             </div>
             <div className="reason-card">
@@ -259,40 +259,42 @@ src={listing.image || "/cocon-hero.jpg"}
             <div className="section-kicker light">Réservation</div>
             <h2>Réservez facilement votre séjour</h2>
             <p className="light-copy">
-             Retrouvez nos appartements sur les principales plateformes de réservation
-            et choisissez l’option qui vous convient le mieux pour organiser votre séjour à Narbonne.
+              Retrouvez nos appartements sur les principales plateformes de réservation
+              et choisissez l’option qui vous convient le mieux pour organiser votre séjour à Narbonne.
             </p>
           </div>
 
           <div className="reservation-cards">
             <div className="reservation-card">
               <div className="reservation-title">Airbnb</div>
-              <p>Intègre ici le lien officiel vers ton annonce Airbnb.</p>
-            <a
-  href="https://www.airbnb.fr/rooms/1318746957534184033?check_in=2026-04-13&check_out=2026-04-15&search_mode=regular_search&source_impression_id=p3_1775919968_P334TeVqH54SGqBN&previous_page_section_name=1000&federated_search_id=5d43edd3-c065-48b5-b778-9ed0efaf96e5"
-  target="_blank"
-  rel="noreferrer"
-  className="btn btn-white"
->
-  Voir l’annonce Airbnb
-</a>
+              <p>Réservez le Cocon Bohème directement sur Airbnb.</p>
+              <a
+                href="https://www.airbnb.fr/rooms/1318746957534184033?check_in=2026-04-13&check_out=2026-04-15&search_mode=regular_search&source_impression_id=p3_1775919968_P334TeVqH54SGqBN&previous_page_section_name=1000&federated_search_id=5d43edd3-c065-48b5-b778-9ed0efaf96e5"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-white"
+              >
+                Voir l’annonce Airbnb
+              </a>
             </div>
+
             <div className="reservation-card">
               <div className="reservation-title">Booking.com</div>
-              <p>Intègre ici le lien Booking pour capter les visiteurs qui préfèrent cette plateforme.</p>
+              <p>Retrouvez le Cocon Bohème également sur Booking.com.</p>
               <a
-  href="https://www.booking.com/hotel/fr/appartements-proche-de-la-gare-narbonne.fr.html?label=fr-fr-booking-desktop-DCpBIW3k2*WIo8XuzMdB9AS652796013276%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9054989%3Ali%3Adec%3Adm&aid=2311236&ucfs=1&arphpl=1&checkin=2026-04-13&checkout=2026-04-15&dest_id=900039110&dest_type=city&group_adults=2&req_adults=2&no_rooms=2&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=popularity&srpvid=99366a431db705bb&srepoch=1775920015&all_sr_blocks=1331530101_405680895_5_0_0&highlighted_blocks=1331530101_405680895_5_0_0&matching_block_id=1331530101_405680895_5_0_0&sr_pri_blocks=1331530101_405680895_5_0_0__21218&from=searchresults"
-  target="_blank"
-  rel="noreferrer"
-  className="btn btn-outline-light"
->
-  Voir sur Booking
-</a>
+                href="https://www.booking.com/hotel/fr/appartements-proche-de-la-gare-narbonne.fr.html?label=fr-fr-booking-desktop-DCpBIW3k2*WIo8XuzMdB9AS652796013276%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9054989%3Ali%3Adec%3Adm&aid=2311236&ucfs=1&arphpl=1&checkin=2026-04-13&checkout=2026-04-15&dest_id=900039110&dest_type=city&group_adults=2&req_adults=2&no_rooms=2&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=popularity&srpvid=99366a431db705bb&srepoch=1775920015&all_sr_blocks=1331530101_405680895_5_0_0&highlighted_blocks=1331530101_405680895_5_0_0&matching_block_id=1331530101_405680895_5_0_0&sr_pri_blocks=1331530101_405680895_5_0_0__21218&from=searchresults"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-outline-light"
+              >
+                Voir sur Booking
+              </a>
             </div>
+
             <div className="reservation-card">
               <div className="reservation-title">Réservation directe</div>
               <p>Une réservation directe pourra bientôt être proposée pour encore plus de simplicité.</p>
-              <button className="btn btn-outline-light">Activer le contact direct</button>
+              <button className="btn btn-outline-light">Bientôt disponible</button>
             </div>
           </div>
         </div>
@@ -328,16 +330,25 @@ src={listing.image || "/cocon-hero.jpg"}
           <div>
             <div className="section-kicker">Contact</div>
             <h2>Contactez HTS Habitat</h2>
-           <p>
-            Une question sur un logement, une disponibilité ou votre séjour à Narbonne ?
-           Nous restons disponibles pour vous répondre rapidement.
-           </p>
+            <p>
+              Une question sur un logement, une disponibilité ou votre séjour à Narbonne ?
+              Nous restons disponibles pour vous répondre rapidement.
+            </p>
           </div>
 
           <div className="contact-card">
-            <div className="contact-line"><Mail size={18} /><span>greg.hosteins@gmail.com</span></div>
-            <div className="contact-line"><Phone size={18} /><span>06.01.38.04.41</span></div>
-            <div className="contact-line"><Train size={18} /><span>Narbonne, proche gare et centre-ville</span></div>
+            <div className="contact-line">
+              <Mail size={18} />
+              <span>greg.hosteins@gmail.com</span>
+            </div>
+            <div className="contact-line">
+              <Phone size={18} />
+              <span>06.01.38.04.41</span>
+            </div>
+            <div className="contact-line">
+              <Train size={18} />
+              <span>Narbonne, proche gare et centre-ville</span>
+            </div>
             <div className="contact-action">
               <button className="btn btn-dark">Nous contacter</button>
             </div>
