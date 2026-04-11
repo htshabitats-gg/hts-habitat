@@ -17,7 +17,7 @@ const listings = [
  {
   title: "Cocon Bohème",
   subtitle: "Appartement chaleureux et confortable à Narbonne",
-  description:
+
     description:
   "Appartement chaleureux et confortable à Narbonne, le Cocon Bohème séduit par son atmosphère douce, sa décoration soignée et son emplacement pratique à proximité immédiate des transports.",
   badge: "Élégance cosy",
