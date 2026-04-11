@@ -14,15 +14,19 @@ import {
 } from "lucide-react";
 
 const listings = [
-  {
-    title: "Cocon Bohème",
-    subtitle: "Appartement chaleureux et confortable à Narbonne",
-    description:
-      "Un logement pensé pour un séjour simple, fluide et agréable, avec une ambiance soignée et un emplacement pratique à deux pas de la gare.",
-    badge: "Élégance cosy",
-    features: ["2 chambres", "Arrivée autonome", "Wifi", "Proche gare"],
-    cta: "Voir l’appartement",
-  },
+ {
+  title: "Cocon Bohème",
+  subtitle: "Appartement chaleureux et confortable à Narbonne",
+  description:
+    "Un logement pensé pour un séjour simple, fluide et agréable, avec une ambiance soignée et un emplacement pratique à deux pas de la gare.",
+  badge: "Élégance cosy",
+  features: ["2 chambres", "Arrivée autonome", "Wifi", "Proche gare"],
+  cta: "Voir sur Airbnb",
+  airbnbLink:
+    "https://www.airbnb.fr/rooms/1318746957534184033?check_in=2026-04-13&check_out=2026-04-15&search_mode=regular_search&source_impression_id=p3_1775919968_P334TeVqH54SGqBN&previous_page_section_name=1000&federated_search_id=5d43edd3-c065-48b5-b778-9ed0efaf96e5",
+  bookingLink:
+    "https://www.booking.com/hotel/fr/appartements-proche-de-la-gare-narbonne.fr.html?label=fr-fr-booking-desktop-DCpBIW3k2*WIo8XuzMdB9AS652796013276%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9054989%3Ali%3Adec%3Adm&aid=2311236&ucfs=1&arphpl=1&checkin=2026-04-13&checkout=2026-04-15&dest_id=900039110&dest_type=city&group_adults=2&req_adults=2&no_rooms=2&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=popularity&srpvid=99366a431db705bb&srepoch=1775920015&all_sr_blocks=1331530101_405680895_5_0_0&highlighted_blocks=1331530101_405680895_5_0_0&matching_block_id=1331530101_405680895_5_0_0&sr_pri_blocks=1331530101_405680895_5_0_0__21218&from=searchresults",
+},
   {
     title: "Rome Antique Moderne",
     subtitle: "L’appartement signature HTS Habitat",
@@ -182,9 +186,23 @@ export default function HomePage() {
                   ))}
                 </div>
                 <div className="button-row">
-                  <button className="btn btn-dark">{listing.cta}</button>
-                  <button className="btn btn-light">Galerie photos</button>
-                </div>
+  <a
+    href={listing.airbnbLink || "#"}
+    target="_blank"
+    rel="noreferrer"
+    className="btn btn-dark"
+  >
+    {listing.cta}
+  </a>
+  <a
+    href={listing.bookingLink || "#"}
+    target="_blank"
+    rel="noreferrer"
+    className="btn btn-light"
+  >
+    Voir sur Booking
+  </a>
+</div>
               </div>
             </article>
           ))}
@@ -232,12 +250,26 @@ export default function HomePage() {
             <div className="reservation-card">
               <div className="reservation-title">Airbnb</div>
               <p>Intègre ici le lien officiel vers ton annonce Airbnb.</p>
-              <button className="btn btn-white">Ajouter le lien Airbnb</button>
+            <a
+  href="https://www.airbnb.fr/rooms/1318746957534184033?check_in=2026-04-13&check_out=2026-04-15&search_mode=regular_search&source_impression_id=p3_1775919968_P334TeVqH54SGqBN&previous_page_section_name=1000&federated_search_id=5d43edd3-c065-48b5-b778-9ed0efaf96e5"
+  target="_blank"
+  rel="noreferrer"
+  className="btn btn-white"
+>
+  Voir l’annonce Airbnb
+</a>
             </div>
             <div className="reservation-card">
               <div className="reservation-title">Booking.com</div>
               <p>Intègre ici le lien Booking pour capter les visiteurs qui préfèrent cette plateforme.</p>
-              <button className="btn btn-outline-light">Ajouter le lien Booking</button>
+              <a
+  href="https://www.booking.com/hotel/fr/appartements-proche-de-la-gare-narbonne.fr.html?label=fr-fr-booking-desktop-DCpBIW3k2*WIo8XuzMdB9AS652796013276%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9054989%3Ali%3Adec%3Adm&aid=2311236&ucfs=1&arphpl=1&checkin=2026-04-13&checkout=2026-04-15&dest_id=900039110&dest_type=city&group_adults=2&req_adults=2&no_rooms=2&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=popularity&srpvid=99366a431db705bb&srepoch=1775920015&all_sr_blocks=1331530101_405680895_5_0_0&highlighted_blocks=1331530101_405680895_5_0_0&matching_block_id=1331530101_405680895_5_0_0&sr_pri_blocks=1331530101_405680895_5_0_0__21218&from=searchresults"
+  target="_blank"
+  rel="noreferrer"
+  className="btn btn-outline-light"
+>
+  Voir sur Booking
+</a>
             </div>
             <div className="reservation-card">
               <div className="reservation-title">Réservation directe</div>
@@ -285,8 +317,8 @@ export default function HomePage() {
           </div>
 
           <div className="contact-card">
-            <div className="contact-line"><Mail size={18} /><span>contact@htshabitat.fr</span></div>
-            <div className="contact-line"><Phone size={18} /><span>+33 6 00 00 00 00</span></div>
+            <div className="contact-line"><Mail size={18} /><span>greg.hosteins@gmail.com</span></div>
+            <div className="contact-line"><Phone size={18} /><span>06.01.38.04.41</span></div>
             <div className="contact-line"><Train size={18} /><span>Narbonne, proche gare et centre-ville</span></div>
             <div className="contact-action">
               <button className="btn btn-dark">Demander une mise en ligne</button>
