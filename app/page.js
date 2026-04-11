@@ -175,7 +175,7 @@ export default function HomePage() {
           {listings.map((listing) => (
             <article key={listing.title} className="listing-card">
               <img
-  src={listing.image || "/images/cocon-hero.jpg"}
+src={listing.image || "/cocon-hero.jpg"}
   alt={listing.title}
   className="listing-image-real"
 />
