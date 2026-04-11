@@ -292,10 +292,20 @@ export default function HomePage() {
             </div>
 
             <div className="reservation-card">
-              <div className="reservation-title">Réservation directe</div>
-              <p>Une réservation directe pourra bientôt être proposée pour encore plus de simplicité.</p>
-              <button className="btn btn-outline-light">Bientôt disponible</button>
-            </div>
+  <div className="reservation-title">Réserver en direct</div>
+  <p>
+    Réservez directement votre séjour via notre page de réservation sécurisée
+    pour consulter les disponibilités et organiser votre séjour simplement.
+  </p>
+  <a
+    href="https://occitanieetlocation.lodgify.com/"
+    target="_blank"
+    rel="noreferrer"
+    className="btn btn-outline-light"
+  >
+    Réserver en direct
+  </a>
+</div>
           </div>
         </div>
       </section>
