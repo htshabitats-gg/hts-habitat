@@ -174,7 +174,11 @@ export default function HomePage() {
         <div className="listing-grid">
           {listings.map((listing) => (
             <article key={listing.title} className="listing-card">
-              <div className="listing-image" />
+              <img
+  src={listing.image || "/images/cocon-hero.jpg"}
+  alt={listing.title}
+  className="listing-image-real"
+/>
               <div className="listing-content">
                 <span className="badge">{listing.badge}</span>
                 <h3>{listing.title}</h3>
