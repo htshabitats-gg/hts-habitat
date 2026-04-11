@@ -36,6 +36,7 @@ const listings = [
     badge: "Expérience signature",
     features: ["1 chambre", "Canapé convertible", "Décor premium", "Ambiance à thème"],
     cta: "Découvrir l’univers",
+    image: "/rome-antique-hero.jpg",
   },
 ];
 
