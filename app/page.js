@@ -14,20 +14,31 @@ import {
 } from "lucide-react";
 
 const listings = [
- {
-  title: "Cocon Bohème",
-  subtitle: "Appartement chaleureux et confortable à Narbonne",
-
+ const listings = [
+  {
+    title: "Cocon Bohème",
+    subtitle: "Appartement chaleureux et confortable à Narbonne",
     description:
-  "Appartement chaleureux et confortable à Narbonne, le Cocon Bohème séduit par son atmosphère douce, sa décoration soignée et son emplacement pratique à proximité immédiate des transports.",
-  badge: "Élégance cosy",
-  features: ["2 chambres", "Arrivée autonome", "Wifi", "Proche gare"],
-  cta: "Voir sur Airbnb",
-  airbnbLink:
-    "https://www.airbnb.fr/rooms/1318746957534184033?check_in=2026-04-13&check_out=2026-04-15&search_mode=regular_search&source_impression_id=p3_1775919968_P334TeVqH54SGqBN&previous_page_section_name=1000&federated_search_id=5d43edd3-c065-48b5-b778-9ed0efaf96e5",
-  bookingLink:
-    "https://www.booking.com/hotel/fr/appartements-proche-de-la-gare-narbonne.fr.html?label=fr-fr-booking-desktop-DCpBIW3k2*WIo8XuzMdB9AS652796013276%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9054989%3Ali%3Adec%3Adm&aid=2311236&ucfs=1&arphpl=1&checkin=2026-04-13&checkout=2026-04-15&dest_id=900039110&dest_type=city&group_adults=2&req_adults=2&no_rooms=2&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=popularity&srpvid=99366a431db705bb&srepoch=1775920015&all_sr_blocks=1331530101_405680895_5_0_0&highlighted_blocks=1331530101_405680895_5_0_0&matching_block_id=1331530101_405680895_5_0_0&sr_pri_blocks=1331530101_405680895_5_0_0__21218&from=searchresults",
-},
+      "Appartement chaleureux et confortable à Narbonne, le Cocon Bohème séduit par son atmosphère douce, sa décoration soignée et son emplacement pratique à proximité immédiate des transports.",
+    badge: "Élégance cosy",
+    features: ["2 chambres", "Arrivée autonome", "Wifi", "Proche gare"],
+    cta: "Voir sur Airbnb",
+    image: "/cocon-hero.jpg",
+    airbnbLink:
+      "https://www.airbnb.fr/rooms/1318746957534184033?check_in=2026-04-13&check_out=2026-04-15&search_mode=regular_search&source_impression_id=p3_1775919968_P334TeVqH54SGqBN&previous_page_section_name=1000&federated_search_id=5d43edd3-c065-48b5-b778-9ed0efaf96e5",
+    bookingLink:
+      "https://www.booking.com/hotel/fr/appartements-proche-de-la-gare-narbonne.fr.html?label=fr-fr-booking-desktop-DCpBIW3k2*WIo8XuzMdB9AS652796013276%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9054989%3Ali%3Adec%3Adm&aid=2311236&ucfs=1&arphpl=1&checkin=2026-04-13&checkout=2026-04-15&dest_id=900039110&dest_type=city&group_adults=2&req_adults=2&no_rooms=2&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=popularity&srpvid=99366a431db705bb&srepoch=1775920015&all_sr_blocks=1331530101_405680895_5_0_0&highlighted_blocks=1331530101_405680895_5_0_0&matching_block_id=1331530101_405680895_5_0_0&sr_pri_blocks=1331530101_405680895_5_0_0__21218&from=searchresults",
+  },
+  {
+    title: "Rome Antique Moderne",
+    subtitle: "L’appartement signature HTS Habitat",
+    description:
+      "Un appartement signature au caractère affirmé, mêlant inspiration antique et confort contemporain pour offrir un séjour original, élégant et mémorable à Narbonne.",
+    badge: "Expérience signature",
+    features: ["1 chambre", "Canapé convertible", "Décor premium", "Ambiance à thème"],
+    cta: "Découvrir l’univers",
+  },
+];},
   {
     title: "Rome Antique Moderne",
     subtitle: "L’appartement signature HTS Habitat",
