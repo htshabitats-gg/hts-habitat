@@ -1,0 +1,16 @@
+{
+  "name": "hts-habitat-vercel",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "15.3.2",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "lucide-react": "^0.511.0"
+  }
+}
