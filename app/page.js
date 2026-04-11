@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 
 const listings = [
- const listings = [
   {
     title: "Cocon Bohème",
     subtitle: "Appartement chaleureux et confortable à Narbonne",
