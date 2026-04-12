@@ -234,21 +234,33 @@ export default function HomePage() {
             <div>
               <div className="section-kicker">Nos atouts</div>
               <h2>Pourquoi choisir HTS Habitat</h2>
+            <p className="lead">
+  Des logements pensés pour allier confort, autonomie et qualité de séjour à Narbonne.
+</p>
             </div>
           </div>
 
-          <div className="reason-grid">
-            <div className="reason-card">
-              <BedDouble size={18} />
-              <div>Décoration soignée</div>
-            </div>
-            <div className="reason-card">
-              <ShieldCheck size={18} />
-              <div>Arrivée autonome</div>
-            </div>
-            <div className="reason-card">
-              <CalendarDays size={18} />
-              <div>Emplacement pratique</div>
+          <<div className="reason-grid">
+  <div className="reason-card">
+    <BedDouble size={18} />
+    <div>Décoration soignée</div>
+  </div>
+
+  <div className="reason-card">
+    <ShieldCheck size={18} />
+    <div>Arrivée autonome</div>
+  </div>
+
+  <div className="reason-card">
+    <CalendarDays size={18} />
+    <div>Emplacement pratique</div>
+  </div>
+
+  <div className="reason-card">
+    <BedDouble size={18} />
+    <div>Confort au quotidien</div>
+  </div>
+</div>
             </div>
           </div>
         </div>
@@ -260,8 +272,7 @@ export default function HomePage() {
             <div className="section-kicker light">Réservation</div>
             <h2>Réservez facilement votre séjour</h2>
             <p className="light-copy">
-              Retrouvez nos appartements sur les principales plateformes de réservation
-              et choisissez l’option qui vous convient le mieux pour organiser votre séjour à Narbonne.
+              Réservez votre séjour à Narbonne via Airbnb, Booking.com ou directement en ligne, selon la formule qui vous convient le mieux.
             </p>
           </div>
 
