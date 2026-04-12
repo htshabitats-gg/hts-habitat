@@ -146,7 +146,7 @@ export default function HomePage() {
               <div className="mini-card">
                 <MapPin size={18} />
                 <div className="mini-title">Emplacement pratique</div>
-                <p>Proximité gare, accès simple, base idéale pour découvrir Narbonne.</p>
+                <p>Proximité gare, accès simple, emplacement idéal pour découvrir Narbonne.</p>
               </div>
               <div className="mini-card">
                 <ShieldCheck size={18} />
