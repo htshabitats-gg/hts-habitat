@@ -30,11 +30,11 @@ const listings = [
   },
   {
     title: "Rome Antique Moderne",
-    subtitle: "L’appartement signature HTS Habitat",
+    subtitle: "Un univers immersif au caractère affirmé",
     description:
-      "Un appartement signature au caractère affirmé, mêlant inspiration antique et confort contemporain pour offrir un séjour original, élégant et mémorable à Narbonne.",
-    badge: "Expérience signature",
-    features: ["1 chambre", "Canapé convertible", "Décor premium", "Ambiance à thème"],
+      "Inspiré de l’Antiquité et revisité dans une lecture plus contemporaine, Rome Antique Moderne propose un séjour original, élégant et mémorable à Narbonne.",
+    badge: "Univers exclusif",
+    features: ["1 chambre", "Canapé convertible", "Décoration premium", "Univers immersif"],
     cta: "Découvrir l’univers",
     image: "/image1.jpeg",
   },
@@ -43,19 +43,27 @@ const listings = [
 const faq = [
   {
     q: "Comment réserver un logement ?",
-    a: "Vous pouvez réserver votre séjour directement via Airbnb ou Booking.com selon le logement choisi.",
+    a: "Vous pouvez réserver votre séjour via Airbnb, Booking.com ou directement en ligne selon le logement et les disponibilités. Si vous avez une question avant de réserver, vous pouvez aussi nous contacter directement.",
   },
   {
-    q: "Les logements sont-ils proches du centre et des transports ?",
-    a: "Oui, nos appartements bénéficient d’un emplacement pratique à proximité de la gare et permettent de rejoindre facilement le centre de Narbonne.",
+    q: "Peut-on réserver en direct ?",
+    a: "Oui, certains séjours peuvent être réservés directement. La réservation directe permet un échange plus simple et un suivi personnalisé selon votre demande et les disponibilités.",
   },
   {
-    q: "Peut-on arriver en autonomie ?",
-    a: "Oui, l’arrivée autonome est proposée pour rendre votre séjour plus simple et plus flexible.",
+    q: "Les logements sont-ils proches du centre-ville et de la gare ?",
+    a: "Oui, nos logements bénéficient d’un emplacement pratique à Narbonne, avec un accès facile au centre-ville, à la gare et aux principaux points d’intérêt.",
   },
   {
-    q: "HTS Habitat propose-t-il une expérience haut de gamme ?",
-    a: "HTS Habitat mise sur une décoration soignée, une ambiance affirmée et un séjour confortable pensé dans le détail.",
+    q: "L’arrivée est-elle autonome ?",
+    a: "Oui, l’arrivée autonome est proposée afin de rendre votre installation plus simple, plus fluide et plus flexible selon votre heure d’arrivée.",
+  },
+  {
+    q: "Peut-on vous contacter avant de réserver ?",
+    a: "Oui, bien sûr. Nous restons disponibles pour répondre à vos questions et vous aider à choisir la formule de réservation la plus adaptée à votre séjour.",
+  },
+  {
+    q: "Quelle est la différence entre vos logements ?",
+    a: "Chaque logement possède sa propre ambiance et son identité, tout en conservant la même exigence de confort, de soin et de qualité de séjour.",
   },
 ];
 
@@ -219,7 +227,7 @@ export default function HomePage() {
                     rel="noreferrer"
                     className="btn btn-light"
                   >
-                    Voir sur Booking
+                    {listing.bookingLink ? "Voir sur Booking" : "Bientôt disponible"}
                   </a>
                 </div>
               </div>
@@ -229,40 +237,40 @@ export default function HomePage() {
       </section>
 
       <section className="section container">
-  <div className="reason-box">
-    <div className="section-head compact">
-      <div>
-        <div className="section-kicker">Nos atouts</div>
-        <h2>Pourquoi choisir HTS Habitat</h2>
-        <p className="lead">
-          Des logements pensés pour allier confort, autonomie et qualité de séjour à Narbonne.
-        </p>
-      </div>
-    </div>
+        <div className="reason-box">
+          <div className="section-head compact">
+            <div>
+              <div className="section-kicker">Nos atouts</div>
+              <h2>Pourquoi choisir HTS Habitat</h2>
+              <p className="lead">
+                Des logements pensés pour allier confort, autonomie et qualité de séjour à Narbonne.
+              </p>
+            </div>
+          </div>
 
-    <div className="reason-grid">
-      <div className="reason-card">
-        <BedDouble size={18} />
-        <div>Décoration soignée</div>
-      </div>
+          <div className="reason-grid">
+            <div className="reason-card">
+              <BedDouble size={18} />
+              <div>Décoration soignée</div>
+            </div>
 
-      <div className="reason-card">
-        <ShieldCheck size={18} />
-        <div>Arrivée autonome</div>
-      </div>
+            <div className="reason-card">
+              <ShieldCheck size={18} />
+              <div>Arrivée autonome</div>
+            </div>
 
-      <div className="reason-card">
-        <CalendarDays size={18} />
-        <div>Emplacement pratique</div>
-      </div>
+            <div className="reason-card">
+              <CalendarDays size={18} />
+              <div>Emplacement pratique</div>
+            </div>
 
-      <div className="reason-card">
-        <BedDouble size={18} />
-        <div>Confort au quotidien</div>
-      </div>
-    </div>
-  </div>
-</section>
+            <div className="reason-card">
+              <BedDouble size={18} />
+              <div>Confort au quotidien</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section id="reservation" className="section dark-section">
         <div className="container reservation-grid">
@@ -302,20 +310,20 @@ export default function HomePage() {
             </div>
 
             <div className="reservation-card">
-  <div className="reservation-title">Réserver en direct</div>
-  <p>
-    Réservez directement votre séjour via notre page de réservation sécurisée
-    pour consulter les disponibilités et organiser votre séjour simplement.
-  </p>
-  <a
-    href="https://occitanieetlocation.lodgify.com/"
-    target="_blank"
-    rel="noreferrer"
-    className="btn btn-outline-light"
-  >
-    Réserver en direct
-  </a>
-</div>
+              <div className="reservation-title">Réserver en direct</div>
+              <p>
+                Réservez directement votre séjour via notre page de réservation sécurisée
+                pour consulter les disponibilités et organiser votre séjour simplement.
+              </p>
+              <a
+                href="https://occitanieetlocation.lodgify.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-outline-light"
+              >
+                Réserver en direct
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -351,8 +359,10 @@ export default function HomePage() {
             <div className="section-kicker">Contact</div>
             <h2>Contactez HTS Habitat</h2>
             <p>
-              Une question sur un logement, une disponibilité ou votre séjour à Narbonne ?
-              Nous restons disponibles pour vous répondre rapidement.
+              Une question avant de réserver ? Nous restons disponibles pour vous renseigner rapidement et vous aider à choisir la formule de réservation la plus adaptée à votre séjour.
+            </p>
+            <p>
+              Que ce soit pour une disponibilité, une arrivée, un séjour en direct ou une question pratique, nous pouvons vous répondre simplement et rapidement.
             </p>
           </div>
 
