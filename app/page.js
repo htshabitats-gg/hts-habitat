@@ -409,7 +409,12 @@ export default function HomePage() {
               <span>Narbonne, proche gare et centre-ville</span>
             </div>
             <div className="contact-action">
-              <button className="btn btn-dark">Nous contacter</button>
+              <a
+  href="mailto:greg.hosteins@gmail.com?subject=Demande%20de%20renseignement%20HTS%20Habitat"
+  className="btn btn-dark"
+>
+  Nous contacter
+</a>
             </div>
           </div>
         </div>
