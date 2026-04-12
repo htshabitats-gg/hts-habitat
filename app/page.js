@@ -271,7 +271,36 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+<section className="section container">
+  <div className="reason-box">
+    <div className="section-head compact">
+      <div>
+        <div className="section-kicker">Confiance voyageurs</div>
+        <h2>Une expérience appréciée par nos voyageurs</h2>
+        <p className="lead">
+          Le Cocon Bohème séduit par son confort, sa propreté, son emplacement pratique et la qualité de l’accueil.
+        </p>
+      </div>
+    </div>
 
+    <div className="reason-grid">
+      <div className="reason-card">
+        <Star size={18} />
+        <div>4,9/5 sur Airbnb</div>
+      </div>
+
+      <div className="reason-card">
+        <Star size={18} />
+        <div>9,4/10 sur Booking</div>
+      </div>
+
+      <div className="reason-card">
+        <ShieldCheck size={18} />
+        <div>Superhôte Airbnb</div>
+      </div>
+    </div>
+  </div>
+</section>
       <section id="reservation" className="section dark-section">
         <div className="container reservation-grid">
           <div>
