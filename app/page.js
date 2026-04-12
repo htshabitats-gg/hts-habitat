@@ -153,7 +153,7 @@ export default function HomePage() {
       <section id="marque" className="section container two-col">
         <div>
           <div className="section-kicker">La marque</div>
-          <h2>Deux univers, une même exigence de qualité</h2>
+          <h2>Une même vision de l’hospitalité</h2>
         </div>
         <div className="copy-stack">
           <p>
