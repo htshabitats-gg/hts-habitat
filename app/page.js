@@ -229,42 +229,40 @@ export default function HomePage() {
       </section>
 
       <section className="section container">
-        <div className="reason-box">
-          <div className="section-head compact">
-            <div>
-              <div className="section-kicker">Nos atouts</div>
-              <h2>Pourquoi choisir HTS Habitat</h2>
-            <p className="lead">
-  Des logements pensés pour allier confort, autonomie et qualité de séjour à Narbonne.
-</p>
-            </div>
-          </div>
+  <div className="reason-box">
+    <div className="section-head compact">
+      <div>
+        <div className="section-kicker">Nos atouts</div>
+        <h2>Pourquoi choisir HTS Habitat</h2>
+        <p className="lead">
+          Des logements pensés pour allier confort, autonomie et qualité de séjour à Narbonne.
+        </p>
+      </div>
+    </div>
 
-          <div className="reason-grid">
-  <div className="reason-card">
-    <BedDouble size={18} />
-    <div>Décoration soignée</div>
-  </div>
+    <div className="reason-grid">
+      <div className="reason-card">
+        <BedDouble size={18} />
+        <div>Décoration soignée</div>
+      </div>
 
-  <div className="reason-card">
-    <ShieldCheck size={18} />
-    <div>Arrivée autonome</div>
-  </div>
+      <div className="reason-card">
+        <ShieldCheck size={18} />
+        <div>Arrivée autonome</div>
+      </div>
 
-  <div className="reason-card">
-    <CalendarDays size={18} />
-    <div>Emplacement pratique</div>
-  </div>
+      <div className="reason-card">
+        <CalendarDays size={18} />
+        <div>Emplacement pratique</div>
+      </div>
 
-  <div className="reason-card">
-    <BedDouble size={18} />
-    <div>Confort au quotidien</div>
+      <div className="reason-card">
+        <BedDouble size={18} />
+        <div>Confort au quotidien</div>
+      </div>
+    </div>
   </div>
-</div>
-            </div>
-          </div>
-        </div>
-      </section>
+</section>
 
       <section id="reservation" className="section dark-section">
         <div className="container reservation-grid">
