@@ -240,7 +240,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <<div className="reason-grid">
+          <div className="reason-grid">
   <div className="reason-card">
     <BedDouble size={18} />
     <div>Décoration soignée</div>
