@@ -3,8 +3,9 @@
 import { useState } from "react";
 import {
   BedDouble,
-  CalendarDays,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Mail,
   MapPin,
   Phone,
@@ -16,12 +17,24 @@ import {
   Clock,
   Heart,
   Send,
+  X,
+  Images,
 } from "lucide-react";
 
 const AIRBNB_LINK = "https://www.airbnb.fr/rooms/1318746957534184033";
 const BOOKING_LINK = "https://www.booking.com/hotel/fr/appartements-proche-de-la-gare-narbonne.fr.html";
 const LODGIFY_LINK = "https://occitanieetlocation.lodgify.com/";
 const WHATSAPP_LINK = "https://wa.me/33601380441?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20logements%20HTS%20Habitat.";
+
+const COCON_GALLERY = [
+  "/cocon-hero.jpg",
+  "/cocon-gallery-1.jpg",
+  "/cocon-gallery-2.jpg",
+  "/cocon-gallery-3.jpg",
+  "/cocon-gallery-4.jpg",
+  "/cocon-gallery-5.jpg",
+  "/cocon-gallery-6.jpg",
+];
 
 const listings = [
   {
@@ -31,6 +44,7 @@ const listings = [
     badge: "Élégance cosy",
     features: ["2 chambres", "Arrivée autonome", "Wifi", "Proche gare"],
     image: "/cocon-hero.jpg",
+    gallery: COCON_GALLERY,
     airbnbLink: AIRBNB_LINK,
     bookingLink: BOOKING_LINK,
     available: true,
@@ -43,32 +57,15 @@ const listings = [
     badge: "Univers exclusif",
     features: ["1 chambre", "Canapé convertible", "Décoration premium", "Univers immersif"],
     image: "/image1.jpeg",
+    gallery: [],
     available: false,
   },
 ];
 
 const testimonials = [
-  {
-    name: "Sophie M.",
-    origin: "Paris",
-    rating: 5,
-    platform: "Airbnb",
-    text: "Un appartement absolument magnifique, la déco est soignée et l'emplacement parfait. On reviendra sans hésiter !",
-  },
-  {
-    name: "Thomas R.",
-    origin: "Lyon",
-    rating: 5,
-    platform: "Booking",
-    text: "Logement impeccable, propre, bien équipé. L'arrivée autonome est très pratique. Hôte réactif et agréable. Je recommande vivement.",
-  },
-  {
-    name: "Camille & Julien",
-    origin: "Montpellier",
-    rating: 5,
-    platform: "Airbnb",
-    text: "On a adoré l'ambiance chaleureuse du Cocon Bohème. Idéal pour un week-end en amoureux. Merci pour l'accueil !",
-  },
+  { name: "Sophie M.", origin: "Paris", rating: 5, platform: "Airbnb", text: "Un appartement absolument magnifique, la déco est soignée et l'emplacement parfait. On reviendra sans hésiter !" },
+  { name: "Thomas R.", origin: "Lyon", rating: 5, platform: "Booking", text: "Logement impeccable, propre, bien équipé. L'arrivée autonome est très pratique. Hôte réactif et agréable. Je recommande vivement." },
+  { name: "Camille & Julien", origin: "Montpellier", rating: 5, platform: "Airbnb", text: "On a adoré l'ambiance chaleureuse du Cocon Bohème. Idéal pour un week-end en amoureux. Merci pour l'accueil !" },
 ];
 
 const narbonneAttracts = [
@@ -87,12 +84,61 @@ const faq = [
   { q: "Quelle est la différence entre vos logements ?", a: "Le Cocon Bohème (disponible) propose une atmosphère chaleureuse et cosy avec 2 chambres. Le Rome Antique Moderne (bientôt) est un univers immersif inspiré de l'Antiquité, avec 1 chambre et canapé convertible." },
 ];
 
+function Lightbox({ images, index, onClose, onPrev, onNext }) {
+  return (
+    <div className="lightbox-overlay" onClick={onClose}>
+      <button className="lightbox-close" onClick={onClose}><X size={24} /></button>
+      <button className="lightbox-arrow lightbox-prev" onClick={(e) => { e.stopPropagation(); onPrev(); }}>
+        <ChevronLeft size={32} />
+      </button>
+      <img src={images[index]} alt={`Photo ${index + 1}`} className="lightbox-img" onClick={(e) => e.stopPropagation()} />
+      <button className="lightbox-arrow lightbox-next" onClick={(e) => { e.stopPropagation(); onNext(); }}>
+        <ChevronRight size={32} />
+      </button>
+      <div className="lightbox-counter">{index + 1} / {images.length}</div>
+    </div>
+  );
+}
+
+function Gallery({ images, onOpen }) {
+  if (!images || images.length === 0) return null;
+  const main = images[0];
+  const thumbs = images.slice(1, 5);
+  const remaining = images.length - 5;
+  return (
+    <div className="gallery-grid">
+      <div className="gallery-main" onClick={() => onOpen(0)}>
+        <img src={main} alt="Photo principale" />
+      </div>
+      <div className="gallery-thumbs">
+        {thumbs.map((src, i) => (
+          <div key={i} className="gallery-thumb" onClick={() => onOpen(i + 1)}>
+            <img src={src} alt={`Photo ${i + 2}`} />
+            {i === 3 && remaining > 0 && (
+              <div className="gallery-more">
+                <Images size={18} />
+                <span>+{remaining + 1} photos</span>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState(0);
   const [waitlistEmail, setWaitlistEmail] = useState("");
   const [waitlistSent, setWaitlistSent] = useState(false);
   const [contactForm, setContactForm] = useState({ nom: "", email: "", message: "" });
   const [contactSent, setContactSent] = useState(false);
+  const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 });
+
+  const openLightbox = (images, index) => setLightbox({ open: true, images, index });
+  const closeLightbox = () => setLightbox({ open: false, images: [], index: 0 });
+  const prevPhoto = () => setLightbox((l) => ({ ...l, index: (l.index - 1 + l.images.length) % l.images.length }));
+  const nextPhoto = () => setLightbox((l) => ({ ...l, index: (l.index + 1) % l.images.length }));
 
   const handleWaitlist = (e) => {
     e.preventDefault();
@@ -111,6 +157,10 @@ export default function HomePage() {
 
   return (
     <main className="page-shell">
+
+      {lightbox.open && (
+        <Lightbox images={lightbox.images} index={lightbox.index} onClose={closeLightbox} onPrev={prevPhoto} onNext={nextPhoto} />
+      )}
 
       <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="whatsapp-fab" aria-label="Nous contacter sur WhatsApp">
         <MessageCircle size={26} />
@@ -164,7 +214,6 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
           <div className="hero-side">
             <div className="dark-card">
               <div className="eyebrow">
@@ -209,16 +258,17 @@ export default function HomePage() {
           </div>
           <p>Deux appartements, deux ambiances, mais toujours la même attention portée au confort, à la décoration et à la qualité du séjour.</p>
         </div>
-
         <div className="listing-grid">
           {listings.map((listing) => (
             <article key={listing.title} className="listing-card">
-              <div className="listing-image-wrap">
-                <img src={listing.image} alt={listing.title} className="listing-image-real" />
-                {!listing.available && (
-                  <div className="coming-soon-overlay">Bientôt disponible</div>
-                )}
-              </div>
+              {listing.gallery && listing.gallery.length > 1 ? (
+                <Gallery images={listing.gallery} onOpen={(i) => openLightbox(listing.gallery, i)} />
+              ) : (
+                <div className="listing-image-wrap">
+                  <img src={listing.image} alt={listing.title} className="listing-image-real" />
+                  {!listing.available && <div className="coming-soon-overlay">Bientôt disponible</div>}
+                </div>
+              )}
               <div className="listing-content">
                 <span className="badge">{listing.badge}</span>
                 <h3>{listing.title}</h3>
