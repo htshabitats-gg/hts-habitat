@@ -384,7 +384,8 @@ export default function HomePage() {
   height="600"
   style={{ border: "none", borderRadius: "12px" }}
   title="Réservation Cocon Bohème"
-/>
+    />
+          </div>
 
           <div className="reservation-cards">
             <div className="reservation-card">
