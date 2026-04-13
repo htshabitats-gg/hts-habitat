@@ -370,12 +370,39 @@ export default function HomePage() {
       </section>
 
       <section id="reservation" className="section dark-section">
-        <div className="container reservation-grid">
-          <div>
+        <div className="container">
+          <div className="reservation-top">
             <div className="section-kicker light">Réservation</div>
             <h2>Réservez facilement votre séjour</h2>
-            <p className="light-copy">Réservez via Airbnb, Booking.com ou directement en ligne selon la formule qui vous convient.</p>
+            <p className="light-copy">Vérifiez les disponibilités et réservez directement ci-dessous, ou passez par Airbnb et Booking.</p>
           </div>
+
+          <div className="lodgify-widget-wrap">
+            <div
+              id="lodgify-search-bar"
+              data-website-id="538798"
+              data-language-code="fr"
+              data-checkout-page-url="https://checkout.lodgify.com/occitanieetlocation/fr/#/634566"
+              data-dates-check-in-label="Arrivée"
+              data-dates-check-out-label="Départ"
+              data-guests-counter-label="Invités"
+              data-guests-input-singular-label="{{NumberOfGuests}} invité"
+              data-guests-input-plural-label="{{NumberOfGuests}} invités"
+              data-location-input-label="Emplacement"
+              data-search-button-label="Rechercher"
+              data-adults-label='{"one":"adulte","other":"adultes"}'
+              data-adults-description="Âges {minAge} ou plus"
+              data-children-label='{"one":"enfant","other":"enfants"}'
+              data-children-not-allowed-label="Non adapté aux enfants"
+              data-infants-not-allowed-label="Non adapté aux bébés"
+              data-pets-not-allowed-label="Non autorisé"
+              data-done-label="Terminé"
+              data-new-tab="true"
+              data-version="stable"
+              data-has-guests-breakdown
+            />
+          </div>
+
           <div className="reservation-cards">
             <div className="reservation-card">
               <div className="reservation-title">Airbnb</div>
