@@ -378,30 +378,13 @@ export default function HomePage() {
           </div>
 
           <div className="lodgify-widget-wrap">
-            <div
-              id="lodgify-search-bar"
-              data-website-id="538798"
-              data-language-code="fr"
-              data-checkout-page-url="https://checkout.lodgify.com/occitanieetlocation/fr/#/634566"
-              data-dates-check-in-label="Arrivée"
-              data-dates-check-out-label="Départ"
-              data-guests-counter-label="Invités"
-              data-guests-input-singular-label="{{NumberOfGuests}} invité"
-              data-guests-input-plural-label="{{NumberOfGuests}} invités"
-              data-location-input-label="Emplacement"
-              data-search-button-label="Rechercher"
-              data-adults-label='{"one":"adulte","other":"adultes"}'
-              data-adults-description="Âges {minAge} ou plus"
-              data-children-label='{"one":"enfant","other":"enfants"}'
-              data-children-not-allowed-label="Non adapté aux enfants"
-              data-infants-not-allowed-label="Non adapté aux bébés"
-              data-pets-not-allowed-label="Non autorisé"
-              data-done-label="Terminé"
-              data-new-tab="true"
-              data-version="stable"
-              data-has-guests-breakdown
-            />
-          </div>
+            <iframe
+  src="https://checkout.lodgify.com/occitanieetlocation/fr/#/634566"
+  width="100%"
+  height="600"
+  style={{ border: "none", borderRadius: "12px" }}
+  title="Réservation Cocon Bohème"
+/>
 
           <div className="reservation-cards">
             <div className="reservation-card">
