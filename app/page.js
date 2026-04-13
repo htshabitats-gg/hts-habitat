@@ -18,33 +18,28 @@ import {
   Send,
 } from "lucide-react";
 
-// ─── Liens propres sans dates codées en dur ───────────────────────────────────
 const AIRBNB_LINK = "https://www.airbnb.fr/rooms/1318746957534184033";
-const BOOKING_LINK =
-  "https://www.booking.com/hotel/fr/appartements-proche-de-la-gare-narbonne.fr.html";
+const BOOKING_LINK = "https://www.booking.com/hotel/fr/appartements-proche-de-la-gare-narbonne.fr.html";
 const LODGIFY_LINK = "https://occitanieetlocation.lodgify.com/";
 const WHATSAPP_LINK = "https://wa.me/33601380441?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20logements%20HTS%20Habitat.";
 
-// ─── Données ──────────────────────────────────────────────────────────────────
 const listings = [
   {
     title: "Cocon Bohème",
     subtitle: "Appartement chaleureux et confortable à Narbonne",
-    description:
-      "Appartement chaleureux et confortable à Narbonne, le Cocon Bohème séduit par son atmosphère douce, sa décoration soignée et son emplacement pratique à proximité immédiate des transports.",
+    description: "Appartement chaleureux et confortable à Narbonne, le Cocon Bohème séduit par son atmosphère douce, sa décoration soignée et son emplacement pratique à proximité immédiate des transports.",
     badge: "Élégance cosy",
     features: ["2 chambres", "Arrivée autonome", "Wifi", "Proche gare"],
     image: "/cocon-hero.jpg",
     airbnbLink: AIRBNB_LINK,
     bookingLink: BOOKING_LINK,
     available: true,
-    price: "À partir de 75 €/nuit",
+    price: "À partir de 81 €/nuit",
   },
   {
     title: "Rome Antique Moderne",
     subtitle: "Un univers immersif au caractère affirmé",
-    description:
-      "Inspiré de l'Antiquité et revisité dans une lecture plus contemporaine, Rome Antique Moderne propose un séjour original, élégant et mémorable à Narbonne.",
+    description: "Inspiré de l'Antiquité et revisité dans une lecture plus contemporaine, Rome Antique Moderne propose un séjour original, élégant et mémorable à Narbonne.",
     badge: "Univers exclusif",
     features: ["1 chambre", "Canapé convertible", "Décoration premium", "Univers immersif"],
     image: "/image1.jpeg",
@@ -77,56 +72,21 @@ const testimonials = [
 ];
 
 const narbonneAttracts = [
-  {
-    icon: "🏛️",
-    title: "Narbonne antique",
-    desc: "Ancienne capitale de la Gaule Narbonnaise, riche en musées et vestiges romains à découvrir à pied.",
-  },
-  {
-    icon: "🌊",
-    title: "Mer à 15 min",
-    desc: "Les plages de Narbonne-Plage et Gruissan sont à quelques kilomètres seulement.",
-  },
-  {
-    icon: "🍷",
-    title: "Vignobles & gastronomie",
-    desc: "Au cœur du Languedoc viticole, dégustations et restaurants gastronomiques à portée de main.",
-  },
-  {
-    icon: "🚉",
-    title: "Idéal en train",
-    desc: "La gare TGV de Narbonne est à quelques minutes à pied de nos logements.",
-  },
+  { icon: "🏛️", title: "Narbonne antique", desc: "Ancienne capitale de la Gaule Narbonnaise, riche en musées et vestiges romains à découvrir à pied." },
+  { icon: "🌊", title: "Mer à 15 min", desc: "Les plages de Narbonne-Plage et Gruissan sont à quelques kilomètres seulement." },
+  { icon: "🍷", title: "Vignobles & gastronomie", desc: "Au cœur du Languedoc viticole, dégustations et restaurants gastronomiques à portée de main." },
+  { icon: "🚉", title: "Idéal en train", desc: "La gare TGV de Narbonne est à quelques minutes à pied de nos logements." },
 ];
 
 const faq = [
-  {
-    q: "Comment réserver un logement ?",
-    a: "Vous pouvez réserver via Airbnb, Booking.com ou directement en ligne. La réservation directe via notre page Lodgify vous permet de vérifier les disponibilités en temps réel.",
-  },
-  {
-    q: "Peut-on réserver en direct ?",
-    a: "Oui, la réservation directe est possible via notre page sécurisée. Elle permet un échange plus simple et un suivi personnalisé.",
-  },
-  {
-    q: "Les logements sont-ils proches du centre-ville et de la gare ?",
-    a: "Oui, nos logements bénéficient d'un emplacement pratique à Narbonne, avec un accès facile au centre-ville, à la gare et aux principaux points d'intérêt.",
-  },
-  {
-    q: "L'arrivée est-elle autonome ?",
-    a: "Oui, l'arrivée autonome est proposée pour plus de flexibilité selon votre heure d'arrivée. Vous recevez toutes les instructions avant votre séjour.",
-  },
-  {
-    q: "Peut-on vous contacter avant de réserver ?",
-    a: "Bien sûr. Nous sommes disponibles par email, téléphone ou WhatsApp pour répondre à vos questions.",
-  },
-  {
-    q: "Quelle est la différence entre vos logements ?",
-    a: "Le Cocon Bohème (disponible) propose une atmosphère chaleureuse et cosy avec 2 chambres. Le Rome Antique Moderne (bientôt) est un univers immersif inspiré de l'Antiquité, avec 1 chambre et canapé convertible.",
-  },
+  { q: "Comment réserver un logement ?", a: "Vous pouvez réserver via Airbnb, Booking.com ou directement en ligne. La réservation directe via notre page Lodgify vous permet de vérifier les disponibilités en temps réel." },
+  { q: "Peut-on réserver en direct ?", a: "Oui, la réservation directe est possible via notre page sécurisée. Elle permet un échange plus simple et un suivi personnalisé." },
+  { q: "Les logements sont-ils proches du centre-ville et de la gare ?", a: "Oui, nos logements bénéficient d'un emplacement pratique à Narbonne, avec un accès facile au centre-ville, à la gare et aux principaux points d'intérêt." },
+  { q: "L'arrivée est-elle autonome ?", a: "Oui, l'arrivée autonome est proposée pour plus de flexibilité selon votre heure d'arrivée. Vous recevez toutes les instructions avant votre séjour." },
+  { q: "Peut-on vous contacter avant de réserver ?", a: "Bien sûr. Nous sommes disponibles par email, téléphone ou WhatsApp pour répondre à vos questions." },
+  { q: "Quelle est la différence entre vos logements ?", a: "Le Cocon Bohème (disponible) propose une atmosphère chaleureuse et cosy avec 2 chambres. Le Rome Antique Moderne (bientôt) est un univers immersif inspiré de l'Antiquité, avec 1 chambre et canapé convertible." },
 ];
 
-// ─── Composant principal ───────────────────────────────────────────────────────
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState(0);
   const [waitlistEmail, setWaitlistEmail] = useState("");
@@ -143,9 +103,7 @@ export default function HomePage() {
     e.preventDefault();
     if (contactForm.nom && contactForm.email && contactForm.message) {
       const subject = encodeURIComponent("Demande de renseignement HTS Habitat");
-      const body = encodeURIComponent(
-        `Nom : ${contactForm.nom}\nEmail : ${contactForm.email}\n\n${contactForm.message}`
-      );
+      const body = encodeURIComponent(`Nom : ${contactForm.nom}\nEmail : ${contactForm.email}\n\n${contactForm.message}`);
       window.location.href = `mailto:greg.hosteins@gmail.com?subject=${subject}&body=${body}`;
       setContactSent(true);
     }
@@ -154,19 +112,11 @@ export default function HomePage() {
   return (
     <main className="page-shell">
 
-      {/* ── Bouton WhatsApp flottant ── */}
-      <a
-        href={WHATSAPP_LINK}
-        target="_blank"
-        rel="noreferrer"
-        className="whatsapp-fab"
-        aria-label="Nous contacter sur WhatsApp"
-      >
+      <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="whatsapp-fab" aria-label="Nous contacter sur WhatsApp">
         <MessageCircle size={26} />
         <span>WhatsApp</span>
       </a>
 
-      {/* ── Header ── */}
       <header className="topbar">
         <div className="container topbar-inner">
           <div>
@@ -183,7 +133,6 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ── Hero ── */}
       <section className="hero">
         <div className="blur blur-one" />
         <div className="blur blur-two" />
@@ -206,8 +155,8 @@ export default function HomePage() {
                 <div className="stat-label">Note Airbnb</div>
               </div>
               <div className="stat-card">
-                <div className="stat-value">Super</div>
-                <div className="stat-label">Hôte Airbnb</div>
+                <div className="stat-value">🏅</div>
+                <div className="stat-label">Superhôte Airbnb</div>
               </div>
               <div className="stat-card">
                 <div className="stat-value">9,4/10</div>
@@ -223,10 +172,7 @@ export default function HomePage() {
                 <span>Signature HTS Habitat</span>
               </div>
               <h2>Des appartements qui ont une vraie âme</h2>
-              <p>
-                Chaque logement HTS Habitat a été imaginé pour offrir plus qu'un simple
-                hébergement : une ambiance, du confort et une vraie personnalité.
-              </p>
+              <p>Chaque logement HTS Habitat a été imaginé pour offrir plus qu'un simple hébergement : une ambiance, du confort et une vraie personnalité.</p>
             </div>
             <div className="mini-grid">
               <div className="mini-card">
@@ -244,100 +190,60 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Marque ── */}
       <section id="marque" className="section container two-col">
         <div>
           <div className="section-kicker">La marque</div>
           <h2>Une même vision de l'hospitalité</h2>
         </div>
         <div className="copy-stack">
-          <p>
-            HTS Habitat propose à Narbonne des appartements à l'identité soignée,
-            pensés pour allier confort, autonomie et atmosphère chaleureuse.
-          </p>
-          <p>
-            Que vous veniez pour quelques jours, un séjour en famille, un déplacement
-            ou une escapade dans la région, l'objectif reste le même : vous offrir une
-            expérience simple, élégante et agréable du début à la fin.
-          </p>
+          <p>HTS Habitat propose à Narbonne des appartements à l'identité soignée, pensés pour allier confort, autonomie et atmosphère chaleureuse.</p>
+          <p>Que vous veniez pour quelques jours, un séjour en famille, un déplacement ou une escapade dans la région, l'objectif reste le même : vous offrir une expérience simple, élégante et agréable du début à la fin.</p>
         </div>
       </section>
 
-      {/* ── Logements ── */}
       <section id="logements" className="section container">
         <div className="section-head">
           <div>
             <div className="section-kicker">Les logements</div>
             <h2>Deux univers, une même exigence</h2>
           </div>
-          <p>
-            Deux appartements, deux ambiances, mais toujours la même attention portée
-            au confort, à la décoration et à la qualité du séjour.
-          </p>
+          <p>Deux appartements, deux ambiances, mais toujours la même attention portée au confort, à la décoration et à la qualité du séjour.</p>
         </div>
 
         <div className="listing-grid">
           {listings.map((listing) => (
             <article key={listing.title} className="listing-card">
               <div className="listing-image-wrap">
-                <img
-                  src={listing.image}
-                  alt={listing.title}
-                  className="listing-image-real"
-                />
+                <img src={listing.image} alt={listing.title} className="listing-image-real" />
                 {!listing.available && (
                   <div className="coming-soon-overlay">Bientôt disponible</div>
                 )}
               </div>
-
               <div className="listing-content">
                 <span className="badge">{listing.badge}</span>
                 <h3>{listing.title}</h3>
                 <div className="subtitle">{listing.subtitle}</div>
                 <p>{listing.description}</p>
-
-                {listing.price && (
-                  <div className="listing-price">{listing.price}</div>
-                )}
-
+                {listing.price && <div className="listing-price">{listing.price}</div>}
                 <div className="feature-row">
                   {listing.features.map((feature) => (
                     <span key={feature} className="feature">{feature}</span>
                   ))}
                 </div>
-
                 {listing.available ? (
                   <div className="button-row">
-                    <a href={listing.airbnbLink} target="_blank" rel="noreferrer" className="btn btn-dark">
-                      Voir sur Airbnb
-                    </a>
-                    <a href={listing.bookingLink} target="_blank" rel="noreferrer" className="btn btn-light">
-                      Voir sur Booking
-                    </a>
+                    <a href={listing.airbnbLink} target="_blank" rel="noreferrer" className="btn btn-dark">Voir sur Airbnb</a>
+                    <a href={listing.bookingLink} target="_blank" rel="noreferrer" className="btn btn-light">Voir sur Booking</a>
                   </div>
                 ) : (
-                  /* ── Waitlist Rome Antique Moderne ── */
                   <div className="waitlist-box">
-                    <p className="waitlist-label">
-                      <Clock size={15} /> Ouverture imminente — Soyez le premier à réserver
-                    </p>
+                    <p className="waitlist-label"><Clock size={15} /> Ouverture imminente — Soyez le premier à réserver</p>
                     {waitlistSent ? (
-                      <p className="waitlist-success">
-                        ✅ Merci ! Vous serez parmi les premiers prévenus à l'ouverture.
-                      </p>
+                      <p className="waitlist-success">✅ Merci ! Vous serez parmi les premiers prévenus à l'ouverture.</p>
                     ) : (
                       <form className="waitlist-form" onSubmit={handleWaitlist}>
-                        <input
-                          type="email"
-                          placeholder="Votre adresse e-mail"
-                          value={waitlistEmail}
-                          onChange={(e) => setWaitlistEmail(e.target.value)}
-                          required
-                          className="waitlist-input"
-                        />
-                        <button type="submit" className="btn btn-dark">
-                          Me prévenir
-                        </button>
+                        <input type="email" placeholder="Votre adresse e-mail" value={waitlistEmail} onChange={(e) => setWaitlistEmail(e.target.value)} required className="waitlist-input" />
+                        <button type="submit" className="btn btn-dark">Me prévenir</button>
                       </form>
                     )}
                   </div>
@@ -348,16 +254,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Atouts ── */}
       <section className="section container">
         <div className="reason-box">
           <div className="section-head compact">
             <div>
               <div className="section-kicker">Nos atouts</div>
               <h2>Pourquoi choisir HTS Habitat</h2>
-              <p className="lead">
-                Des logements pensés pour allier confort, autonomie et qualité de séjour à Narbonne.
-              </p>
+              <p className="lead">Des logements pensés pour allier confort, autonomie et qualité de séjour à Narbonne.</p>
             </div>
           </div>
           <div className="reason-grid">
@@ -371,7 +274,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Avis voyageurs ── */}
       <section className="section container">
         <div className="section-head">
           <div>
@@ -384,13 +286,10 @@ export default function HomePage() {
             <span className="trust-badge"><ShieldCheck size={15} /> Superhôte</span>
           </div>
         </div>
-
         <div className="testimonials-grid">
           {testimonials.map((t) => (
             <div key={t.name} className="testimonial-card">
-              <div className="testimonial-stars">
-                {"★".repeat(t.rating)}
-              </div>
+              <div className="testimonial-stars">{"★".repeat(t.rating)}</div>
               <p className="testimonial-text">"{t.text}"</p>
               <div className="testimonial-author">
                 <span className="testimonial-name">{t.name}</span>
@@ -401,7 +300,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Pourquoi Narbonne ── */}
       <section className="section container">
         <div className="section-head">
           <div>
@@ -421,43 +319,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Réservation ── */}
       <section id="reservation" className="section dark-section">
         <div className="container reservation-grid">
           <div>
             <div className="section-kicker light">Réservation</div>
             <h2>Réservez facilement votre séjour</h2>
-            <p className="light-copy">
-              Réservez via Airbnb, Booking.com ou directement en ligne selon la formule qui vous convient.
-            </p>
+            <p className="light-copy">Réservez via Airbnb, Booking.com ou directement en ligne selon la formule qui vous convient.</p>
           </div>
           <div className="reservation-cards">
             <div className="reservation-card">
               <div className="reservation-title">Airbnb</div>
               <p>Réservez le Cocon Bohème directement sur Airbnb.</p>
-              <a href={AIRBNB_LINK} target="_blank" rel="noreferrer" className="btn btn-white">
-                Voir l'annonce Airbnb
-              </a>
+              <a href={AIRBNB_LINK} target="_blank" rel="noreferrer" className="btn btn-white">Voir l'annonce Airbnb</a>
             </div>
             <div className="reservation-card">
               <div className="reservation-title">Booking.com</div>
               <p>Retrouvez le Cocon Bohème également sur Booking.com.</p>
-              <a href={BOOKING_LINK} target="_blank" rel="noreferrer" className="btn btn-outline-light">
-                Voir sur Booking
-              </a>
+              <a href={BOOKING_LINK} target="_blank" rel="noreferrer" className="btn btn-outline-light">Voir sur Booking</a>
             </div>
             <div className="reservation-card">
               <div className="reservation-title">Réserver en direct</div>
               <p>Consultez les disponibilités et réservez directement via notre page sécurisée.</p>
-              <a href={LODGIFY_LINK} target="_blank" rel="noreferrer" className="btn btn-outline-light">
-                Réserver en direct
-              </a>
+              <a href={LODGIFY_LINK} target="_blank" rel="noreferrer" className="btn btn-outline-light">Réserver en direct</a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── FAQ ── */}
       <section id="faq" className="section container faq-section">
         <div className="faq-head">
           <div className="section-kicker">FAQ</div>
@@ -479,70 +367,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Contact ── */}
       <section id="contact" className="section container bottom-space">
         <div className="contact-box">
           <div>
             <div className="section-kicker">Contact</div>
             <h2>Contactez HTS Habitat</h2>
-            <p>
-              Une question avant de réserver ? Nous restons disponibles pour vous renseigner
-              rapidement et vous aider à choisir la formule la plus adaptée à votre séjour.
-            </p>
+            <p>Une question avant de réserver ? Nous restons disponibles pour vous renseigner rapidement et vous aider à choisir la formule la plus adaptée à votre séjour.</p>
             <div className="contact-card">
               <div className="contact-line"><Mail size={18} /><span>greg.hosteins@gmail.com</span></div>
               <div className="contact-line"><Phone size={18} /><span>06.01.38.04.41</span></div>
               <div className="contact-line"><Train size={18} /><span>Narbonne, proche gare et centre-ville</span></div>
               <div className="contact-line">
                 <MessageCircle size={18} />
-                <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" style={{ color: "inherit" }}>
-                  Nous contacter sur WhatsApp
-                </a>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" style={{ color: "inherit" }}>Nous contacter sur WhatsApp</a>
               </div>
             </div>
           </div>
-
-          {/* ── Formulaire de contact ── */}
           <div className="contact-form-box">
             <h3>Envoyer un message</h3>
             {contactSent ? (
               <p className="waitlist-success">✅ Votre client de messagerie va s'ouvrir. Merci de votre message !</p>
             ) : (
               <form className="contact-form" onSubmit={handleContact}>
-                <input
-                  type="text"
-                  placeholder="Votre nom"
-                  value={contactForm.nom}
-                  onChange={(e) => setContactForm({ ...contactForm, nom: e.target.value })}
-                  required
-                  className="form-input"
-                />
-                <input
-                  type="email"
-                  placeholder="Votre e-mail"
-                  value={contactForm.email}
-                  onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                  required
-                  className="form-input"
-                />
-                <textarea
-                  placeholder="Votre message (dates souhaitées, questions...)"
-                  value={contactForm.message}
-                  onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                  required
-                  className="form-input form-textarea"
-                  rows={4}
-                />
-                <button type="submit" className="btn btn-dark">
-                  <Send size={15} /> Envoyer
-                </button>
+                <input type="text" placeholder="Votre nom" value={contactForm.nom} onChange={(e) => setContactForm({ ...contactForm, nom: e.target.value })} required className="form-input" />
+                <input type="email" placeholder="Votre e-mail" value={contactForm.email} onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })} required className="form-input" />
+                <textarea placeholder="Votre message (dates souhaitées, questions...)" value={contactForm.message} onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })} required className="form-input form-textarea" rows={4} />
+                <button type="submit" className="btn btn-dark"><Send size={15} /> Envoyer</button>
               </form>
             )}
           </div>
         </div>
       </section>
 
-      {/* ── Footer ── */}
       <footer className="site-footer">
         <div className="container footer-inner">
           <div>
