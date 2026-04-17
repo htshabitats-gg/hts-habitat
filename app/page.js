@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Script from "next/script";
 import {
   BedDouble,
   ChevronDown,
@@ -140,16 +141,7 @@ export default function HomePage() {
   const prevPhoto = () => setLightbox((l) => ({ ...l, index: (l.index - 1 + l.images.length) % l.images.length }));
   const nextPhoto = () => setLightbox((l) => ({ ...l, index: (l.index + 1) % l.images.length }));
 
-  // Chargement du widget Lodgify
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  // Chargement du widget Lodgify géré via Script next/script dans le JSX
 
   const handleWaitlist = (e) => {
     e.preventDefault();
@@ -168,6 +160,10 @@ export default function HomePage() {
 
   return (
     <main className="page-shell">
+      <Script
+        src="https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js"
+        strategy="afterInteractive"
+      />
 
       {lightbox.open && (
         <Lightbox images={lightbox.images} index={lightbox.index} onClose={closeLightbox} onPrev={prevPhoto} onNext={nextPhoto} />
