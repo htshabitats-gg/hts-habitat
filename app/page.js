@@ -55,7 +55,7 @@ const listings = [
     subtitle: "Un univers immersif au caractère affirmé",
     description: "Inspiré de l'Antiquité et revisité dans une lecture plus contemporaine, Rome Antique Moderne propose un séjour original, élégant et mémorable à Narbonne.",
     badge: "Univers exclusif",
-    features: ["1 chambre", "Canapé convertible", "Décoration premium", "Univers immersif"],
+    features: ["1 chambre", "Canapé convertible", "Décoration soignée", "Univers immersif"],
     image: "/image1.jpeg",
     gallery: [],
     available: false,
@@ -171,7 +171,7 @@ export default function HomePage() {
         <div className="container topbar-inner">
           <div>
             <div className="brand">HTS HABITAT</div>
-            <div className="brand-sub">Narbonne · Séjours premium</div>
+            <div className="brand-sub">Vos vacances à Narbonne</div>
           </div>
           <nav className="nav">
             <a href="#logements">Logements</a>
@@ -189,11 +189,11 @@ export default function HomePage() {
         <div className="container hero-grid">
           <div>
             <span className="pill">Hébergements de caractère à Narbonne</span>
-            <h1>Séjours premium à Narbonne, entre confort, caractère et identité.</h1>
+            <h1>Des appartements avec du caractère, pensés pour un séjour dont vous vous souviendrez.</h1>
             <p className="lead">
-              HTS Habitat vous accueille dans des appartements soigneusement décorés,
-              pensés pour offrir un séjour confortable, fluide et mémorable à deux pas
-              du centre et de la gare de Narbonne.
+              HTS Habitat vous accueille dans des appartements décorés avec soin,
+              où chaque détail a été pensé pour que vous vous sentiez vraiment bien —
+              à deux pas du centre et de la gare de Narbonne.
             </p>
             <div className="hero-actions">
               <a href="#logements" className="btn btn-dark">Découvrir les logements</a>
@@ -378,13 +378,29 @@ export default function HomePage() {
           </div>
 
           <div className="lodgify-widget-wrap">
-            <iframe
-  src="https://checkout.lodgify.com/occitanieetlocation/fr/#/634566"
-  width="100%"
-  height="600"
-  style={{ border: "none", borderRadius: "12px" }}
-  title="Réservation Cocon Bohème"
-    />
+            <div
+              id="lodgify-search-bar"
+              data-website-id="538798"
+              data-language-code="fr"
+              data-checkout-page-url="https://checkout.lodgify.com/occitanieetlocation/fr/#/634566"
+              data-dates-check-in-label="Arrivée"
+              data-dates-check-out-label="Départ"
+              data-guests-counter-label="Invités"
+              data-guests-input-singular-label="{{NumberOfGuests}} invité"
+              data-guests-input-plural-label="{{NumberOfGuests}} invités"
+              data-location-input-label="Emplacement"
+              data-search-button-label="Rechercher"
+              data-adults-label='{"one":"adulte","other":"adultes"}'
+              data-adults-description="Âges {minAge} ou plus"
+              data-children-label='{"one":"enfant","other":"enfants"}'
+              data-children-not-allowed-label="Non adapté aux enfants"
+              data-infants-not-allowed-label="Non adapté aux bébés"
+              data-pets-not-allowed-label="Non autorisé"
+              data-done-label="Terminé"
+              data-new-tab="true"
+              data-version="stable"
+              data-has-guests-breakdown
+            />
           </div>
 
           <div className="reservation-cards">
@@ -464,7 +480,7 @@ export default function HomePage() {
         <div className="container footer-inner">
           <div>
             <div className="brand">HTS HABITAT</div>
-            <div className="brand-sub">Narbonne · Séjours premium</div>
+            <div className="brand-sub">Vos vacances à Narbonne</div>
           </div>
           <div className="footer-links">
             <a href="#logements">Logements</a>
