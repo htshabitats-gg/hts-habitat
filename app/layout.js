@@ -1,20 +1,18 @@
 import "./globals.css";
 
 export const metadata = {
-  // ── Titre & description ──────────────────────────────────────────────────
   title: {
     default: "HTS Habitat — Vos vacances à Narbonne",
     template: "%s | HTS Habitat Narbonne",
   },
   description:
-    "Découvrez nos appartements de charme à Narbonne : le Cocon Bohème et Rome Antique Moderne. Séjours premium, arrivée autonome, proche gare. Réservez sur Airbnb, Booking ou en direct.",
+    "Découvrez nos appartements de charme à Narbonne : le Cocon Bohème et Rome Antique Moderne. Séjours de caractère, arrivée autonome, proche gare. Réservez sur Airbnb, Booking ou en direct.",
 
-  // ── Mots-clés ────────────────────────────────────────────────────────────
   keywords: [
     "appartement Narbonne",
     "location Narbonne",
     "Airbnb Narbonne",
-    "hébergement premium Narbonne",
+    "hébergement Narbonne",
     "Cocon Bohème Narbonne",
     "Rome Antique Moderne Narbonne",
     "location courte durée Narbonne",
@@ -24,22 +22,18 @@ export const metadata = {
     "HTS Habitat",
   ],
 
-  // ── Auteur & site ────────────────────────────────────────────────────────
   authors: [{ name: "HTS Habitat", url: "https://www.hts-habitat.fr" }],
   creator: "HTS Habitat",
   publisher: "HTS Habitat",
   metadataBase: new URL("https://www.hts-habitat.fr"),
-  alternates: {
-    canonical: "https://www.hts-habitat.fr",
-  },
+  alternates: { canonical: "https://www.hts-habitat.fr" },
 
-  // ── Open Graph (partage Facebook, WhatsApp, LinkedIn) ───────────────────
   openGraph: {
     type: "website",
     locale: "fr_FR",
     url: "https://www.hts-habitat.fr",
     siteName: "HTS Habitat",
-    title: "HTS Habitat — Appartements premium à Narbonne",
+    title: "HTS Habitat — Vos vacances à Narbonne",
     description:
       "Séjours de caractère à Narbonne. Deux appartements soigneusement décorés, proches de la gare et du centre. Réservation Airbnb, Booking ou en direct.",
     images: [
@@ -47,21 +41,19 @@ export const metadata = {
         url: "/cocon-hero.jpg",
         width: 1200,
         height: 630,
-        alt: "Cocon Bohème — Appartement premium à Narbonne",
+        alt: "Cocon Bohème — Appartement de caractère à Narbonne",
       },
     ],
   },
 
-  // ── Twitter / X ──────────────────────────────────────────────────────────
   twitter: {
     card: "summary_large_image",
-    title: "HTS Habitat — Appartements premium à Narbonne",
+    title: "HTS Habitat — Vos vacances à Narbonne",
     description:
       "Séjours de caractère à Narbonne. Deux appartements soigneusement décorés, proches de la gare et du centre.",
     images: ["/cocon-hero.jpg"],
   },
 
-  // ── Robots ───────────────────────────────────────────────────────────────
   robots: {
     index: true,
     follow: true,
@@ -73,17 +65,13 @@ export const metadata = {
     },
   },
 
-  // ── Icône ────────────────────────────────────────────────────────────────
-  icons: {
-    icon: "/favicon.ico",
-  },
+  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
-        {/* Données structurées JSON-LD pour Google */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -92,7 +80,7 @@ export default function RootLayout({ children }) {
               "@type": "LodgingBusiness",
               name: "HTS Habitat",
               description:
-                "Appartements premium à Narbonne — Cocon Bohème et Rome Antique Moderne. Séjours de caractère, arrivée autonome, proche gare.",
+                "Appartements de caractère à Narbonne — Cocon Bohème et Rome Antique Moderne. Séjours soignés, arrivée autonome, proche gare.",
               url: "https://www.hts-habitat.fr",
               telephone: "+33601380441",
               email: "greg.hosteins@gmail.com",
@@ -129,7 +117,10 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
-        <script src="https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js" defer></script>
+        <script
+          src="https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js"
+          defer
+        ></script>
       </body>
     </html>
   );
