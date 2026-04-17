@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   BedDouble,
   ChevronDown,
@@ -139,6 +139,17 @@ export default function HomePage() {
   const closeLightbox = () => setLightbox({ open: false, images: [], index: 0 });
   const prevPhoto = () => setLightbox((l) => ({ ...l, index: (l.index - 1 + l.images.length) % l.images.length }));
   const nextPhoto = () => setLightbox((l) => ({ ...l, index: (l.index + 1) % l.images.length }));
+
+  // Chargement du widget Lodgify
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const handleWaitlist = (e) => {
     e.preventDefault();
