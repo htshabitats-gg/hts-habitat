@@ -3,7 +3,7 @@ import "./globals.css";
 export const metadata = {
   // ── Titre & description ──────────────────────────────────────────────────
   title: {
-    default: "HTS Habitat — Appartements premium à Narbonne",
+    default: "HTS Habitat — Vos vacances à Narbonne",
     template: "%s | HTS Habitat Narbonne",
   },
   description:
