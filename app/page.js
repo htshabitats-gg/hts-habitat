@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Script from "next/script";
 import {
   BedDouble,
   ChevronDown,
@@ -160,10 +159,6 @@ export default function HomePage() {
 
   return (
     <main className="page-shell">
-      <Script
-        src="https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js"
-        strategy="afterInteractive"
-      />
 
       {lightbox.open && (
         <Lightbox images={lightbox.images} index={lightbox.index} onClose={closeLightbox} onPrev={prevPhoto} onNext={nextPhoto} />
@@ -397,11 +392,17 @@ export default function HomePage() {
               data-guests-input-plural-label="{{NumberOfGuests}} invités"
               data-location-input-label="Emplacement"
               data-search-button-label="Rechercher"
+              data-dates-input-min-stay-tooltip-text='{"one":"Minimum {minStay} nuit","other":"Minimum de {minStay} nuits"}'
+              data-guests-breakdown-label="Invités"
               data-adults-label='{"one":"adulte","other":"adultes"}'
               data-adults-description="Âges {minAge} ou plus"
               data-children-label='{"one":"enfant","other":"enfants"}'
+              data-children-description="Âges {minAge} - {maxAge}"
               data-children-not-allowed-label="Non adapté aux enfants"
+              data-infants-label='{"one":"bébé","other":"bébés"}'
+              data-infants-description="Moins de {maxAge}"
               data-infants-not-allowed-label="Non adapté aux bébés"
+              data-pets-label='{"one":"animal de compagnie","other":"animaux de compagnie"}'
               data-pets-not-allowed-label="Non autorisé"
               data-done-label="Terminé"
               data-new-tab="true"
