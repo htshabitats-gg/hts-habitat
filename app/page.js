@@ -63,9 +63,10 @@ const listings = [
 ];
 
 const testimonials = [
-  { name: "Sophie M.", origin: "Paris", rating: 5, platform: "Airbnb", text: "Un appartement absolument magnifique, la déco est soignée et l'emplacement parfait. On reviendra sans hésiter !" },
-  { name: "Thomas R.", origin: "Lyon", rating: 5, platform: "Booking", text: "Logement impeccable, propre, bien équipé. L'arrivée autonome est très pratique. Hôte réactif et agréable. Je recommande vivement." },
-  { name: "Camille & Julien", origin: "Montpellier", rating: 5, platform: "Airbnb", text: "On a adoré l'ambiance chaleureuse du Cocon Bohème. Idéal pour un week-end en amoureux. Merci pour l'accueil !" },
+  { name: "Joni", origin: "Nouveau-Mexique, États-Unis", rating: 5, platform: "Airbnb", text: "Ce fut une expérience très agréable du début à la fin et au-delà. Le logement était idéalement situé pour les voyages en train. Le quartier est super accessible à pied. C'est un de ces endroits où vous regrettez de ne pas avoir réservé un séjour beaucoup plus long." },
+  { name: "Jérôme", origin: "France", rating: 5, platform: "Airbnb", text: "Superbe 3 pièces, très bien équipé et très bien agencé, idéalement situé pour une visite de Narbonne et accessible à pied immédiatement depuis la gare. On reviendra sans problème !" },
+  { name: "Julia", origin: "France", rating: 5, platform: "Airbnb", text: "Entre le logement et l'hôte, rien à redire ! Tout était vraiment de qualité, le logement très propre, très jolie, avec beaucoup d'équipement à disposition ! Gregory était très cordial et présent pour notre séjour ! Du 10/10 !" },
+  { name: "Frumence", origin: "France", rating: 5, platform: "Airbnb", text: "L'appartement est aménagé avec goût. Il est propre et accueillant. L'hôte est réactif et agréable. Nous avons passé un bon séjour sur Narbonne et les environs." },
 ];
 
 const narbonneAttracts = [
