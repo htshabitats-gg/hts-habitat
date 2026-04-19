@@ -175,10 +175,9 @@ export default function HomePage() {
 
       <header className="topbar">
         <div className="container topbar-inner">
-          <div>
-            <div className="brand">HTS HABITAT</div>
-            <div className="brand-sub">Vos vacances à Narbonne</div>
-          </div>
+          <a href="#">
+            <img src="/logo.png" alt="HTS Habitat" className="header-logo" />
+          </a>
           <nav className="nav">
             <a href="#logements">Logements</a>
             <a href="#marque">La marque</a>
