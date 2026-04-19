@@ -64,8 +64,10 @@ const listings = [
 
 const testimonials = [
   { name: "Joni", origin: "Nouveau-Mexique, États-Unis", rating: 5, platform: "Airbnb", text: "Ce fut une expérience très agréable du début à la fin et au-delà. Le logement était idéalement situé pour les voyages en train. Le quartier est super accessible à pied. C'est un de ces endroits où vous regrettez de ne pas avoir réservé un séjour beaucoup plus long." },
+  { name: "Christine", origin: "États-Unis", rating: 5, platform: "Booking", text: "Un appartement magnifique, confortable et très propre. Nous avons séjourné dans des Airbnb partout dans le monde et celui-ci est certainement l'un des meilleurs. Je recommande vivement." },
   { name: "Jérôme", origin: "France", rating: 5, platform: "Airbnb", text: "Superbe 3 pièces, très bien équipé et très bien agencé, idéalement situé pour une visite de Narbonne et accessible à pied immédiatement depuis la gare. On reviendra sans problème !" },
   { name: "Julia", origin: "France", rating: 5, platform: "Airbnb", text: "Entre le logement et l'hôte, rien à redire ! Tout était vraiment de qualité, le logement très propre, très jolie, avec beaucoup d'équipement à disposition ! Gregory était très cordial et présent pour notre séjour ! Du 10/10 !" },
+  { name: "Lefebvre", origin: "France", rating: 5, platform: "Booking", text: "Tout est réfléchi, pensé pour le bien être. Ma plus belle location. Il règne un profond respect pour le locataire. Absolument rien à redire, c'est irréprochable." },
   { name: "Frumence", origin: "France", rating: 5, platform: "Airbnb", text: "L'appartement est aménagé avec goût. Il est propre et accueillant. L'hôte est réactif et agréable. Nous avons passé un bon séjour sur Narbonne et les environs." },
 ];
 
@@ -135,6 +137,7 @@ export default function HomePage() {
   const [contactForm, setContactForm] = useState({ nom: "", email: "", message: "" });
   const [contactSent, setContactSent] = useState(false);
   const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const openLightbox = (images, index) => setLightbox({ open: true, images, index });
   const closeLightbox = () => setLightbox({ open: false, images: [], index: 0 });
@@ -183,7 +186,25 @@ export default function HomePage() {
             <a href="#faq">FAQ</a>
             <a href="#contact" className="nav-cta">Contact</a>
           </nav>
+          <button
+            className="hamburger"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Menu"
+          >
+            <span className={mobileMenuOpen ? "ham-line open" : "ham-line"} />
+            <span className={mobileMenuOpen ? "ham-line open" : "ham-line"} />
+            <span className={mobileMenuOpen ? "ham-line open" : "ham-line"} />
+          </button>
         </div>
+        {mobileMenuOpen && (
+          <div className="mobile-menu">
+            <a href="#logements" onClick={() => setMobileMenuOpen(false)}>Logements</a>
+            <a href="#marque" onClick={() => setMobileMenuOpen(false)}>La marque</a>
+            <a href="#reservation" onClick={() => setMobileMenuOpen(false)}>Réserver</a>
+            <a href="#faq" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="mobile-menu-cta">Contact</a>
+          </div>
+        )}
       </header>
 
       <section className="hero">
