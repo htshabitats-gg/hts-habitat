@@ -316,3 +316,14 @@ h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; color: #111; }
   .hamburger { display: flex; }
   .nav { display: none !important; }
 }
+
+/* ── Logo header ── */
+.header-logo {
+  height: 52px;
+  width: auto;
+  display: block;
+  filter: invert(0);
+}
+@media (max-width: 600px) {
+  .header-logo { height: 40px; }
+}
