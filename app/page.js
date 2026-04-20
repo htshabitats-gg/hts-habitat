@@ -365,10 +365,8 @@ export default function HomePage() {
             <div className="reason-card fade-in fade-in-delay-3"><Star size={18} /><div>Superhôte certifié</div></div>
             <div className="reason-card fade-in fade-in-delay-3" style={{ gridColumn: "span 2" }}>
               <Star size={18} />
-             <div className="reason-card fade-in fade-in-delay-3" style={{ gridColumn: "span 2" }}>
-          <Star size={18} />
-          <div>+100 séjours réussis</div>
-          </div>
+              <div>+100 séjours réussis</div>
+            </div>
           </div>
         </div>
       </section>
