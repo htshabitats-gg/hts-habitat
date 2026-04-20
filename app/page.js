@@ -87,6 +87,18 @@ const faq = [
   { q: "Quelle est la différence entre vos logements ?", a: "Le Cocon Bohème (disponible) propose une atmosphère chaleureuse et cosy avec 2 chambres. Le Rome Antique Moderne (bientôt) est un univers immersif inspiré de l'Antiquité, avec 1 chambre et canapé convertible." },
 ];
 
+function useFadeIn() {
+  useEffect(() => {
+    const els = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+      { threshold: 0.12 }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+}
+
 function Lightbox({ images, index, onClose, onPrev, onNext }) {
   return (
     <div className="lightbox-overlay" onClick={onClose}>
@@ -139,12 +151,12 @@ export default function HomePage() {
   const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  useFadeIn();
+
   const openLightbox = (images, index) => setLightbox({ open: true, images, index });
   const closeLightbox = () => setLightbox({ open: false, images: [], index: 0 });
   const prevPhoto = () => setLightbox((l) => ({ ...l, index: (l.index - 1 + l.images.length) % l.images.length }));
   const nextPhoto = () => setLightbox((l) => ({ ...l, index: (l.index + 1) % l.images.length }));
-
-  // Chargement du widget Lodgify géré via Script next/script dans le JSX
 
   const handleWaitlist = (e) => {
     e.preventDefault();
@@ -263,7 +275,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="marque" className="section container two-col">
+      {/* ── La marque + Votre hôte ── */}
+      <section id="marque" className="section container two-col fade-in">
         <div>
           <div className="section-kicker">La marque</div>
           <h2>Une même vision de l'hospitalité</h2>
@@ -271,11 +284,16 @@ export default function HomePage() {
         <div className="copy-stack">
           <p>HTS Habitat propose à Narbonne des appartements à l'identité soignée, pensés pour allier confort, autonomie et atmosphère chaleureuse.</p>
           <p>Que vous veniez pour quelques jours, un séjour en famille, un déplacement ou une escapade dans la région, l'objectif reste le même : vous offrir une expérience simple, élégante et agréable du début à la fin.</p>
+          <div className="host-box">
+            <strong>Votre hôte</strong>
+            Grégory, hôte basé à Narbonne, a conçu chaque appartement avec une attention particulière au confort et aux détails. Son objectif : que vous repartiez avec l'envie de revenir.
+          </div>
         </div>
       </section>
 
+      {/* ── Logements ── */}
       <section id="logements" className="section container">
-        <div className="section-head">
+        <div className="section-head fade-in">
           <div>
             <div className="section-kicker">Les logements</div>
             <h2>Deux univers, une même exigence</h2>
@@ -284,7 +302,7 @@ export default function HomePage() {
         </div>
         <div className="listing-grid">
           {listings.map((listing) => (
-            <article key={listing.title} className="listing-card">
+            <article key={listing.title} className="listing-card fade-in">
               {listing.gallery && listing.gallery.length > 1 ? (
                 <Gallery images={listing.gallery} onOpen={(i) => openLightbox(listing.gallery, i)} />
               ) : (
@@ -328,6 +346,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Nos atouts ── */}
       <section className="section container">
         <div className="reason-box">
           <div className="section-head compact">
@@ -338,17 +357,22 @@ export default function HomePage() {
             </div>
           </div>
           <div className="reason-grid">
-            <div className="reason-card"><BedDouble size={18} /><div>Décoration soignée</div></div>
-            <div className="reason-card"><ShieldCheck size={18} /><div>Arrivée autonome</div></div>
-            <div className="reason-card"><MapPin size={18} /><div>Emplacement pratique</div></div>
-            <div className="reason-card"><Wifi size={18} /><div>Wifi haut débit</div></div>
-            <div className="reason-card"><Heart size={18} /><div>Confort au quotidien</div></div>
-            <div className="reason-card"><Star size={18} /><div>Superhôte certifié</div></div>
+            <div className="reason-card fade-in fade-in-delay-1"><BedDouble size={18} /><div>Décoration soignée</div></div>
+            <div className="reason-card fade-in fade-in-delay-1"><ShieldCheck size={18} /><div>Arrivée autonome</div></div>
+            <div className="reason-card fade-in fade-in-delay-2"><MapPin size={18} /><div>Emplacement pratique</div></div>
+            <div className="reason-card fade-in fade-in-delay-2"><Wifi size={18} /><div>Wifi haut débit</div></div>
+            <div className="reason-card fade-in fade-in-delay-3"><Heart size={18} /><div>Confort au quotidien</div></div>
+            <div className="reason-card fade-in fade-in-delay-3"><Star size={18} /><div>Superhôte certifié</div></div>
+            <div className="reason-card fade-in fade-in-delay-3" style={{ gridColumn: "span 2" }}>
+              <Star size={18} />
+              <div>+100 séjours réussis — Plus de 100 voyageurs accueillis, avec une note moyenne de 4,9★</div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section container">
+      {/* ── Témoignages ── */}
+      <section className="section container fade-in">
         <div className="section-head">
           <div>
             <div className="section-kicker">Confiance voyageurs</div>
@@ -374,7 +398,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section container">
+      {/* ── Narbonne ── */}
+      <section className="section container fade-in">
         <div className="section-head">
           <div>
             <div className="section-kicker">La destination</div>
@@ -393,6 +418,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Réservation ── */}
       <section id="reservation" className="section dark-section">
         <div className="container">
           <div className="reservation-top">
@@ -431,7 +457,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="faq" className="section container faq-section">
+      {/* ── FAQ ── */}
+      <section id="faq" className="section container faq-section fade-in">
         <div className="faq-head">
           <div className="section-kicker">FAQ</div>
           <h2>Les questions fréquentes</h2>
@@ -452,7 +479,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="section container bottom-space">
+      {/* ── Contact ── */}
+      <section id="contact" className="section container bottom-space fade-in">
         <div className="contact-box">
           <div>
             <div className="section-kicker">Contact</div>
@@ -466,6 +494,7 @@ export default function HomePage() {
                 <MessageCircle size={18} />
                 <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" style={{ color: "inherit" }}>Nous contacter sur WhatsApp</a>
               </div>
+              <div className="response-guarantee">💬 Réponse garantie sous 2h · 7j/7</div>
             </div>
           </div>
           <div className="contact-form-box">
@@ -484,6 +513,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Footer ── */}
       <footer className="site-footer">
         <div className="container footer-inner">
           <div>
@@ -495,6 +525,7 @@ export default function HomePage() {
             <a href="#reservation">Réserver</a>
             <a href="#contact">Contact</a>
             <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer">WhatsApp</a>
+            <a href="/mentions-legales">Mentions légales</a>
           </div>
           <div className="footer-copy">© {new Date().getFullYear()} HTS Habitat · Narbonne</div>
         </div>
