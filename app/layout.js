@@ -7,7 +7,6 @@ export const metadata = {
   },
   description:
     "Découvrez nos appartements de charme à Narbonne : le Cocon Bohème et Rome Antique Moderne. Séjours de caractère, arrivée autonome, proche gare. Réservez sur Airbnb, Booking ou en direct.",
-
   keywords: [
     "appartement Narbonne",
     "location Narbonne",
@@ -21,13 +20,11 @@ export const metadata = {
     "location vacances Narbonne",
     "HTS Habitat",
   ],
-
   authors: [{ name: "HTS Habitat", url: "https://www.hts-habitat.fr" }],
   creator: "HTS Habitat",
   publisher: "HTS Habitat",
   metadataBase: new URL("https://www.hts-habitat.fr"),
   alternates: { canonical: "https://www.hts-habitat.fr" },
-
   openGraph: {
     type: "website",
     locale: "fr_FR",
@@ -45,7 +42,6 @@ export const metadata = {
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "HTS Habitat — Vos vacances à Narbonne",
@@ -53,7 +49,6 @@ export const metadata = {
       "Séjours de caractère à Narbonne. Deux appartements soigneusement décorés, proches de la gare et du centre.",
     images: ["/cocon-hero.jpg"],
   },
-
   robots: {
     index: true,
     follow: true,
@@ -64,7 +59,6 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-
   icons: { icon: "/favicon.ico" },
 };
 
@@ -72,6 +66,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
+        {/* Schema.org — Données structurées */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -117,10 +112,11 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
+        {/* Widget Lodgify — barre de recherche portable */}
         <script
           src="https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js"
           defer
-        ></script>
+        />
       </body>
     </html>
   );
