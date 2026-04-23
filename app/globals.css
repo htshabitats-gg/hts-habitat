@@ -197,7 +197,13 @@ section { padding: 100px 8vw; }
 .section-sub { font-size: .92rem; color: var(--ink-soft); max-width: 520px; font-weight: 300; line-height: 1.7; }
 
 /* ── Marque ── */
-#marque { background: white; }
+#marque { 
+  background: white; 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 80px; 
+  align-items: center; 
+}
 .marque-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
 .feat { padding: 1.5rem; border-top: 1px solid var(--sand-dark); }
 .feat h4 { font-family: var(--serif); font-size: 1rem; font-weight: 600; margin-bottom: .4rem; }
