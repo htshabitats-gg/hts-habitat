@@ -277,7 +277,7 @@ export default function HomePage() {
         .btn-light-outline { display: inline-block; color: var(--ink); padding: .75rem 1.5rem; font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--sand-dark); border-radius: 3px; transition: .2s; background: none; cursor: pointer; font-family: var(--sans); }
         .btn-light-outline:hover { background: var(--sand-dark); }
 
-        #marque { background: white; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        #marque { background: white; }
         .marque-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
         .feat { padding: 1.5rem; border-top: 1px solid var(--sand-dark); }
         .feat h4 { font-family: var(--serif); font-size: 1rem; font-weight: 600; margin-bottom: .4rem; }
@@ -380,7 +380,7 @@ export default function HomePage() {
         .faq-chevron.open { transform: rotate(180deg); }
         .faq-answer { padding: 0 2rem 1.8rem; font-size: .85rem; color: var(--ink-soft); font-weight: 300; line-height: 1.75; }
 
-        #contact { background: white; }
+        #contact { background: white; padding: 0 !important; }
         .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
         .contact-icon { width: 38px; height: 38px; border-radius: 50%; background: var(--terra-lt); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--terra); }
         .contact-detail strong { display: block; font-size: .78rem; font-weight: 500; margin-bottom: .2rem; letter-spacing: .06em; text-transform: uppercase; }
@@ -494,7 +494,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="marque" style={{ background: "white" }}>
+      <section id="marque" style={{ background: "white", padding: "100px 8vw" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center", maxWidth: 1300, margin: "0 auto" }}>
           <div className="fade-up">
             <p className="section-label">La marque</p>
@@ -739,7 +739,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" style={{ background: "white" }}>
+      <section id="contact" style={{ background: "white", padding: "100px 8vw" }}>
         <div style={{ maxWidth: 1300, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
           <div className="fade-up">
             <p className="section-label">Contact</p>
