@@ -150,7 +150,7 @@ function useCounter(target, suffix, decimals = 0) {
 // ── Lightbox ──
 function Lightbox({ images, index, onClose, onPrev, onNext }) {
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); if (e.key === "ArrowLeft") onPrev(); if (e.key === "ArrowRight") onNext(); };
+    const handler = (e) => { if (e.key === "Escape") onClose(); if (e.key === "ArrowLeft") onPrev(); if (e.key === "ArrowRight") onNext(); };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [onClose, onPrev, onNext]);
@@ -301,7 +301,7 @@ export default function HomePage() {
           border-top: 1px solid rgba(255,255,255,.1);
           animation: fade-in-up .8s 1.1s ease both;
         }
-        .hero-stat-val { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; color: white; display: block; margin-bottom: .3rem; line-height: 1; }
+        .hero-stat-val { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; color: white; display: block; margin-bottom: .3rem; line-height: 1; }
         .hero-stat-lbl { font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.4); }
 
         .hero-scroll-indicator {
