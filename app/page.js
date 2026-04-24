@@ -8,9 +8,17 @@ import {
   Mail,
   MapPin,
   Phone,
+  ShieldCheck,
+  Star,
+  Train,
   MessageCircle,
+  Wifi,
   Clock,
+  Heart,
+  Send,
   X,
+  Images,
+  BedDouble,
 } from "lucide-react";
 
 const AIRBNB_LINK = "https://www.airbnb.fr/rooms/1318746957534184033";
@@ -29,10 +37,18 @@ const COCON_GALLERY = [
 const listings = [
   {
     title: "Cocon Bohème",
-    subtitle: "Appartement chaleureux et confortable à Narbonne",
-    description: "Atmosphère douce, décoration soignée, emplacement pratique à deux pas des transports. Chaque détail a été pensé pour que vous vous sentiez vraiment bien.",
-    badge: "Élégance cosy",
-    features: ["2 chambres", "Arrivée autonome", "Wifi", "Proche gare"],
+    subtitle: "45 m² · 1er étage · 2 chambres · jusqu'à 4 personnes",
+    description: "Appartement de 45 m² au 1er étage, entièrement rénové et décoré avec soin. Deux chambres séparées, séjour lumineux, cuisine équipée. Idéal pour un séjour en famille ou entre amis à Narbonne.",
+    badge: "Disponible",
+    features: ["45 m²", "1er étage", "2 chambres", "Wifi haut débit", "Cuisine équipée", "Proche gare TGV", "Parking 200 m"],
+    specs: [
+      { label: "Check-in", value: "À partir de 15h" },
+      { label: "Check-out", value: "Avant 11h" },
+      { label: "Taxe de séjour", value: "3 € / nuit / adulte" },
+      { label: "Annulation", value: "Flexible" },
+      { label: "Animaux", value: "Non acceptés" },
+      { label: "Parking", value: "Payant à 200 m (gare)" },
+    ],
     image: "/cocon-hero.jpg",
     gallery: COCON_GALLERY,
     airbnbLink: AIRBNB_LINK,
@@ -43,10 +59,18 @@ const listings = [
   },
   {
     title: "Rome Antique Moderne",
-    subtitle: "Un univers immersif au caractère affirmé",
-    description: "Inspiré de l'Antiquité et revisité dans une lecture contemporaine — un séjour original, élégant et mémorable à Narbonne.",
-    badge: "Univers exclusif",
-    features: ["1 chambre", "Canapé convertible", "Décoration soignée", "Univers immersif"],
+    subtitle: "45 m² · 2e étage · 1 chambre · jusqu'à 3 personnes",
+    description: "Appartement de 45 m² au 2e étage du même immeuble, inspiré de l'Antiquité romaine revisitée dans une lecture contemporaine. Une chambre double et un canapé convertible pour un séjour original et mémorable.",
+    badge: "Ouverture imminente",
+    features: ["45 m²", "2e étage", "1 chambre + convertible", "Wifi haut débit", "Cuisine équipée", "Proche gare TGV", "Parking 200 m"],
+    specs: [
+      { label: "Check-in", value: "À partir de 15h" },
+      { label: "Check-out", value: "Avant 11h" },
+      { label: "Taxe de séjour", value: "3 € / nuit / adulte" },
+      { label: "Annulation", value: "Flexible" },
+      { label: "Animaux", value: "Non acceptés" },
+      { label: "Parking", value: "Payant à 200 m (gare)" },
+    ],
     image: "/image1.jpeg",
     gallery: [],
     available: false,
@@ -54,12 +78,12 @@ const listings = [
 ];
 
 const testimonials = [
-  { name: "Joni", origin: "Nouveau-Mexique, États-Unis", platform: "Airbnb", text: "Ce fut une expérience très agréable du début à la fin. Le logement était idéalement situé. C'est un de ces endroits où vous regrettez de ne pas avoir réservé beaucoup plus longtemps." },
-  { name: "Christine", origin: "États-Unis", platform: "Booking", text: "Un appartement magnifique, confortable et très propre. Nous avons séjourné dans des Airbnb partout dans le monde et celui-ci est certainement l'un des meilleurs." },
-  { name: "Jérôme", origin: "France", platform: "Airbnb", text: "Superbe 3 pièces, très bien équipé, idéalement situé pour visiter Narbonne et accessible à pied depuis la gare. On reviendra sans problème !" },
-  { name: "Julia", origin: "France", platform: "Airbnb", text: "Entre le logement et l'hôte, rien à redire ! Tout était vraiment de qualité. Gregory était très cordial et présent. Du 10/10 !" },
-  { name: "Lefebvre", origin: "France", platform: "Booking", text: "Tout est réfléchi, pensé pour le bien-être. Ma plus belle location. Il règne un profond respect pour le locataire. Absolument rien à redire." },
-  { name: "Frumence", origin: "France", platform: "Airbnb", text: "L'appartement est aménagé avec goût, propre et accueillant. L'hôte est réactif et agréable. Nous avons passé un excellent séjour." },
+  { name: "Joni", origin: "Nouveau-Mexique, États-Unis", platform: "Airbnb", date: "Mars 2026", link: AIRBNB_LINK, text: "Ce fut une expérience très agréable du début à la fin. Le logement était idéalement situé. C'est un de ces endroits où vous regrettez de ne pas avoir réservé beaucoup plus longtemps." },
+  { name: "Christine", origin: "États-Unis", platform: "Booking", date: "Février 2026", link: BOOKING_LINK, text: "Un appartement magnifique, confortable et très propre. Nous avons séjourné dans des Airbnb partout dans le monde et celui-ci est certainement l'un des meilleurs." },
+  { name: "Jérôme", origin: "France", platform: "Airbnb", date: "Janvier 2026", link: AIRBNB_LINK, text: "Superbe 3 pièces, très bien équipé, idéalement situé pour visiter Narbonne et accessible à pied depuis la gare. On reviendra sans problème !" },
+  { name: "Julia", origin: "France", platform: "Airbnb", date: "Janvier 2026", link: AIRBNB_LINK, text: "Entre le logement et l'hôte, rien à redire ! Tout était vraiment de qualité. Gregory était très cordial et présent. Du 10/10 !" },
+  { name: "Lefebvre", origin: "France", platform: "Booking", date: "Décembre 2025", link: BOOKING_LINK, text: "Tout est réfléchi, pensé pour le bien-être. Ma plus belle location. Il règne un profond respect pour le locataire. Absolument rien à redire." },
+  { name: "Frumence", origin: "France", platform: "Airbnb", date: "Décembre 2025", link: AIRBNB_LINK, text: "L'appartement est aménagé avec goût, propre et accueillant. L'hôte est réactif et agréable. Nous avons passé un excellent séjour." },
 ];
 
 const destinations = [
@@ -72,12 +96,14 @@ const destinations = [
 ];
 
 const faq = [
-  { q: "Comment réserver un logement ?", a: "Vous pouvez réserver via Airbnb, Booking.com ou directement en ligne via notre page Lodgify, qui affiche les disponibilités en temps réel." },
-  { q: "Peut-on réserver en direct ?", a: "Oui ! La réservation directe via Lodgify permet de réserver sans commission, souvent aux meilleures conditions." },
-  { q: "Les logements sont-ils proches du centre ?", a: "Oui, nos logements sont à quelques minutes à pied de la gare TGV et du centre-ville historique de Narbonne." },
-  { q: "L'arrivée est-elle autonome ?", a: "Tout à fait. L'arrivée est 100% autonome grâce à une boîte à clés sécurisée. Vous recevrez tous les détails avant votre arrivée." },
-  { q: "Peut-on vous contacter avant de réserver ?", a: "Bien sûr ! Via le formulaire, par email ou sur WhatsApp. Réponse garantie sous 2h, 7j/7." },
-  { q: "Quelle est la différence entre les logements ?", a: "Le Cocon Bohème offre 2 chambres dans une ambiance chaleureuse. Rome Antique Moderne proposera 1 chambre + canapé convertible dans un univers immersif." },
+  { q: "Quels sont les horaires d'arrivée et de départ ?", a: "Le check-in est possible à partir de 15h, le check-out avant 11h. L'arrivée est 100% autonome grâce à une boîte à clés sécurisée — vous recevrez les codes d'accès avant votre arrivée." },
+  { q: "Y a-t-il un parking à proximité ?", a: "Oui, le parking de la gare de Narbonne est à 200 mètres des logements. Il est payant. Des parkings alternatifs existent également dans le quartier." },
+  { q: "Quelle est la politique d'annulation ?", a: "La politique d'annulation est flexible. Pour les conditions exactes selon votre plateforme de réservation, consultez l'annonce Airbnb ou Booking.com correspondante." },
+  { q: "Les animaux sont-ils acceptés ?", a: "Non, les animaux de compagnie ne sont pas acceptés dans nos logements, conformément au règlement de copropriété." },
+  { q: "Y a-t-il une taxe de séjour ?", a: "Oui, une taxe de séjour de 3 € par nuit et par adulte s'applique, conformément à la réglementation de la commune de Narbonne." },
+  { q: "Quelle est la capacité des logements ?", a: "Le Cocon Bohème (1er étage, 45 m²) peut accueillir jusqu'à 4 personnes avec ses 2 chambres. Rome Antique Moderne (2e étage, 45 m²) accueille jusqu'à 3 personnes avec 1 chambre double et un canapé convertible." },
+  { q: "Les logements sont-ils proches du centre ?", a: "Oui, les deux appartements sont situés dans le même immeuble, à quelques minutes à pied de la gare TGV, du centre-ville historique et des commerces de Narbonne." },
+  { q: "Peut-on réserver directement sans passer par Airbnb ?", a: "Oui ! La réservation directe via Lodgify vous permet de vérifier les disponibilités en temps réel et de réserver sans frais de plateforme, souvent aux meilleures conditions." },
 ];
 
 function HHMonogram({ size = 44, animated = false }) {
@@ -187,7 +213,7 @@ export default function HomePage() {
     e.preventDefault();
     const subject = encodeURIComponent("Demande HTS Habitat — " + contactForm.logement);
     const body = encodeURIComponent(`${contactForm.prenom} ${contactForm.nom}\n${contactForm.email}\n\n${contactForm.message}`);
-    window.location.href = `mailto:hts.habitats@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:greg.hosteins@gmail.com?subject=${subject}&body=${body}`;
     setContactSent(true);
   };
 
@@ -195,17 +221,23 @@ export default function HomePage() {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-          --sand: oklch(96% 0.015 78); --sand-dark: oklch(91% 0.025 75);
-          --terra: oklch(57% 0.11 44); --terra-lt: oklch(88% 0.05 55);
-          --ink: oklch(17% 0.02 58); --ink-soft: oklch(42% 0.02 58);
-          --teal: oklch(36% 0.07 210); --white: oklch(99% 0.005 78);
+          --sand: oklch(96% 0.015 78);
+          --sand-dark: oklch(91% 0.025 75);
+          --terra: oklch(57% 0.11 44);
+          --terra-lt: oklch(88% 0.05 55);
+          --ink: oklch(17% 0.02 58);
+          --ink-soft: oklch(42% 0.02 58);
+          --teal: oklch(36% 0.07 210);
+          --white: oklch(99% 0.005 78);
           --serif: 'Cormorant Garamond', Georgia, serif;
           --sans: 'DM Sans', system-ui, sans-serif;
         }
         html { scroll-behavior: smooth; }
         body { font-family: var(--sans); background: var(--sand); color: var(--ink); font-size: 16px; line-height: 1.6; }
+
         .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(22,16,10,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(194,98,45,0.18); height: 72px; }
         .topbar-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 5vw; max-width: 1400px; margin: 0 auto; }
         .nav-brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
@@ -219,6 +251,7 @@ export default function HomePage() {
         .ham-line { display: block; width: 22px; height: 1.5px; background: rgba(255,255,255,.7); transition: .3s; }
         .mobile-menu { display: flex; flex-direction: column; gap: 1.2rem; padding: 1.5rem 5vw; background: rgba(22,16,10,.98); border-bottom: 1px solid rgba(194,98,45,.2); }
         .mobile-menu a { font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,.65); }
+
         .hero { min-height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 8vw 120px; background: var(--ink); overflow: hidden; }
         .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1667395959400-fd9b1ed373ea?w=1800&q=75&auto=format&fit=crop') center/cover; filter: blur(2px) brightness(.2) saturate(.7); transform: scale(1.05); }
         .hero-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse 120% 80% at 50% 50%, transparent 40%, rgba(0,0,0,.6) 100%); }
@@ -239,15 +272,20 @@ export default function HomePage() {
         .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--terra), transparent); animation: scroll-anim 2s ease infinite; }
         @keyframes scroll-anim { 0% { transform:scaleY(0); transform-origin:top; } 50% { transform:scaleY(1); transform-origin:top; } 51% { transform:scaleY(1); transform-origin:bottom; } 100% { transform:scaleY(0); transform-origin:bottom; } }
         @keyframes fade-in-up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
         section { padding: 100px 8vw; }
         .section-label { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--terra); margin-bottom: 1rem; display: flex; align-items: center; gap: .7rem; }
         .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--terra); }
         .section-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
         .section-title em { font-style: italic; }
         .section-sub { font-size: .92rem; color: var(--ink-soft); max-width: 520px; font-weight: 300; line-height: 1.7; }
+
         .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
-        .fade-up.d1 { transition-delay: .1s; } .fade-up.d2 { transition-delay: .2s; } .fade-up.d3 { transition-delay: .3s; }
+        .fade-up.d1 { transition-delay: .1s; }
+        .fade-up.d2 { transition-delay: .2s; }
+        .fade-up.d3 { transition-delay: .3s; }
+
         .btn-primary { display: inline-block; background: var(--terra); color: white; padding: .85rem 2rem; font-size: .78rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: opacity .2s, transform .2s; border: none; cursor: pointer; font-family: var(--sans); }
         .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
         .btn-outline { display: inline-block; color: rgba(255,255,255,.7); padding: .85rem 2rem; font-size: .78rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,.25); border-radius: 3px; transition: .2s; background: none; cursor: pointer; font-family: var(--sans); }
@@ -256,28 +294,70 @@ export default function HomePage() {
         .btn-dark:hover { opacity: .85; }
         .btn-light-outline { display: inline-block; color: var(--ink); padding: .75rem 1.5rem; font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--sand-dark); border-radius: 3px; transition: .2s; background: none; cursor: pointer; font-family: var(--sans); }
         .btn-light-outline:hover { background: var(--sand-dark); }
+
+        /* ── MARQUE nouvelle mise en page ── */
         #marque { background: var(--ink); color: white; padding: 0 !important; overflow: hidden; }
-        .marque-hero { position: relative; height: 70vh; min-height: 480px; display: flex; align-items: flex-end; overflow: hidden; }
-        .marque-hero-bg { position: absolute; inset: 0; background: url('/cocon-gallery-1.jpg') center/cover; filter: brightness(.35) saturate(.8); transform: scale(1.04); transition: transform 8s ease; }
+        .marque-hero {
+          position: relative; height: 70vh; min-height: 480px;
+          display: flex; align-items: flex-end;
+          overflow: hidden;
+        }
+        .marque-hero-bg {
+          position: absolute; inset: 0;
+          background: url('/cocon-gallery-1.jpg') center/cover;
+          filter: brightness(.35) saturate(.8);
+          transform: scale(1.04);
+          transition: transform 8s ease;
+        }
         .marque-hero:hover .marque-hero-bg { transform: scale(1.08); }
-        .marque-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,8,5,.9) 0%, rgba(10,8,5,.2) 60%, transparent 100%); }
-        .marque-hero-content { position: relative; z-index: 2; padding: 0 8vw 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; width: 100%; max-width: 1300px; margin: 0 auto; }
+        .marque-hero-overlay {
+          position: absolute; inset: 0;
+          background: linear-gradient(to top, rgba(10,8,5,.9) 0%, rgba(10,8,5,.2) 60%, transparent 100%);
+        }
+        .marque-hero-content {
+          position: relative; z-index: 2;
+          padding: 0 8vw 4rem;
+          display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end;
+          width: 100%;
+          max-width: 1300px; margin: 0 auto;
+        }
         .marque-hero-text .section-label { color: var(--terra-lt); }
         .marque-hero-text .section-label::before { background: var(--terra-lt); }
         .marque-hero-title { font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300; color: white; line-height: 1.1; margin-bottom: 0; }
         .marque-hero-title em { font-style: italic; color: var(--terra); display: block; }
         .marque-hero-story { font-size: .9rem; color: rgba(255,255,255,.6); font-weight: 300; line-height: 1.8; }
-        .host-badge { display: inline-flex; align-items: center; gap: 1rem; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); padding: 1rem 1.4rem; border-radius: 4px; backdrop-filter: blur(8px); margin-top: 1.5rem; }
+        .host-badge {
+          display: inline-flex; align-items: center; gap: 1rem;
+          background: rgba(255,255,255,.08);
+          border: 1px solid rgba(255,255,255,.15);
+          padding: 1rem 1.4rem; border-radius: 4px;
+          backdrop-filter: blur(8px);
+          margin-top: 1.5rem;
+        }
         .host-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--terra-lt); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1.1rem; color: var(--terra); font-weight: 600; }
         .host-name { font-size: .8rem; font-weight: 500; color: white; }
         .host-role { font-size: .72rem; color: rgba(255,255,255,.5); }
-        .marque-feats { background: var(--ink); display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,.06); }
-        .marque-feat { padding: 2.5rem 2rem; border-right: 1px solid rgba(255,255,255,.06); transition: background .2s; }
+
+        .marque-feats {
+          background: var(--ink);
+          display: grid; grid-template-columns: repeat(4, 1fr);
+          gap: 0;
+          border-top: 1px solid rgba(255,255,255,.06);
+          max-width: 100%;
+        }
+        .marque-feat {
+          padding: 2.5rem 2rem;
+          border-right: 1px solid rgba(255,255,255,.06);
+          transition: background .2s;
+        }
         .marque-feat:last-child { border-right: none; }
         .marque-feat:hover { background: rgba(255,255,255,.03); }
         .marque-feat-num { font-family: var(--serif); font-size: 2rem; color: var(--terra); font-weight: 300; margin-bottom: .8rem; line-height: 1; }
         .marque-feat h4 { font-family: var(--serif); font-size: .95rem; font-weight: 600; color: white; margin-bottom: .4rem; }
         .marque-feat p { font-size: .78rem; color: rgba(255,255,255,.45); font-weight: 300; line-height: 1.6; }
+
+        /* ── RÉSERVATION ── */
+
         #logements { background: var(--sand); }
         .logements-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; }
         .logements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
@@ -301,6 +381,11 @@ export default function HomePage() {
         .card-price { font-family: var(--serif); font-size: 1.4rem; }
         .card-price span { font-size: .75rem; font-family: var(--sans); color: var(--ink-soft); }
         .card-links { display: flex; gap: .7rem; }
+        .card-specs { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .8rem; margin-bottom: 1.5rem; padding: 1.2rem; background: var(--sand); border-radius: 4px; }
+        .card-spec { display: flex; flex-direction: column; gap: .1rem; }
+        .card-spec-label { font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+        .card-spec-value { font-size: .82rem; font-weight: 500; color: var(--ink); }
+
         #atouts { background: var(--ink); color: white; }
         #atouts .section-label { color: var(--terra-lt); }
         #atouts .section-label::before { background: var(--terra-lt); }
@@ -310,6 +395,7 @@ export default function HomePage() {
         .atout-num { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; color: var(--terra); line-height: 1; margin-bottom: .8rem; }
         .atout h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: .4rem; }
         .atout p { font-size: .8rem; color: rgba(255,255,255,.45); font-weight: 300; line-height: 1.6; }
+
         #avis { background: white; }
         .avis-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
         .avis-scores { display: flex; gap: 2rem; }
@@ -323,7 +409,10 @@ export default function HomePage() {
         .avis-initial { width: 34px; height: 34px; border-radius: 50%; background: var(--terra-lt); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: .9rem; color: var(--terra); font-weight: 600; flex-shrink: 0; }
         .avis-name { font-size: .8rem; font-weight: 500; }
         .avis-origin { font-size: .72rem; color: var(--ink-soft); }
-        .avis-platform { position: absolute; top: 1.5rem; right: 1.5rem; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+        .avis-date { font-size: .68rem; color: var(--ink-soft); opacity: .7; margin-top: .1rem; }
+        .avis-platform { position: absolute; top: 1.5rem; right: 1.5rem; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+        .avis-platform:hover { color: var(--terra); }
+
         #destination { background: var(--sand); padding-bottom: 0; }
         .dest-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 3.5rem; }
         .dest-items { margin-top: 1.5rem; }
@@ -344,16 +433,18 @@ export default function HomePage() {
         .dest-card:hover .dest-card-desc { max-height: 80px; opacity: 1; }
         .dest-card-dist { display: inline-block; margin-top: .6rem; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.8); padding: .25rem .65rem; border-radius: 2px; opacity: 0; transform: translateY(4px); transition: opacity .3s .1s, transform .3s .1s; }
         .dest-card:hover .dest-card-dist { opacity: 1; transform: translateY(0); }
+
         #reservation { background: var(--ink); color: white; }
         #reservation .section-label { color: var(--terra); }
         #reservation .section-label::before { background: var(--terra); }
-        .lodgify-wrap { margin-top: 2.5rem; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: 8px; overflow: hidden; }
+        .lodgify-wrap { margin-top: 2.5rem; padding: 1.5rem; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; }
         .resa-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2rem; }
         .resa-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 4px; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
         .resa-card h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; }
         .resa-card p { font-size: .83rem; color: rgba(255,255,255,.7); font-weight: 300; line-height: 1.6; flex: 1; }
         .resa-card a { display: block; text-align: center; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); color: white; text-decoration: none; padding: .65rem 1.2rem; border-radius: 3px; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 500; transition: background .2s; }
         .resa-card a:hover { background: rgba(255,255,255,.22); }
+
         #faq { background: var(--sand); }
         .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 3rem; background: var(--sand-dark); border-radius: 4px; overflow: hidden; }
         .faq-item { background: white; }
@@ -362,6 +453,8 @@ export default function HomePage() {
         .faq-chevron { flex-shrink: 0; transition: transform .3s; }
         .faq-chevron.open { transform: rotate(180deg); }
         .faq-answer { padding: 0 2rem 1.8rem; font-size: .85rem; color: var(--ink-soft); font-weight: 300; line-height: 1.75; }
+
+        #contact { background: white; padding: 0 !important; }
         .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
         .contact-icon { width: 38px; height: 38px; border-radius: 50%; background: var(--terra-lt); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--terra); }
         .contact-detail strong { display: block; font-size: .78rem; font-weight: 500; margin-bottom: .2rem; letter-spacing: .06em; text-transform: uppercase; }
@@ -377,6 +470,7 @@ export default function HomePage() {
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--terra); }
         .form-submit { background: var(--terra); color: white; border: none; padding: .9rem 2rem; font-family: var(--sans); font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; border-radius: 3px; cursor: pointer; transition: opacity .2s; align-self: flex-start; }
         .form-submit:hover { opacity: .85; }
+
         footer { background: var(--ink); color: rgba(255,255,255,.45); padding: 3rem 8vw; display: flex; justify-content: space-between; align-items: center; }
         .footer-brand { font-family: var(--serif); font-size: 1.1rem; color: white; font-weight: 600; }
         .footer-brand em { font-style: italic; color: var(--terra); }
@@ -384,25 +478,31 @@ export default function HomePage() {
         .footer-links a { font-size: .75rem; color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; letter-spacing: .06em; }
         .footer-links a:hover { color: var(--terra); }
         .footer-copy { font-size: .72rem; }
+
         .wa-fab { position: fixed; bottom: 2rem; right: 2rem; z-index: 90; width: 52px; height: 52px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 16px rgba(37,211,102,.4); transition: transform .2s; color: white; }
         .wa-fab:hover { transform: scale(1.08); }
+
         @media (max-width: 900px) {
-          .nav { display: none; } .hamburger { display: flex; }
+          .nav { display: none; }
+          .hamburger { display: flex; }
+          #contact { grid-template-columns: 1fr; }
           .marque-hero-content { grid-template-columns: 1fr; gap: 2rem; padding: 0 6vw 3rem; }
           .marque-feats { grid-template-columns: 1fr 1fr; }
           .marque-hero { height: 80vw; min-height: 320px; }
-          .dest-intro { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
+          .dest-intro { grid-template-columns: 1fr; gap: 2rem; }
           .logements-grid, .avis-grid, .resa-cards, .faq-grid { grid-template-columns: 1fr; }
           .atouts-grid { grid-template-columns: 1fr 1fr; }
           .dest-grid { grid-template-columns: 1fr 1fr; }
           .hero-stats { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
           section { padding: 70px 6vw; }
           footer { flex-direction: column; gap: 1.5rem; text-align: center; }
-          .logements-header, .avis-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+          .logements-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+          .avis-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
         }
         @media (max-width: 600px) {
-          .atouts-grid, .marque-feats { grid-template-columns: 1fr; }
+          .atouts-grid { grid-template-columns: 1fr; }
           .form-row { grid-template-columns: 1fr; }
+          .marque-feats { grid-template-columns: 1fr; }
           .dest-grid { grid-template-columns: 1fr; }
           .dest-card { height: 260px; }
         }
@@ -410,7 +510,9 @@ export default function HomePage() {
 
       {lightbox.open && <Lightbox images={lightbox.images} index={lightbox.index} onClose={closeLightbox} onPrev={prevPhoto} onNext={nextPhoto} />}
 
-      <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="wa-fab" aria-label="WhatsApp"><MessageCircle size={24} /></a>
+      <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="wa-fab" aria-label="WhatsApp">
+        <MessageCircle size={24} />
+      </a>
 
       <header className="topbar">
         <div className="topbar-inner">
@@ -440,11 +542,19 @@ export default function HomePage() {
       </header>
 
       <section className="hero">
-        <div className="hero-bg" /><div className="hero-overlay" />
+        <div className="hero-bg" />
+        <div className="hero-overlay" />
         <div className="hero-monogram"><HHMonogram size={130} animated={true} /></div>
         <p className="hero-eyebrow">Narbonne, Occitanie</p>
-        <h1 className="hero-title">Votre séjour à Narbonne,<br /><em>autrement.</em></h1>
-        <p className="hero-story">HTS Habitat, c'est l'histoire de Grégory — hôte narbonnais passionné par le soin du détail. Chaque appartement a été pensé comme un espace de vie à part entière : décoration soignée, confort réel, atmosphère chaleureuse.</p>
+        <h1 className="hero-title">
+          Votre séjour à Narbonne,<br />
+          <em>autrement.</em>
+        </h1>
+        <p className="hero-story">
+          HTS Habitat, c'est l'histoire de Grégory — hôte narbonnais passionné par le soin du détail.
+          Chaque appartement a été pensé comme un espace de vie à part entière : décoration soignée,
+          confort réel, atmosphère chaleureuse. Pas un simple hébergement. Une vraie expérience.
+        </p>
         <div className="hero-btns">
           <a href="#logements" className="btn-primary">Voir les logements</a>
           <a href="#reservation" className="btn-outline">Réserver</a>
@@ -455,26 +565,38 @@ export default function HomePage() {
           <div><span ref={stat3.ref} className="hero-stat-val">+{stat3.val}</span><span className="hero-stat-lbl">Séjours</span></div>
           <div><span className="hero-stat-val">🏅</span><span className="hero-stat-lbl">Superhôte</span></div>
         </div>
-        <div className="hero-scroll-indicator"><span>Découvrir</span><div className="scroll-line" /></div>
+        <div className="hero-scroll-indicator">
+          <span>Découvrir</span>
+          <div className="scroll-line" />
+        </div>
       </section>
 
       <section id="marque">
+        {/* Photo héro pleine largeur */}
         <div className="marque-hero">
-          <div className="marque-hero-bg" /><div className="marque-hero-overlay" />
+          <div className="marque-hero-bg" />
+          <div className="marque-hero-overlay" />
           <div className="marque-hero-content">
             <div className="marque-hero-text fade-up">
               <p className="section-label">La marque</p>
               <h2 className="marque-hero-title">Une même vision<br /><em>de l'hospitalité</em></h2>
             </div>
             <div className="fade-up d2">
-              <p className="marque-hero-story">HTS Habitat, c'est l'histoire de Grégory — hôte narbonnais passionné par le soin du détail. Chaque appartement a été pensé pour allier confort, décoration soignée et atmosphère chaleureuse.</p>
+              <p className="marque-hero-story">
+                HTS Habitat, c'est l'histoire de Grégory — hôte narbonnais passionné par le soin du détail.
+                Chaque appartement a été pensé pour allier confort, décoration soignée et atmosphère chaleureuse.
+              </p>
               <div className="host-badge">
                 <div className="host-avatar">G</div>
-                <div><div className="host-name">Grégory</div><div className="host-role">Votre hôte · Narbonne · Superhôte certifié</div></div>
+                <div>
+                  <div className="host-name">Grégory</div>
+                  <div className="host-role">Votre hôte · Narbonne · Superhôte certifié</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        {/* 4 atouts en bande */}
         <div className="marque-feats">
           {[
             { num: "01", title: "Emplacement idéal", desc: "Gare à pied, accès simple, idéal pour découvrir Narbonne et ses environs." },
@@ -520,7 +642,19 @@ export default function HomePage() {
                   <p className="card-style">{l.badge}</p>
                   <h3 className="card-name">{l.title}</h3>
                   <p className="card-desc">{l.description}</p>
-                  <div className="card-features">{l.features.map(f => <span key={f} className="card-feat">{f}</span>)}</div>
+                  <div className="card-features">
+                    {l.features.map(f => <span key={f} className="card-feat">{f}</span>)}
+                  </div>
+                  {l.specs && (
+                    <div className="card-specs">
+                      {l.specs.map(s => (
+                        <div key={s.label} className="card-spec">
+                          <span className="card-spec-label">{s.label}</span>
+                          <span className="card-spec-value">{s.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   <div className="card-footer">
                     {l.available ? (
                       <>
@@ -593,9 +727,13 @@ export default function HomePage() {
                 <p className="avis-quote">« {t.text} »</p>
                 <div className="avis-author">
                   <div className="avis-initial">{t.name[0]}</div>
-                  <div><div className="avis-name">{t.name}</div><div className="avis-origin">{t.origin}</div></div>
+                  <div>
+                    <div className="avis-name">{t.name}</div>
+                    <div className="avis-origin">{t.origin}</div>
+                    <div className="avis-date">{t.date}</div>
+                  </div>
                 </div>
-                <span className="avis-platform">{t.platform}</span>
+                <a href={t.link} target="_blank" rel="noreferrer" className="avis-platform">{t.platform} ↗</a>
               </div>
             ))}
           </div>
@@ -645,18 +783,26 @@ export default function HomePage() {
           <p className="section-label" style={{ color: "rgba(255,255,255,.65)" }}>Réservation</p>
           <h2 className="section-title" style={{ color: "white" }}>Réservez votre séjour<br /><em style={{ opacity: .85 }}>facilement</em></h2>
           <p className="section-sub" style={{ color: "rgba(255,255,255,.7)", maxWidth: 480 }}>Vérifiez les disponibilités en temps réel et réservez directement — ou passez par Airbnb et Booking.</p>
-
-          {/* ── Calendrier direct Lodgify ── */}
-          <div className="lodgify-wrap">
-            <iframe
-              src="https://checkout.lodgify.com/occitanieetlocation/fr/#/634566"
-              width="100%"
-              height="600"
-              style={{ border: "none", display: "block" }}
-              title="Réservation directe Cocon Bohème"
+          <div style={{ marginTop: "2.5rem", display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+            <a href={LODGIFY_LINK} target="_blank" rel="noreferrer" style={{ display:"inline-flex", alignItems:"center", gap:".7rem", background:"white", color:"var(--ink)", padding:".9rem 2rem", borderRadius:3, fontSize:".82rem", fontWeight:600, letterSpacing:".08em", textTransform:"uppercase", textDecoration:"none", transition:"opacity .2s" }}>
+              Réserver en direct — sans commission
+            </a>
+            <span style={{ fontSize:".78rem", color:"rgba(255,255,255,.45)" }}>Paiement sécurisé · Confirmation immédiate · Meilleur prix garanti</span>
+          </div>
+          <div className="lodgify-wrap" style={{ marginTop:"1.5rem" }}>
+            <div id="lodgify-search-bar"
+              data-website-id="538798"
+              data-language-code="fr"
+              data-checkout-page-url="https://checkout.lodgify.com/occitanieetlocation/fr/#/634566"
+              data-dates-check-in-label="Arrivée"
+              data-dates-check-out-label="Départ"
+              data-guests-counter-label="Invités"
+              data-search-button-label="Réserver"
+              data-new-tab="true"
+              data-version="stable"
+              data-has-guests-breakdown
             />
           </div>
-
           <div className="resa-cards">
             <div className="resa-card">
               <h3>Airbnb</h3>
@@ -702,7 +848,7 @@ export default function HomePage() {
             <h2 className="section-title">Une question<br /><em>avant de réserver ?</em></h2>
             <p className="section-sub" style={{ marginBottom: "2rem" }}>Nous sommes disponibles pour vous renseigner rapidement et vous aider à choisir la formule la plus adaptée.</p>
             {[
-              { icon: <Mail size={15} />, label: "Email", value: "hts.habitats@gmail.com", href: "mailto:hts.habitats@gmail.com" },
+              { icon: <Mail size={15} />, label: "Email", value: "greg.hosteins@gmail.com", href: "mailto:greg.hosteins@gmail.com" },
               { icon: <Phone size={15} />, label: "Téléphone", value: "06.01.38.04.41", href: "tel:+33601380441" },
               { icon: <MapPin size={15} />, label: "Adresse", value: "Narbonne, proche gare et centre-ville", href: undefined },
             ].map(d => (
