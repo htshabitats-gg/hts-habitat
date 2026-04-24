@@ -826,21 +826,44 @@ export default function HomePage() {
               data-has-guests-breakdown
             />
           </div>
-          <div className="resa-cards">
-            <div className="resa-card">
-              <h3>Airbnb</h3>
-              <p>Réservez le Cocon Bohème directement sur Airbnb, avec protection et paiement sécurisé.</p>
-              <a href={AIRBNB_LINK} target="_blank" rel="noreferrer">Voir l'annonce Airbnb</a>
+          {/* Airbnb + Booking — plateformes principales */}
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"1.5rem", marginTop:"2.5rem" }}>
+            <a href={AIRBNB_LINK} target="_blank" rel="noreferrer" style={{ display:"flex", flexDirection:"column", gap:"1rem", background:"rgba(255,255,255,.1)", border:"2px solid rgba(255,255,255,.3)", borderRadius:6, padding:"2rem", textDecoration:"none", color:"white", transition:"background .2s, transform .2s" }}
+              onMouseEnter={e => { e.currentTarget.style.background="rgba(255,255,255,.18)"; e.currentTarget.style.transform="translateY(-3px)"; }}
+              onMouseLeave={e => { e.currentTarget.style.background="rgba(255,255,255,.1)"; e.currentTarget.style.transform="translateY(0)"; }}
+            >
+              <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+                <span style={{ fontFamily:"var(--serif)", fontSize:"1.4rem", fontWeight:600 }}>Airbnb</span>
+                <span style={{ fontSize:".7rem", letterSpacing:".12em", textTransform:"uppercase", background:"var(--terra)", padding:".3rem .8rem", borderRadius:2 }}>★ 4,9</span>
+              </div>
+              <p style={{ fontSize:".85rem", color:"rgba(255,255,255,.7)", fontWeight:300, lineHeight:1.6 }}>Réservez en toute sécurité avec la protection voyageur Airbnb. Paiement sécurisé, assistance 24h/24.</p>
+              <span style={{ fontSize:".75rem", letterSpacing:".1em", textTransform:"uppercase", borderBottom:"1px solid rgba(255,255,255,.4)", paddingBottom:".3rem", alignSelf:"flex-start" }}>Voir l'annonce →</span>
+            </a>
+            <a href={BOOKING_LINK} target="_blank" rel="noreferrer" style={{ display:"flex", flexDirection:"column", gap:"1rem", background:"rgba(255,255,255,.1)", border:"2px solid rgba(255,255,255,.3)", borderRadius:6, padding:"2rem", textDecoration:"none", color:"white", transition:"background .2s, transform .2s" }}
+              onMouseEnter={e => { e.currentTarget.style.background="rgba(255,255,255,.18)"; e.currentTarget.style.transform="translateY(-3px)"; }}
+              onMouseLeave={e => { e.currentTarget.style.background="rgba(255,255,255,.1)"; e.currentTarget.style.transform="translateY(0)"; }}
+            >
+              <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+                <span style={{ fontFamily:"var(--serif)", fontSize:"1.4rem", fontWeight:600 }}>Booking.com</span>
+                <span style={{ fontSize:".7rem", letterSpacing:".12em", textTransform:"uppercase", background:"var(--terra)", padding:".3rem .8rem", borderRadius:2 }}>9,4 / 10</span>
+              </div>
+              <p style={{ fontSize:".85rem", color:"rgba(255,255,255,.7)", fontWeight:300, lineHeight:1.6 }}>Idéal si vous avez déjà un compte Booking. Annulation flexible, confirmation immédiate.</p>
+              <span style={{ fontSize:".75rem", letterSpacing:".1em", textTransform:"uppercase", borderBottom:"1px solid rgba(255,255,255,.4)", paddingBottom:".3rem", alignSelf:"flex-start" }}>Voir sur Booking →</span>
+            </a>
+          </div>
+          {/* Réservation directe — secondaire */}
+          <div style={{ marginTop:"1.5rem", padding:"1.5rem", background:"rgba(255,255,255,.05)", border:"1px solid rgba(255,255,255,.1)", borderRadius:4, display:"flex", alignItems:"center", justifyContent:"space-between", flexWrap:"wrap", gap:"1rem" }}>
+            <div>
+              <p style={{ fontSize:".78rem", letterSpacing:".1em", textTransform:"uppercase", color:"rgba(255,255,255,.5)", marginBottom:".3rem" }}>Réservation directe</p>
+              <p style={{ fontSize:".85rem", color:"rgba(255,255,255,.6)", fontWeight:300 }}>Sans frais de plateforme — disponibilités en temps réel</p>
             </div>
-            <div className="resa-card">
-              <h3>Booking.com</h3>
-              <p>Retrouvez le Cocon Bohème sur Booking.com — idéal si vous avez déjà un compte.</p>
-              <a href={BOOKING_LINK} target="_blank" rel="noreferrer">Voir sur Booking</a>
-            </div>
-            <div className="resa-card">
-              <h3>Une question ?</h3>
-              <p>Contactez Grégory directement sur WhatsApp pour toute demande avant de réserver.</p>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer">Écrire sur WhatsApp</a>
+            <div style={{ display:"flex", gap:"1rem", alignItems:"center" }}>
+              <a href={LODGIFY_LINK} target="_blank" rel="noreferrer" style={{ background:"rgba(255,255,255,.12)", border:"1px solid rgba(255,255,255,.25)", color:"white", textDecoration:"none", padding:".65rem 1.4rem", borderRadius:3, fontSize:".75rem", letterSpacing:".1em", textTransform:"uppercase", fontWeight:500 }}>
+                Réserver en direct
+              </a>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" style={{ color:"rgba(255,255,255,.5)", fontSize:".78rem", textDecoration:"none", letterSpacing:".06em" }}>
+                WhatsApp →
+              </a>
             </div>
           </div>
         </div>
