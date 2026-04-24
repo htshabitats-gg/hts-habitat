@@ -1,4 +1,5 @@
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata = {
   title: {
@@ -16,13 +17,8 @@ export const metadata = {
     "Rome Antique Moderne Narbonne",
     "location courte durée Narbonne",
     "appartement gare Narbonne",
-    "séjour Narbonne",
-    "location vacances Narbonne",
     "HTS Habitat",
   ],
-  authors: [{ name: "HTS Habitat", url: "https://www.hts-habitat.fr" }],
-  creator: "HTS Habitat",
-  publisher: "HTS Habitat",
   metadataBase: new URL("https://www.hts-habitat.fr"),
   alternates: { canonical: "https://www.hts-habitat.fr" },
   openGraph: {
@@ -32,7 +28,7 @@ export const metadata = {
     siteName: "HTS Habitat",
     title: "HTS Habitat — Vos vacances à Narbonne",
     description:
-      "Séjours de caractère à Narbonne. Deux appartements soigneusement décorés, proches de la gare et du centre. Réservation Airbnb, Booking ou en direct.",
+      "Séjours de caractère à Narbonne. Deux appartements soigneusement décorés, proches de la gare et du centre.",
     images: [
       {
         url: "/cocon-hero.jpg",
@@ -66,7 +62,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <head>
-        {/* Schema.org — Données structurées */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -75,7 +70,7 @@ export default function RootLayout({ children }) {
               "@type": "LodgingBusiness",
               name: "HTS Habitat",
               description:
-                "Appartements de caractère à Narbonne — Cocon Bohème et Rome Antique Moderne. Séjours soignés, arrivée autonome, proche gare.",
+                "Appartements de caractère à Narbonne — Cocon Bohème et Rome Antique Moderne.",
               url: "https://www.hts-habitat.fr",
               telephone: "+33601380441",
               email: "greg.hosteins@gmail.com",
@@ -85,11 +80,6 @@ export default function RootLayout({ children }) {
                 addressRegion: "Occitanie",
                 addressCountry: "FR",
               },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: 43.1836,
-                longitude: 3.0042,
-              },
               image: "https://www.hts-habitat.fr/cocon-hero.jpg",
               aggregateRating: {
                 "@type": "AggregateRating",
@@ -97,25 +87,17 @@ export default function RootLayout({ children }) {
                 reviewCount: "32",
                 bestRating: "5",
               },
-              amenityFeature: [
-                { "@type": "LocationFeatureSpecification", name: "Wifi", value: true },
-                { "@type": "LocationFeatureSpecification", name: "Arrivée autonome", value: true },
-                { "@type": "LocationFeatureSpecification", name: "Proche gare", value: true },
-              ],
               priceRange: "€€",
-              currenciesAccepted: "EUR",
-              paymentAccepted: "Airbnb, Booking, Virement",
-              hasMap: "https://maps.google.com/?q=Narbonne,France",
             }),
           }}
         />
       </head>
       <body>
         {children}
-        {/* Widget Lodgify — barre de recherche portable */}
-        <script
+        {/* Widget de réservation Lodgify */}
+        <Script
           src="https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js"
-          defer
+          strategy="afterInteractive"
         />
       </body>
     </html>
