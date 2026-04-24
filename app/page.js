@@ -189,6 +189,8 @@ export default function HomePage() {
   const [waitlistSent, setWaitlistSent] = useState(false);
   const [contactForm, setContactForm] = useState({ prenom: "", nom: "", email: "", logement: "Cocon Bohème", message: "" });
   const [contactSent, setContactSent] = useState(false);
+  const [consent, setConsent] = useState(false);
+  const [consentError, setConsentError] = useState(false);
   const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredDest, setHoveredDest] = useState(null);
@@ -211,6 +213,8 @@ export default function HomePage() {
 
   const handleContact = (e) => {
     e.preventDefault();
+    if (!consent) { setConsentError(true); return; }
+    setConsentError(false);
     const subject = encodeURIComponent("Demande HTS Habitat — " + contactForm.logement);
     const body = encodeURIComponent(`${contactForm.prenom} ${contactForm.nom}\n${contactForm.email}\n\n${contactForm.message}`);
     window.location.href = `mailto:greg.hosteins@gmail.com?subject=${subject}&body=${body}`;
@@ -471,6 +475,23 @@ export default function HomePage() {
         .form-submit { background: var(--terra); color: white; border: none; padding: .9rem 2rem; font-family: var(--sans); font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; border-radius: 3px; cursor: pointer; transition: opacity .2s; align-self: flex-start; }
         .form-submit:hover { opacity: .85; }
 
+        /* Accessibilité — focus visible */
+        *:focus-visible { outline: 2px solid var(--terra); outline-offset: 3px; border-radius: 2px; }
+        a:focus-visible, button:focus-visible { outline: 2px solid var(--terra); outline-offset: 3px; }
+
+        /* RGPD consent */
+        .form-consent { display: flex; align-items: flex-start; gap: .75rem; margin-top: .5rem; }
+        .form-consent input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; accent-color: var(--terra); cursor: pointer; }
+        .form-consent label { font-size: .78rem; color: var(--ink-soft); line-height: 1.5; cursor: pointer; }
+        .form-consent a { color: var(--terra); text-decoration: underline; }
+        .form-info { font-size: .72rem; color: var(--ink-soft); margin-top: .5rem; padding: .8rem 1rem; background: var(--sand); border-radius: 3px; line-height: 1.6; }
+        .form-error { font-size: .72rem; color: #c0392b; margin-top: .3rem; display: flex; align-items: center; gap: .3rem; }
+        .field-error input, .field-error textarea, .field-error select { border-color: #c0392b !important; }
+
+        /* Skip to content */
+        .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--terra); color: white; padding: .5rem 1rem; border-radius: 3px; font-size: .82rem; font-weight: 500; text-decoration: none; z-index: 9999; transition: top .2s; }
+        .skip-link:focus { top: 1rem; }
+
         footer { background: var(--ink); color: rgba(255,255,255,.45); padding: 3rem 8vw; display: flex; justify-content: space-between; align-items: center; }
         .footer-brand { font-family: var(--serif); font-size: 1.1rem; color: white; font-weight: 600; }
         .footer-brand em { font-style: italic; color: var(--terra); }
@@ -508,6 +529,8 @@ export default function HomePage() {
         }
       `}</style>
 
+      <a href="#main-content" className="skip-link">Aller au contenu principal</a>
+
       {lightbox.open && <Lightbox images={lightbox.images} index={lightbox.index} onClose={closeLightbox} onPrev={prevPhoto} onNext={nextPhoto} />}
 
       <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="wa-fab" aria-label="WhatsApp">
@@ -541,7 +564,7 @@ export default function HomePage() {
         )}
       </header>
 
-      <section className="hero">
+      <section className="hero" id="main-content">
         <div className="hero-bg" />
         <div className="hero-overlay" />
         <div className="hero-monogram"><HHMonogram size={130} animated={true} /></div>
