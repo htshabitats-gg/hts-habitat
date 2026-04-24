@@ -150,7 +150,7 @@ function useCounter(target, suffix, decimals = 0) {
 // ── Lightbox ──
 function Lightbox({ images, index, onClose, onPrev, onNext }) {
   useEffect(() => {
-    const handler = (e) => { if (e.key === "Escape") onClose(); if (e.key === "ArrowLeft") onPrev(); if (e.key === "ArrowRight") onNext(); };
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); if (e.key === "ArrowLeft") onPrev(); if (e.key === "ArrowRight") onNext(); };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [onClose, onPrev, onNext]);
@@ -171,7 +171,7 @@ export default function HomePage() {
   const [waitlistSent, setWaitlistSent] = useState(false);
   const [contactForm, setContactForm] = useState({ prenom: "", nom: "", email: "", logement: "Cocon Bohème", message: "" });
   const [contactSent, setContactSent] = useState(false);
-  const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 });
+  const [lightbox, setLightbox] = useState({ open: false, images: [][], index: 0 });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredDest, setHoveredDest] = useState(null);
 
@@ -220,7 +220,14 @@ export default function HomePage() {
         html { scroll-behavior: smooth; }
         body { font-family: var(--sans); background: var(--sand); color: var(--ink); font-size: 16px; line-height: 1.6; }
 
-        .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(22,16,10,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(194,98,45,0.18); height: 72px; }
+        /* NAV */
+        .topbar {
+          position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+          background: rgba(22,16,10,0.96);
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(194,98,45,0.18);
+          height: 72px;
+        }
         .topbar-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 5vw; max-width: 1400px; margin: 0 auto; }
         .nav-brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
         .nav-brand-text { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; letter-spacing: .1em; color: var(--white); line-height: 1; }
@@ -234,41 +241,97 @@ export default function HomePage() {
         .mobile-menu { display: flex; flex-direction: column; gap: 1.2rem; padding: 1.5rem 5vw; background: rgba(22,16,10,.98); border-bottom: 1px solid rgba(194,98,45,.2); }
         .mobile-menu a { font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,.65); }
 
-        .hero { min-height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 8vw 80px; background: var(--ink); overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1667395959400-fd9b1ed373ea?w=1800&q=75&auto=format&fit=crop') center/cover; filter: blur(2px) brightness(.2) saturate(.7); transform: scale(1.05); }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse 120% 80% at 50% 50%, transparent 40%, rgba(0,0,0,.6) 100%); }
+        /* HERO */
+        .hero {
+          min-height: 100vh;
+          position: relative;
+          display: flex; flex-direction: column; align-items: center; justify-content: center;
+          text-align: center;
+          padding: 120px 8vw 80px;
+          background: var(--ink);
+          overflow: hidden;
+        }
+        .hero-bg {
+          position: absolute; inset: 0;
+          background: url('https://images.unsplash.com/photo-1667395959400-fd9b1ed373ea?w=1800&q=75&auto=format&fit=crop') center/cover;
+          filter: blur(2px) brightness(.2) saturate(.7);
+          transform: scale(1.05);
+        }
+        .hero-overlay {
+          position: absolute; inset: 0;
+          background: radial-gradient(ellipse 120% 80% at 50% 50%, transparent 40%, rgba(0,0,0,.6) 100%);
+        }
         .hero-monogram { position: relative; z-index: 2; margin-bottom: 2rem; animation: monogram-appear 1.6s ease forwards; opacity: 0; }
         @keyframes monogram-appear { 0% { opacity:0; transform:scale(.85); } 60% { opacity:1; transform:scale(1.03); } 100% { opacity:1; transform:scale(1); } }
         @keyframes ring-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .hero-eyebrow { position: relative; z-index: 2; font-size: .68rem; letter-spacing: .3em; text-transform: uppercase; color: var(--terra); display: flex; align-items: center; justify-content: center; gap: .8rem; margin-bottom: 1.5rem; animation: fade-in-up .8s .4s ease both; }
+
+        .hero-eyebrow {
+          position: relative; z-index: 2;
+          font-size: .68rem; letter-spacing: .3em; text-transform: uppercase; color: var(--terra);
+          display: flex; align-items: center; justify-content: center; gap: .8rem;
+          margin-bottom: 1.5rem;
+          animation: fade-in-up .8s .4s ease both;
+        }
         .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--terra); }
-        .hero-title { position: relative; z-index: 2; font-family: var(--serif); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 300; line-height: 1.05; color: white; margin-bottom: 2.5rem; animation: fade-in-up .8s .6s ease both; }
+
+        .hero-title {
+          position: relative; z-index: 2;
+          font-family: var(--serif); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 300; line-height: 1.05;
+          color: white; margin-bottom: 2.5rem; text-wrap: pretty;
+          animation: fade-in-up .8s .6s ease both;
+        }
         .hero-title em { font-style: italic; color: var(--terra); display: block; }
-        .hero-story { position: relative; z-index: 2; font-size: .9rem; color: rgba(255,255,255,.5); max-width: 500px; font-weight: 300; line-height: 1.85; margin: 0 auto 2rem; animation: fade-in-up .8s .75s ease both; }
-        .hero-btns { position: relative; z-index: 2; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; animation: fade-in-up .8s .9s ease both; }
-        .hero-stats { position: relative; z-index: 2; display: flex; gap: 3rem; padding-top: 2.5rem; margin-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.1); animation: fade-in-up .8s 1.1s ease both; }
+
+        .hero-story {
+          position: relative; z-index: 2;
+          font-size: .9rem; color: rgba(255,255,255,.5); max-width: 500px; font-weight: 300; line-height: 1.85;
+          margin: 0 auto 2rem;
+          animation: fade-in-up .8s .75s ease both;
+        }
+
+        .hero-btns {
+          position: relative; z-index: 2;
+          display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+          animation: fade-in-up .8s .9s ease both;
+        }
+
+        .hero-stats {
+          position: relative; z-index: 2;
+          display: flex; gap: 3rem; padding-top: 2.5rem; margin-top: 2.5rem;
+          border-top: 1px solid rgba(255,255,255,.1);
+          animation: fade-in-up .8s 1.1s ease both;
+        }
         .hero-stat-val { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; color: white; display: block; margin-bottom: .3rem; line-height: 1; }
         .hero-stat-lbl { font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.4); }
-        .hero-scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: .5rem; animation: fade-in-up .8s 1.5s ease both; }
+
+        .hero-scroll-indicator {
+          position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+          z-index: 2; display: flex; flex-direction: column; align-items: center; gap: .5rem;
+          animation: fade-in-up .8s 1.5s ease both;
+        }
         .hero-scroll-indicator span { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.3); }
         .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--terra), transparent); animation: scroll-anim 2s ease infinite; }
         @keyframes scroll-anim { 0% { transform:scaleY(0); transform-origin:top; } 50% { transform:scaleY(1); transform-origin:top; } 51% { transform:scaleY(1); transform-origin:bottom; } 100% { transform:scaleY(0); transform-origin:bottom; } }
+
         @keyframes fade-in-up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
 
+        /* GENERAL */
         section { padding: 100px 8vw; }
         .container { max-width: 1300px; margin: 0 auto; }
         .section-label { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--terra); margin-bottom: 1rem; display: flex; align-items: center; gap: .7rem; }
         .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--terra); }
-        .section-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
+        .section-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; text-wrap: pretty; }
         .section-title em { font-style: italic; }
         .section-sub { font-size: .92rem; color: var(--ink-soft); max-width: 520px; font-weight: 300; line-height: 1.7; }
 
+        /* FADE UP */
         .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
         .fade-up.d1 { transition-delay: .1s; }
         .fade-up.d2 { transition-delay: .2s; }
         .fade-up.d3 { transition-delay: .3s; }
 
+        /* BUTTONS */
         .btn-primary { display: inline-block; background: var(--terra); color: white; padding: .85rem 2rem; font-size: .78rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: opacity .2s, transform .2s; border: none; cursor: pointer; font-family: var(--sans); }
         .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
         .btn-outline { display: inline-block; color: rgba(255,255,255,.7); padding: .85rem 2rem; font-size: .78rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,.25); border-radius: 3px; transition: .2s; background: none; cursor: pointer; font-family: var(--sans); }
@@ -278,6 +341,7 @@ export default function HomePage() {
         .btn-light-outline { display: inline-block; color: var(--ink); padding: .75rem 1.5rem; font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--sand-dark); border-radius: 3px; transition: .2s; background: none; cursor: pointer; font-family: var(--sans); }
         .btn-light-outline:hover { background: var(--sand-dark); }
 
+        /* MARQUE */
         #marque { background: white; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .marque-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
         .feat { padding: 1.5rem; border-top: 1px solid var(--sand-dark); }
@@ -291,6 +355,7 @@ export default function HomePage() {
         .host-name { font-size: .8rem; font-weight: 500; }
         .host-role { font-size: .72rem; color: var(--ink-soft); }
 
+        /* LOGEMENTS */
         #logements { background: var(--sand); }
         .logements-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; }
         .logements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
@@ -315,6 +380,7 @@ export default function HomePage() {
         .card-price span { font-size: .75rem; font-family: var(--sans); color: var(--ink-soft); }
         .card-links { display: flex; gap: .7rem; }
 
+        /* ATOUTS */
         #atouts { background: var(--ink); color: white; }
         #atouts .section-label { color: var(--terra-lt); }
         #atouts .section-label::before { background: var(--terra-lt); }
@@ -325,6 +391,7 @@ export default function HomePage() {
         .atout h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: .4rem; }
         .atout p { font-size: .8rem; color: rgba(255,255,255,.45); font-weight: 300; line-height: 1.6; }
 
+        /* AVIS */
         #avis { background: white; }
         .avis-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
         .avis-scores { display: flex; gap: 2rem; }
@@ -340,6 +407,7 @@ export default function HomePage() {
         .avis-origin { font-size: .72rem; color: var(--ink-soft); }
         .avis-platform { position: absolute; top: 1.5rem; right: 1.5rem; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
 
+        /* DESTINATION */
         #destination { background: var(--sand); padding-bottom: 0; }
         .dest-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 3.5rem; }
         .dest-items { margin-top: 1.5rem; }
@@ -361,6 +429,7 @@ export default function HomePage() {
         .dest-card-dist { display: inline-block; margin-top: .6rem; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.8); padding: .25rem .65rem; border-radius: 2px; opacity: 0; transform: translateY(4px); transition: opacity .3s .1s, transform .3s .1s; }
         .dest-card:hover .dest-card-dist { opacity: 1; transform: translateY(0); }
 
+        /* RÉSERVATION */
         #reservation { background: var(--terra); color: white; }
         #reservation .section-label { color: rgba(255,255,255,.65); }
         #reservation .section-label::before { background: rgba(255,255,255,.65); }
@@ -372,6 +441,7 @@ export default function HomePage() {
         .resa-card a { display: block; text-align: center; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); color: white; text-decoration: none; padding: .65rem 1.2rem; border-radius: 3px; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 500; transition: background .2s; }
         .resa-card a:hover { background: rgba(255,255,255,.22); }
 
+        /* FAQ */
         #faq { background: var(--sand); }
         .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 3rem; background: var(--sand-dark); border-radius: 4px; overflow: hidden; }
         .faq-item { background: white; }
@@ -381,7 +451,8 @@ export default function HomePage() {
         .faq-chevron.open { transform: rotate(180deg); }
         .faq-answer { padding: 0 2rem 1.8rem; font-size: .85rem; color: var(--ink-soft); font-weight: 300; line-height: 1.75; }
 
-        #contact { background: white; }
+        /* CONTACT */
+        #contact { background: white; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
         .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
         .contact-icon { width: 38px; height: 38px; border-radius: 50%; background: var(--terra-lt); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--terra); }
         .contact-detail strong { display: block; font-size: .78rem; font-weight: 500; margin-bottom: .2rem; letter-spacing: .06em; text-transform: uppercase; }
@@ -398,6 +469,7 @@ export default function HomePage() {
         .form-submit { background: var(--terra); color: white; border: none; padding: .9rem 2rem; font-family: var(--sans); font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; border-radius: 3px; cursor: pointer; transition: opacity .2s; align-self: flex-start; }
         .form-submit:hover { opacity: .85; }
 
+        /* FOOTER */
         footer { background: var(--ink); color: rgba(255,255,255,.45); padding: 3rem 8vw; display: flex; justify-content: space-between; align-items: center; }
         .footer-brand { font-family: var(--serif); font-size: 1.1rem; color: white; font-weight: 600; }
         .footer-brand em { font-style: italic; color: var(--terra); }
@@ -406,9 +478,11 @@ export default function HomePage() {
         .footer-links a:hover { color: var(--terra); }
         .footer-copy { font-size: .72rem; }
 
+        /* WhatsApp FAB */
         .wa-fab { position: fixed; bottom: 2rem; right: 2rem; z-index: 90; width: 52px; height: 52px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 16px rgba(37,211,102,.4); transition: transform .2s; color: white; }
         .wa-fab:hover { transform: scale(1.08); }
 
+        /* Responsive */
         @media (max-width: 900px) {
           .nav { display: none; }
           .hamburger { display: flex; }
@@ -422,6 +496,7 @@ export default function HomePage() {
           footer { flex-direction: column; gap: 1.5rem; text-align: center; }
           .logements-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
           .avis-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+          .dest-intro { margin-bottom: 2rem; }
         }
         @media (max-width: 600px) {
           .atouts-grid { grid-template-columns: 1fr; }
@@ -434,10 +509,12 @@ export default function HomePage() {
 
       {lightbox.open && <Lightbox images={lightbox.images} index={lightbox.index} onClose={closeLightbox} onPrev={prevPhoto} onNext={nextPhoto} />}
 
+      {/* WhatsApp FAB */}
       <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="wa-fab" aria-label="WhatsApp">
         <MessageCircle size={24} />
       </a>
 
+      {/* NAV */}
       <header className="topbar">
         <div className="topbar-inner">
           <a href="#" className="nav-brand">
@@ -465,37 +542,58 @@ export default function HomePage() {
         )}
       </header>
 
+      {/* HERO */}
       <section className="hero">
         <div className="hero-bg" />
         <div className="hero-overlay" />
-        <div className="hero-monogram"><HHMonogram size={130} animated={true} /></div>
+
+        <div className="hero-monogram"><HHMonogram size={130} animated /></div>
+
         <p className="hero-eyebrow">Narbonne, Occitanie</p>
+
         <h1 className="hero-title">
           Votre séjour à Narbonne,<br />
           <em>autrement.</em>
         </h1>
+
         <p className="hero-story">
           HTS Habitat, c'est l'histoire de Grégory — hôte narbonnais passionné par le soin du détail.
           Chaque appartement a été pensé comme un espace de vie à part entière : décoration soignée,
           confort réel, atmosphère chaleureuse. Pas un simple hébergement. Une vraie expérience.
         </p>
+
         <div className="hero-btns">
           <a href="#logements" className="btn-primary">Voir les logements</a>
           <a href="#reservation" className="btn-outline">Réserver</a>
         </div>
+
         <div className="hero-stats">
-          <div><span ref={stat1.ref} className="hero-stat-val">{stat1.val}</span><span className="hero-stat-lbl">Airbnb</span></div>
-          <div><span ref={stat2.ref} className="hero-stat-val">{stat2.val}</span><span className="hero-stat-lbl">Booking</span></div>
-          <div><span ref={stat3.ref} className="hero-stat-val">+{stat3.val}</span><span className="hero-stat-lbl">Séjours</span></div>
-          <div><span className="hero-stat-val">🏅</span><span className="hero-stat-lbl">Superhôte</span></div>
+          <div>
+            <span ref={stat1.ref} className="hero-stat-val">{stat1.val}</span>
+            <span className="hero-stat-lbl">Airbnb</span>
+          </div>
+          <div>
+            <span ref={stat2.ref} className="hero-stat-val">{stat2.val}</span>
+            <span className="hero-stat-lbl">Booking</span>
+          </div>
+          <div>
+            <span ref={stat3.ref} className="hero-stat-val">+{stat3.val}</span>
+            <span className="hero-stat-lbl">Séjours</span>
+          </div>
+          <div>
+            <span className="hero-stat-val">🏅</span>
+            <span className="hero-stat-lbl">Superhôte</span>
+          </div>
         </div>
+
         <div className="hero-scroll-indicator">
           <span>Découvrir</span>
           <div className="scroll-line" />
         </div>
       </section>
 
-      <section id="marque" style={{ background: "white" }}>
+      {/* MARQUE */}
+      <section id="marque">
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center", maxWidth: 1300, margin: "0 auto" }}>
           <div className="fade-up">
             <p className="section-label">La marque</p>
@@ -529,6 +627,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* LOGEMENTS */}
       <section id="logements" style={{ background: "var(--sand)" }}>
         <div style={{ maxWidth: 1300, margin: "0 auto" }}>
           <div className="logements-header fade-up">
@@ -593,9 +692,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="atouts" style={{ background: "var(--ink)", color: "white" }}>
+      {/* ATOUTS */}
+      <section id="atouts">
         <div style={{ maxWidth: 1300, margin: "0 auto" }}>
-          <p className="section-label fade-up" style={{ color: "var(--terra-lt)" }}>Pourquoi HTS Habitat</p>
+          <p className="section-label fade-up">Pourquoi HTS Habitat</p>
           <h2 className="section-title fade-up" style={{ color: "white" }}>Ce qui fait<br /><em style={{ color: "var(--terra)" }}>la différence</em></h2>
           <div className="atouts-grid">
             {[
@@ -614,6 +714,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* AVIS */}
       <section id="avis" style={{ background: "white" }}>
         <div style={{ maxWidth: 1300, margin: "0 auto" }}>
           <div className="avis-header fade-up">
@@ -645,7 +746,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="destination" style={{ background: "var(--sand)", paddingBottom: 0 }}>
+      {/* DESTINATION */}
+      <section id="destination">
         <div style={{ maxWidth: 1300, margin: "0 auto" }}>
           <div className="dest-intro">
             <div className="fade-up">
@@ -683,21 +785,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="reservation" style={{ background: "var(--terra)", color: "white" }}>
+      {/* RÉSERVATION */}
+      <section id="reservation">
         <div style={{ maxWidth: 1300, margin: "0 auto" }}>
           <p className="section-label" style={{ color: "rgba(255,255,255,.65)" }}>Réservation</p>
           <h2 className="section-title" style={{ color: "white" }}>Réservez votre séjour<br /><em style={{ opacity: .85 }}>facilement</em></h2>
           <p className="section-sub" style={{ color: "rgba(255,255,255,.7)", maxWidth: 480 }}>Vérifiez les disponibilités en temps réel et réservez directement — ou passez par Airbnb et Booking.</p>
+
+          {/* Widget Lodgify — remplacer par le code embed Lodgify sur votre domaine */}
           <div className="lodgify-wrap">
-            <iframe
-              src="https://checkout.lodgify.com/occitanieetlocation/fr/#/634566"
-              width="100%"
-              height="600"
-              style={{ border: "none", borderRadius: "12px" }}
-              title="Réservation Cocon Bohème"
-            />
+            <a href={LODGIFY_LINK} target="_blank" rel="noreferrer" style={{ display: "block", textAlign: "center", background: "white", color: "var(--terra)", padding: "1.1rem 2rem", borderRadius: 3, fontSize: ".82rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", textDecoration: "none" }}>
+              Vérifier les disponibilités &amp; Réserver en direct
+            </a>
+            <p style={{ textAlign: "center", fontSize: ".72rem", color: "rgba(255,255,255,.35)", marginTop: ".8rem" }}>Paiement sécurisé · Confirmation immédiate · Meilleur prix garanti</p>
           </div>
-          <div className="resa-cards">
+
+          <div className="resa-cards" style={{ marginTop: "2rem" }}>
             <div className="resa-card">
               <h3>Airbnb</h3>
               <p>Réservez le Cocon Bohème directement sur Airbnb, avec protection et paiement sécurisé.</p>
@@ -717,6 +820,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* FAQ */}
       <section id="faq" style={{ background: "var(--sand)" }}>
         <div style={{ maxWidth: 1300, margin: "0 auto" }}>
           <p className="section-label fade-up">Questions fréquentes</p>
@@ -735,6 +839,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* CONTACT */}
       <section id="contact" style={{ background: "white" }}>
         <div style={{ maxWidth: 1300, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
           <div className="fade-up">
@@ -758,6 +863,7 @@ export default function HomePage() {
               <MessageCircle size={18} /> Écrire sur WhatsApp
             </a>
           </div>
+
           <div className="fade-up d2">
             {contactSent ? (
               <p style={{ color: "var(--teal)", fontSize: ".9rem" }}>✅ Votre client de messagerie va s'ouvrir. Merci !</p>
@@ -784,12 +890,14 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer>
         <div className="footer-brand">HTS <em>Habitat</em></div>
         <div className="footer-links">
           <a href="#logements">Logements</a>
           <a href="#reservation">Réserver</a>
           <a href="#contact">Contact</a>
+          <a href="/mentions-legales">Mentions légales</a>
         </div>
         <span className="footer-copy">© {new Date().getFullYear()} HTS Habitat · Narbonne</span>
       </footer>
