@@ -277,18 +277,68 @@ export default function HomePage() {
         .btn-light-outline { display: inline-block; color: var(--ink); padding: .75rem 1.5rem; font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--sand-dark); border-radius: 3px; transition: .2s; background: none; cursor: pointer; font-family: var(--sans); }
         .btn-light-outline:hover { background: var(--sand-dark); }
 
-        #marque { background: white; }
-        .marque-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
-        .feat { padding: 1.5rem; border-top: 1px solid var(--sand-dark); }
-        .feat h4 { font-family: var(--serif); font-size: 1rem; font-weight: 600; margin-bottom: .4rem; }
-        .feat p { font-size: .82rem; color: var(--ink-soft); line-height: 1.6; font-weight: 300; }
-        .marque-visual { position: relative; height: 520px; overflow: hidden; border-radius: 4px; }
-        .marque-img-main { position: absolute; top: 0; left: 0; right: 0; bottom: 80px; background: url('/cocon-gallery-1.jpg') center/cover; border-radius: 4px; }
-        .marque-img-accent { position: absolute; bottom: 0; right: 0; width: 55%; height: 180px; background: url('/cocon-gallery-2.jpg') center/cover; border-radius: 4px; border: 4px solid var(--sand); }
-        .host-card { position: relative; margin-top: 2rem; display: inline-flex; align-items: center; gap: 1rem; background: white; padding: 1rem 1.4rem; border-radius: 4px; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+        /* ── MARQUE nouvelle mise en page ── */
+        #marque { background: var(--ink); color: white; padding: 0 !important; overflow: hidden; }
+        .marque-hero {
+          position: relative; height: 70vh; min-height: 480px;
+          display: flex; align-items: flex-end;
+          overflow: hidden;
+        }
+        .marque-hero-bg {
+          position: absolute; inset: 0;
+          background: url('/cocon-gallery-1.jpg') center/cover;
+          filter: brightness(.35) saturate(.8);
+          transform: scale(1.04);
+          transition: transform 8s ease;
+        }
+        .marque-hero:hover .marque-hero-bg { transform: scale(1.08); }
+        .marque-hero-overlay {
+          position: absolute; inset: 0;
+          background: linear-gradient(to top, rgba(10,8,5,.9) 0%, rgba(10,8,5,.2) 60%, transparent 100%);
+        }
+        .marque-hero-content {
+          position: relative; z-index: 2;
+          padding: 0 8vw 4rem;
+          display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end;
+          width: 100%;
+          max-width: 1300px; margin: 0 auto;
+        }
+        .marque-hero-text .section-label { color: var(--terra-lt); }
+        .marque-hero-text .section-label::before { background: var(--terra-lt); }
+        .marque-hero-title { font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300; color: white; line-height: 1.1; margin-bottom: 0; }
+        .marque-hero-title em { font-style: italic; color: var(--terra); display: block; }
+        .marque-hero-story { font-size: .9rem; color: rgba(255,255,255,.6); font-weight: 300; line-height: 1.8; }
+        .host-badge {
+          display: inline-flex; align-items: center; gap: 1rem;
+          background: rgba(255,255,255,.08);
+          border: 1px solid rgba(255,255,255,.15);
+          padding: 1rem 1.4rem; border-radius: 4px;
+          backdrop-filter: blur(8px);
+          margin-top: 1.5rem;
+        }
         .host-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--terra-lt); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1.1rem; color: var(--terra); font-weight: 600; }
-        .host-name { font-size: .8rem; font-weight: 500; }
-        .host-role { font-size: .72rem; color: var(--ink-soft); }
+        .host-name { font-size: .8rem; font-weight: 500; color: white; }
+        .host-role { font-size: .72rem; color: rgba(255,255,255,.5); }
+
+        .marque-feats {
+          background: var(--ink);
+          display: grid; grid-template-columns: repeat(4, 1fr);
+          gap: 0;
+          border-top: 1px solid rgba(255,255,255,.06);
+          max-width: 100%;
+        }
+        .marque-feat {
+          padding: 2.5rem 2rem;
+          border-right: 1px solid rgba(255,255,255,.06);
+          transition: background .2s;
+        }
+        .marque-feat:last-child { border-right: none; }
+        .marque-feat:hover { background: rgba(255,255,255,.03); }
+        .marque-feat-num { font-family: var(--serif); font-size: 2rem; color: var(--terra); font-weight: 300; margin-bottom: .8rem; line-height: 1; }
+        .marque-feat h4 { font-family: var(--serif); font-size: .95rem; font-weight: 600; color: white; margin-bottom: .4rem; }
+        .marque-feat p { font-size: .78rem; color: rgba(255,255,255,.45); font-weight: 300; line-height: 1.6; }
+
+        /* ── RÉSERVATION ── */
 
         #logements { background: var(--sand); }
         .logements-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; }
@@ -360,9 +410,9 @@ export default function HomePage() {
         .dest-card-dist { display: inline-block; margin-top: .6rem; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.8); padding: .25rem .65rem; border-radius: 2px; opacity: 0; transform: translateY(4px); transition: opacity .3s .1s, transform .3s .1s; }
         .dest-card:hover .dest-card-dist { opacity: 1; transform: translateY(0); }
 
-        #reservation { background: var(--terra); color: white; }
-        #reservation .section-label { color: rgba(255,255,255,.65); }
-        #reservation .section-label::before { background: rgba(255,255,255,.65); }
+        #reservation { background: var(--ink); color: white; }
+        #reservation .section-label { color: var(--terra); }
+        #reservation .section-label::before { background: var(--terra); }
         .lodgify-wrap { margin-top: 2.5rem; padding: 1.5rem; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; }
         .resa-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2rem; }
         .resa-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 4px; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
@@ -411,7 +461,10 @@ export default function HomePage() {
         @media (max-width: 900px) {
           .nav { display: none; }
           .hamburger { display: flex; }
-          #marque, #contact { grid-template-columns: 1fr; }
+          #contact { grid-template-columns: 1fr; }
+          .marque-hero-content { grid-template-columns: 1fr; gap: 2rem; padding: 0 6vw 3rem; }
+          .marque-feats { grid-template-columns: 1fr 1fr; }
+          .marque-hero { height: 80vw; min-height: 320px; }
           .dest-intro { grid-template-columns: 1fr; gap: 2rem; }
           .logements-grid, .avis-grid, .resa-cards, .faq-grid { grid-template-columns: 1fr; }
           .atouts-grid { grid-template-columns: 1fr 1fr; }
@@ -425,7 +478,7 @@ export default function HomePage() {
         @media (max-width: 600px) {
           .atouts-grid { grid-template-columns: 1fr; }
           .form-row { grid-template-columns: 1fr; }
-          .marque-features { grid-template-columns: 1fr; }
+          .marque-feats { grid-template-columns: 1fr; }
           .dest-grid { grid-template-columns: 1fr; }
           .dest-card { height: 260px; }
         }
@@ -494,37 +547,45 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="marque" style={{ background: "white", padding: "100px 8vw" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center", maxWidth: 1300, margin: "0 auto" }}>
-          <div className="fade-up">
-            <p className="section-label">La marque</p>
-            <h2 className="section-title">Une même vision<br /><em>de l'hospitalité</em></h2>
-            <p className="section-sub">HTS Habitat propose à Narbonne des appartements à l'identité soignée, pensés pour allier confort, autonomie et atmosphère chaleureuse.</p>
-            <div className="marque-features">
-              {[
-                { title: "Emplacement idéal", desc: "Gare à pied, accès simple, idéal pour découvrir Narbonne et ses environs." },
-                { title: "Arrivée autonome", desc: "Check-in flexible et sécurisé — votre séjour commence dès votre arrivée." },
-                { title: "Superhôte certifié", desc: "Plus de 100 séjours réussis, communication claire et réactive 7j/7." },
-                { title: "Séjour pensé", desc: "Chaque détail a été conçu pour que vous vous sentiez vraiment bien." },
-              ].map(f => (
-                <div key={f.title} className="feat">
-                  <h4>{f.title}</h4>
-                  <p>{f.desc}</p>
-                </div>
-              ))}
+      <section id="marque">
+        {/* Photo héro pleine largeur */}
+        <div className="marque-hero">
+          <div className="marque-hero-bg" />
+          <div className="marque-hero-overlay" />
+          <div className="marque-hero-content">
+            <div className="marque-hero-text fade-up">
+              <p className="section-label">La marque</p>
+              <h2 className="marque-hero-title">Une même vision<br /><em>de l'hospitalité</em></h2>
             </div>
-            <div className="host-card">
-              <div className="host-avatar">G</div>
-              <div>
-                <div className="host-name">Grégory</div>
-                <div className="host-role">Votre hôte · Narbonne</div>
+            <div className="fade-up d2">
+              <p className="marque-hero-story">
+                HTS Habitat, c'est l'histoire de Grégory — hôte narbonnais passionné par le soin du détail.
+                Chaque appartement a été pensé pour allier confort, décoration soignée et atmosphère chaleureuse.
+              </p>
+              <div className="host-badge">
+                <div className="host-avatar">G</div>
+                <div>
+                  <div className="host-name">Grégory</div>
+                  <div className="host-role">Votre hôte · Narbonne · Superhôte certifié</div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="marque-visual">
-            <div className="marque-img-main" />
-            <div className="marque-img-accent" />
-          </div>
+        </div>
+        {/* 4 atouts en bande */}
+        <div className="marque-feats">
+          {[
+            { num: "01", title: "Emplacement idéal", desc: "Gare à pied, accès simple, idéal pour découvrir Narbonne et ses environs." },
+            { num: "02", title: "Arrivée autonome", desc: "Check-in flexible et sécurisé — votre séjour commence dès votre arrivée." },
+            { num: "03", title: "+100 séjours réussis", desc: "Communication claire et réactive 7j/7, réponse garantie sous 2h." },
+            { num: "04", title: "Séjour pensé", desc: "Chaque détail a été conçu pour que vous vous sentiez vraiment bien." },
+          ].map(f => (
+            <div key={f.num} className="marque-feat fade-up">
+              <div className="marque-feat-num">{f.num}</div>
+              <h4>{f.title}</h4>
+              <p>{f.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -682,7 +743,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="reservation" style={{ background: "var(--terra)", color: "white" }}>
+      <section id="reservation" style={{ background: "var(--ink)", color: "white" }}>
         <div style={{ maxWidth: 1300, margin: "0 auto" }}>
           <p className="section-label" style={{ color: "rgba(255,255,255,.65)" }}>Réservation</p>
           <h2 className="section-title" style={{ color: "white" }}>Réservez votre séjour<br /><em style={{ opacity: .85 }}>facilement</em></h2>
