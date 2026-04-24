@@ -234,7 +234,7 @@ export default function HomePage() {
         .mobile-menu { display: flex; flex-direction: column; gap: 1.2rem; padding: 1.5rem 5vw; background: rgba(22,16,10,.98); border-bottom: 1px solid rgba(194,98,45,.2); }
         .mobile-menu a { font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,.65); }
 
-        .hero { min-height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 8vw 80px; background: var(--ink); overflow: hidden; }
+        .hero { min-height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 8vw 120px; background: var(--ink); overflow: hidden; }
         .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1667395959400-fd9b1ed373ea?w=1800&q=75&auto=format&fit=crop') center/cover; filter: blur(2px) brightness(.2) saturate(.7); transform: scale(1.05); }
         .hero-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse 120% 80% at 50% 50%, transparent 40%, rgba(0,0,0,.6) 100%); }
         .hero-monogram { position: relative; z-index: 2; margin-bottom: 2rem; animation: monogram-appear 1.6s ease forwards; opacity: 0; }
@@ -246,10 +246,10 @@ export default function HomePage() {
         .hero-title em { font-style: italic; color: var(--terra); display: block; }
         .hero-story { position: relative; z-index: 2; font-size: .9rem; color: rgba(255,255,255,.5); max-width: 500px; font-weight: 300; line-height: 1.85; margin: 0 auto 2rem; animation: fade-in-up .8s .75s ease both; }
         .hero-btns { position: relative; z-index: 2; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; animation: fade-in-up .8s .9s ease both; }
-        .hero-stats { position: relative; z-index: 2; display: flex; gap: 2.5rem; padding-top: 2.5rem; margin-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.1); animation: fade-in-up .8s 1.1s ease both; flex-wrap: wrap; justify-content: center; }
+        .hero-stats { position: relative; z-index: 3; display: flex; gap: 2.5rem; padding-top: 2.5rem; margin-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.1); animation: fade-in-up .8s 1.1s ease both; flex-wrap: wrap; justify-content: center; margin-bottom: 3rem; }
         .hero-stat-val { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; color: white; display: block; margin-bottom: .3rem; line-height: 1; }
         .hero-stat-lbl { font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.4); }
-        .hero-scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: .5rem; animation: fade-in-up .8s 1.5s ease both; }
+        .hero-scroll-indicator { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1; display: flex; flex-direction: column; align-items: center; gap: .5rem; animation: fade-in-up .8s 1.5s ease both; }
         .hero-scroll-indicator span { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.3); }
         .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--terra), transparent); animation: scroll-anim 2s ease infinite; }
         @keyframes scroll-anim { 0% { transform:scaleY(0); transform-origin:top; } 50% { transform:scaleY(1); transform-origin:top; } 51% { transform:scaleY(1); transform-origin:bottom; } 100% { transform:scaleY(0); transform-origin:bottom; } }
