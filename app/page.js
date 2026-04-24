@@ -43,7 +43,7 @@ const listings = [
     features: ["45 m²", "1er étage", "2 chambres", "Wifi haut débit", "Cuisine équipée", "Proche gare TGV", "Parking 200 m"],
     specs: [
       { label: "Check-in", value: "À partir de 15h" },
-      { label: "Check-out", value: "Avant 11h" },
+      { label: "Check-out", value: "Avant 15h" },
       { label: "Taxe de séjour", value: "3 € / nuit / adulte" },
       { label: "Annulation", value: "Flexible" },
       { label: "Animaux", value: "Non acceptés" },
@@ -65,7 +65,7 @@ const listings = [
     features: ["45 m²", "2e étage", "1 chambre + convertible", "Wifi haut débit", "Cuisine équipée", "Proche gare TGV", "Parking 200 m"],
     specs: [
       { label: "Check-in", value: "À partir de 15h" },
-      { label: "Check-out", value: "Avant 11h" },
+      { label: "Check-out", value: "Avant 15h" },
       { label: "Taxe de séjour", value: "3 € / nuit / adulte" },
       { label: "Annulation", value: "Flexible" },
       { label: "Animaux", value: "Non acceptés" },
