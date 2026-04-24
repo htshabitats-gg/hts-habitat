@@ -88,7 +88,6 @@ const faq = [
   { q: "Quelle est la différence entre les logements ?", a: "Le Cocon Bohème offre 2 chambres dans une ambiance chaleureuse. Rome Antique Moderne proposera 1 chambre + canapé convertible dans un univers immersif." },
 ];
 
-// ── SVG Monogram ──
 function HHMonogram({ size = 44, animated = false }) {
   const cx = size / 2, cy = size / 2, r1 = size * 0.47, r2 = size * 0.41;
   const fs = size * 0.28;
@@ -107,7 +106,6 @@ function HHMonogram({ size = 44, animated = false }) {
   );
 }
 
-// ── Fade-in hook ──
 function useFadeIn() {
   useEffect(() => {
     const els = document.querySelectorAll(".fade-up");
@@ -120,7 +118,6 @@ function useFadeIn() {
   }, []);
 }
 
-// ── Counter animation ──
 function useCounter(target, suffix, decimals = 0) {
   const [val, setVal] = useState("0");
   const ref = useRef(null);
@@ -147,10 +144,13 @@ function useCounter(target, suffix, decimals = 0) {
   return { ref, val };
 }
 
-// ── Lightbox ──
 function Lightbox({ images, index, onClose, onPrev, onNext }) {
   useEffect(() => {
-    const handler = (e) => { if (e.key === "Escape") onClose(); if (e.key === "ArrowLeft") onPrev(); if (e.key === "ArrowRight") onNext(); };
+    const handler = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
+    };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [onClose, onPrev, onNext]);
@@ -246,8 +246,8 @@ export default function HomePage() {
         .hero-title em { font-style: italic; color: var(--terra); display: block; }
         .hero-story { position: relative; z-index: 2; font-size: .9rem; color: rgba(255,255,255,.5); max-width: 500px; font-weight: 300; line-height: 1.85; margin: 0 auto 2rem; animation: fade-in-up .8s .75s ease both; }
         .hero-btns { position: relative; z-index: 2; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; animation: fade-in-up .8s .9s ease both; }
-        .hero-stats { position: relative; z-index: 2; display: flex; gap: 3rem; padding-top: 2.5rem; margin-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.1); animation: fade-in-up .8s 1.1s ease both; }
-        .hero-stat-val { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; color: white; display: block; margin-bottom: .3rem; line-height: 1; }
+        .hero-stats { position: relative; z-index: 2; display: flex; gap: 2.5rem; padding-top: 2.5rem; margin-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.1); animation: fade-in-up .8s 1.1s ease both; flex-wrap: wrap; justify-content: center; }
+        .hero-stat-val { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; color: white; display: block; margin-bottom: .3rem; line-height: 1; }
         .hero-stat-lbl { font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.4); }
         .hero-scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: .5rem; animation: fade-in-up .8s 1.5s ease both; }
         .hero-scroll-indicator span { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.3); }
@@ -256,7 +256,6 @@ export default function HomePage() {
         @keyframes fade-in-up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
 
         section { padding: 100px 8vw; }
-        .container { max-width: 1300px; margin: 0 auto; }
         .section-label { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--terra); margin-bottom: 1rem; display: flex; align-items: center; gap: .7rem; }
         .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--terra); }
         .section-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
@@ -689,12 +688,17 @@ export default function HomePage() {
           <h2 className="section-title" style={{ color: "white" }}>Réservez votre séjour<br /><em style={{ opacity: .85 }}>facilement</em></h2>
           <p className="section-sub" style={{ color: "rgba(255,255,255,.7)", maxWidth: 480 }}>Vérifiez les disponibilités en temps réel et réservez directement — ou passez par Airbnb et Booking.</p>
           <div className="lodgify-wrap">
-            <iframe
-              src="https://checkout.lodgify.com/occitanieetlocation/fr/#/634566"
-              width="100%"
-              height="600"
-              style={{ border: "none", borderRadius: "12px" }}
-              title="Réservation Cocon Bohème"
+            <div id="lodgify-search-bar"
+              data-website-id="538798"
+              data-language-code="fr"
+              data-checkout-page-url="https://checkout.lodgify.com/occitanieetlocation/fr/#/634566"
+              data-dates-check-in-label="Arrivée"
+              data-dates-check-out-label="Départ"
+              data-guests-counter-label="Invités"
+              data-search-button-label="Réserver"
+              data-new-tab="true"
+              data-version="stable"
+              data-has-guests-breakdown
             />
           </div>
           <div className="resa-cards">
