@@ -42,9 +42,9 @@ const listings = [
     badge: "Élégance cosy",
     features: ["2 chambres", "Arrivée autonome", "Wifi", "Proche gare"],
     image: "/cocon-hero.jpg",
-    gallery: COCON_GALLERY,
-    airbnbLink: AIRBNB_LINK,
-    bookingLink: BOOKING_LINK,
+    gallery,
+    airbnbLink,
+    bookingLink,
     available: true,
     price: "À partir de 81 €",
     priceUnit: "/ nuit",
@@ -171,7 +171,7 @@ export default function HomePage() {
   const [waitlistSent, setWaitlistSent] = useState(false);
   const [contactForm, setContactForm] = useState({ prenom: "", nom: "", email: "", logement: "Cocon Bohème", message: "" });
   const [contactSent, setContactSent] = useState(false);
-  const [lightbox, setLightbox] = useState({ open: false, images: [][], index: 0 });
+  const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredDest, setHoveredDest] = useState(null);
 
