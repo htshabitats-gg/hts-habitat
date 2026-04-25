@@ -303,6 +303,100 @@ function Lightbox({ images, index, onClose, onPrev, onNext }) {
   );
 }
 
+function useParallax() {
+  useEffect(() => {
+    const hero = document.querySelector('.hero-bg');
+    if (!hero) return;
+    const onScroll = () => {
+      const y = window.scrollY;
+      hero.style.transform = `scale(1.05) translateY(${y * 0.25}px)`;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+}
+
+function useTilt() {
+  useEffect(() => {
+    const cards = document.querySelectorAll('.card');
+    const handlers = [];
+    cards.forEach(card => {
+      const onMove = (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const dx = (x - cx) / cx;
+        const dy = (y - cy) / cy;
+        card.style.transform = `perspective(1000px) rotateY(${dx * 5}deg) rotateX(${-dy * 4}deg) translateY(-6px)`;
+      };
+      const onLeave = () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      };
+      card.addEventListener('mousemove', onMove);
+      card.addEventListener('mouseleave', onLeave);
+      handlers.push({ card, onMove, onLeave });
+    });
+    return () => handlers.forEach(({ card, onMove, onLeave }) => {
+      card.removeEventListener('mousemove', onMove);
+      card.removeEventListener('mouseleave', onLeave);
+    });
+  }, []);
+}
+
+function useCursor() {
+  useEffect(() => {
+    // Only on desktop
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    const dot = document.createElement('div');
+    const ring = document.createElement('div');
+    dot.className = 'cursor-dot';
+    ring.className = 'cursor-ring';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+
+    let mx = -100, my = -100, rx = -100, ry = -100;
+    const onMove = (e) => { mx = e.clientX; my = e.clientY; };
+    window.addEventListener('mousemove', onMove);
+
+    let raf;
+    const animate = () => {
+      rx += (mx - rx) * 0.15;
+      ry += (my - ry) * 0.15;
+      dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
+
+    const onEnter = () => { dot.classList.add('cursor-hover'); ring.classList.add('cursor-hover'); };
+    const onLeave = () => { dot.classList.remove('cursor-hover'); ring.classList.remove('cursor-hover'); };
+    document.querySelectorAll('a, button, .card, .dest-card').forEach(el => {
+      el.addEventListener('mouseenter', onEnter);
+      el.addEventListener('mouseleave', onLeave);
+    });
+
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      cancelAnimationFrame(raf);
+      dot.remove(); ring.remove();
+    };
+  }, []);
+}
+
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal-text');
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); } }),
+      { threshold: 0.2 }
+    );
+    els.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+}
+
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState(null);
   const [waitlistEmail, setWaitlistEmail] = useState("");
@@ -315,6 +409,10 @@ export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useFadeIn();
+  useParallax();
+  useTilt();
+  useCursor();
+  useReveal();
   const stat1 = useCounter(4.9, "★", 1);
   const stat2 = useCounter(9.4, "", 1);
   const stat3 = useCounter(100, "", 0);
@@ -585,6 +683,41 @@ export default function HomePage() {
         .wa-fab { position: fixed; bottom: 2rem; right: 2rem; z-index: 90; width: 52px; height: 52px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 16px rgba(37,211,102,.4); transition: transform .2s; color: white; }
         .wa-fab:hover { transform: scale(1.08); }
 
+        /* ── DYNAMISME ── */
+
+        /* Parallax hero */
+        .hero-bg { transition: transform .1s linear; }
+
+        /* Tilt 3D cards */
+        .card { transform-style: preserve-3d; transform: perspective(1000px) rotateX(0deg) rotateY(0deg); transition: transform .15s ease, box-shadow .3s; }
+        .card:hover { box-shadow: 0 20px 60px rgba(0,0,0,.15); }
+
+        /* Reveal text animation */
+        .reveal-wrap { overflow: hidden; }
+        .reveal-text { display: block; transform: translateY(105%); opacity: 0; transition: transform .9s cubic-bezier(.16,1,.3,1), opacity .9s; }
+        .reveal-text.revealed { transform: translateY(0); opacity: 1; }
+        .reveal-text.d1 { transition-delay: .15s; }
+        .reveal-text.d2 { transition-delay: .3s; }
+        .reveal-text.d3 { transition-delay: .45s; }
+
+        /* Custom cursor */
+        .cursor-dot { width: 8px; height: 8px; background: var(--terra); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform .1s, background .2s, width .2s, height .2s; }
+        .cursor-ring { width: 36px; height: 36px; border: 1.5px solid var(--terra); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform .18s cubic-bezier(.16,1,.3,1), width .25s, height .25s, opacity .2s; opacity: 0.5; }
+        body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
+        .cursor-hover .cursor-dot { width: 14px; height: 14px; }
+        .cursor-hover .cursor-ring { width: 56px; height: 56px; opacity: .35; }
+
+        /* Destination accordion hover */
+        .dest-grid { transition: all .4s; }
+        .dest-card { flex: 1; transition: flex .5s cubic-bezier(.16,1,.3,1); }
+
+        /* Section title reveal */
+        .section-title-reveal { overflow: hidden; }
+
+        /* Marque hero ken burns */
+        .marque-hero-bg { animation: ken-burns 18s ease infinite alternate; }
+        @keyframes ken-burns { 0% { transform: scale(1.04) translate(0,0); } 100% { transform: scale(1.12) translate(-1%,-1%); } }
+
         /* RESPONSIVE */
         @media (max-width: 900px) {
           .nav { display: none; } .hamburger { display: flex; }
@@ -650,7 +783,10 @@ export default function HomePage() {
         <div className="hero-bg" /><div className="hero-overlay" />
         <div className="hero-monogram"><HHMonogram size={130} animated /></div>
         <p className="hero-eyebrow">Narbonne, Occitanie</p>
-        <h1 className="hero-title">Votre séjour à Narbonne,<br /><em>autrement.</em></h1>
+        <h1 className="hero-title">
+          <span className="reveal-wrap"><span className="reveal-text">Votre séjour à Narbonne,</span></span>
+          <em><span className="reveal-wrap"><span className="reveal-text d1" style={{ color:"var(--terra)" }}>autrement.</span></span></em>
+        </h1>
         <p className="hero-story">HTS Habitat, c'est l'histoire de Grégory — hôte narbonnais passionné par le soin du détail. Chaque appartement a été pensé comme un espace de vie à part entière : décoration soignée, confort réel, atmosphère chaleureuse. Pas un simple hébergement. Une vraie expérience.</p>
         <div className="hero-btns">
           <a href="#logements" className="btn-primary">Voir les logements</a>
@@ -704,7 +840,10 @@ export default function HomePage() {
           <div className="logements-header fade-up">
             <div>
               <p className="section-label">Les logements</p>
-              <h2 className="section-title">Deux univers,<br /><em>une même exigence</em></h2>
+              <h2 className="section-title">
+                <span className="reveal-wrap"><span className="reveal-text">Deux univers,</span></span>
+                <em><span className="reveal-wrap"><span className="reveal-text d1">une même exigence</span></span></em>
+              </h2>
             </div>
             <p className="section-sub" style={{ maxWidth:320 }}>Deux appartements, deux ambiances — toujours la même attention portée au confort et à la décoration.</p>
           </div>
