@@ -1,1 +1,88 @@
 
+export const metadata = {
+  title: "Politique de confidentialité | HTS Habitat",
+  description: "Politique de confidentialité du site HTS Habitat.",
+};
+
+export default function PolitiqueConfidentialitePage() {
+  return (
+    <main style={{ background: "#f5efe6", minHeight: "100vh", padding: "100px 8vw 60px" }}>
+      <div style={{ maxWidth: 900, margin: "0 auto", background: "white", padding: "40px", borderRadius: 8, boxShadow: "0 10px 30px rgba(0,0,0,.06)" }}>
+        <h1 style={{ fontSize: "2.2rem", marginBottom: "1.5rem" }}>Politique de confidentialité</h1>
+
+        <h2 style={{ marginTop: "2rem", marginBottom: ".6rem" }}>1. Responsable du traitement</h2>
+        <p>
+          Le responsable du traitement des données personnelles collectées sur ce site est :<br />
+          <strong>Gregory Hosteins</strong><br />
+          HTS Habitat<br />
+          2 rue Romain, 11100 Narbonne, France<br />
+          E-mail : <a href="mailto:hts.habitats@gmail.com">hts.habitats@gmail.com</a>
+        </p>
+
+        <h2 style={{ marginTop: "2rem", marginBottom: ".6rem" }}>2. Données collectées</h2>
+        <p>Lorsque vous utilisez le formulaire de contact du site, les données susceptibles d’être collectées sont :</p>
+        <ul>
+          <li>votre prénom et votre nom, si vous les renseignez,</li>
+          <li>votre adresse e-mail,</li>
+          <li>le logement concerné par votre demande,</li>
+          <li>le contenu de votre message.</li>
+        </ul>
+
+        <h2 style={{ marginTop: "2rem", marginBottom: ".6rem" }}>3. Finalités du traitement</h2>
+        <p>Ces données sont collectées afin de :</p>
+        <ul>
+          <li>répondre à vos demandes,</li>
+          <li>échanger avec vous avant une réservation,</li>
+          <li>assurer le suivi des demandes envoyées depuis le site.</li>
+        </ul>
+
+        <h2 style={{ marginTop: "2rem", marginBottom: ".6rem" }}>4. Base légale</h2>
+        <p>
+          Le traitement est fondé sur votre demande de contact et sur l’intérêt légitime de l’éditeur
+          à répondre aux sollicitations reçues via le site.
+        </p>
+
+        <h2 style={{ marginTop: "2rem", marginBottom: ".6rem" }}>5. Destinataires des données</h2>
+        <p>
+          Les données sont destinées uniquement à HTS Habitat. Elles sont transmises par e-mail afin
+          de permettre le traitement de votre demande. Elles ne sont pas vendues ni cédées à des tiers
+          à des fins commerciales.
+        </p>
+
+        <h2 style={{ marginTop: "2rem", marginBottom: ".6rem" }}>6. Durée de conservation</h2>
+        <p>
+          Les données issues du formulaire sont conservées pendant une durée n’excédant pas celle
+          nécessaire au traitement de votre demande, puis peuvent être archivées pendant une durée
+          raisonnable à des fins de suivi administratif ou de preuve.
+        </p>
+
+        <h2 style={{ marginTop: "2rem", marginBottom: ".6rem" }}>7. Vos droits</h2>
+        <p>
+          Conformément à la réglementation applicable, vous disposez d’un droit d’accès, de rectification,
+          d’effacement, de limitation, d’opposition et, lorsque cela s’applique, d’un droit à la portabilité
+          de vos données.
+        </p>
+        <p>
+          Vous pouvez exercer vos droits à l’adresse suivante :{" "}
+          <a href="mailto:hts.habitats@gmail.com">hts.habitats@gmail.com</a>
+        </p>
+
+        <h2 style={{ marginTop: "2rem", marginBottom: ".6rem" }}>8. Réclamation</h2>
+        <p>
+          Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.
+        </p>
+
+        <h2 style={{ marginTop: "2rem", marginBottom: ".6rem" }}>9. Cookies</h2>
+        <p>
+          Le site peut utiliser des cookies ou traceurs techniques nécessaires à son fonctionnement.
+          Si des cookies non essentiels sont utilisés à l’avenir, un mécanisme d’information et, si nécessaire,
+          de consentement sera mis en place.
+        </p>
+
+        <p style={{ marginTop: "2.5rem" }}>
+          <a href="/" style={{ color: "#c2622d", textDecoration: "none" }}>← Retour au site</a>
+        </p>
+      </div>
+    </main>
+  );
+}
