@@ -345,46 +345,6 @@ function useTilt() {
   }, []);
 }
 
-function useCursor() {
-  useEffect(() => {
-    // Only on desktop
-    if (window.matchMedia('(pointer: coarse)').matches) return;
-    const dot = document.createElement('div');
-    const ring = document.createElement('div');
-    dot.className = 'cursor-dot';
-    ring.className = 'cursor-ring';
-    document.body.appendChild(dot);
-    document.body.appendChild(ring);
-
-    let mx = -100, my = -100, rx = -100, ry = -100;
-    const onMove = (e) => { mx = e.clientX; my = e.clientY; };
-    window.addEventListener('mousemove', onMove);
-
-    let raf;
-    const animate = () => {
-      rx += (mx - rx) * 0.15;
-      ry += (my - ry) * 0.15;
-      dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-      raf = requestAnimationFrame(animate);
-    };
-    raf = requestAnimationFrame(animate);
-
-    const onEnter = () => { dot.classList.add('cursor-hover'); ring.classList.add('cursor-hover'); };
-    const onLeave = () => { dot.classList.remove('cursor-hover'); ring.classList.remove('cursor-hover'); };
-    document.querySelectorAll('a, button, .card, .dest-card').forEach(el => {
-      el.addEventListener('mouseenter', onEnter);
-      el.addEventListener('mouseleave', onLeave);
-    });
-
-    return () => {
-      window.removeEventListener('mousemove', onMove);
-      cancelAnimationFrame(raf);
-      dot.remove(); ring.remove();
-    };
-  }, []);
-}
-
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll('.reveal-text');
@@ -411,7 +371,6 @@ export default function HomePage() {
   useFadeIn();
   useParallax();
   useTilt();
-  useCursor();
   useReveal();
   const stat1 = useCounter(4.9, "★", 1);
   const stat2 = useCounter(9.4, "", 1);
@@ -542,7 +501,7 @@ export default function HomePage() {
         .host-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--terra-lt); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1.1rem; color: var(--terra); font-weight: 600; }
         .host-name { font-size: .8rem; font-weight: 500; color: white; }
         .host-role { font-size: .72rem; color: rgba(255,255,255,.5); }
-        .marque-feats { background: var(--ink); display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,.06); }
+        .marque-feats { background: var(--ink); display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,.06); }
         .marque-feat { padding: 2.5rem 2rem; border-right: 1px solid rgba(255,255,255,.06); transition: background .2s; }
         .marque-feat:last-child { border-right: none; }
         .marque-feat:hover { background: rgba(255,255,255,.03); }
@@ -579,18 +538,7 @@ export default function HomePage() {
         .card-price span { font-size: .75rem; font-family: var(--sans); color: var(--ink-soft); }
         .card-links { display: flex; gap: .7rem; }
 
-        /* ATOUTS */
-        #atouts { background: var(--ink); color: white; }
-        #atouts .section-label { color: var(--terra-lt); }
-        #atouts .section-label::before { background: var(--terra-lt); }
-        .atouts-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 3.5rem; background: rgba(255,255,255,.06); border-radius: 4px; overflow: hidden; }
-        .atout { background: rgba(255,255,255,.03); padding: 2.5rem 2rem; transition: background .2s; }
-        .atout:hover { background: rgba(255,255,255,.07); }
-        .atout-num { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; color: var(--terra); line-height: 1; margin-bottom: .8rem; }
-        .atout h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: .4rem; }
-        .atout p { font-size: .8rem; color: rgba(255,255,255,.45); font-weight: 300; line-height: 1.6; }
-
-        /* AVIS */
+/* AVIS */
         #avis { background: white; }
         .avis-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
         .avis-scores { display: flex; gap: 2rem; }
@@ -700,13 +648,6 @@ export default function HomePage() {
         .reveal-text.d2 { transition-delay: .3s; }
         .reveal-text.d3 { transition-delay: .45s; }
 
-        /* Custom cursor */
-        .cursor-dot { width: 8px; height: 8px; background: var(--terra); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform .1s, background .2s, width .2s, height .2s; }
-        .cursor-ring { width: 36px; height: 36px; border: 1.5px solid var(--terra); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform .18s cubic-bezier(.16,1,.3,1), width .25s, height .25s, opacity .2s; opacity: 0.5; }
-        body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
-        .cursor-hover .cursor-dot { width: 14px; height: 14px; }
-        .cursor-hover .cursor-ring { width: 56px; height: 56px; opacity: .35; }
-
         /* Destination accordion hover */
         .dest-grid { transition: all .4s; }
         .dest-card { flex: 1; transition: flex .5s cubic-bezier(.16,1,.3,1); }
@@ -723,6 +664,7 @@ export default function HomePage() {
           .nav { display: none; } .hamburger { display: flex; }
           .marque-hero-content { grid-template-columns: 1fr; gap: 2rem; padding: 0 6vw 3rem; }
           .marque-feats { grid-template-columns: 1fr 1fr; }
+          .atouts-grid { grid-template-columns: 1fr 1fr; }
           .marque-hero { height: 80vw; min-height: 320px; }
           .dest-intro { grid-template-columns: 1fr; gap: 2rem; }
           .logements-grid, .avis-grid, .faq-grid { grid-template-columns: 1fr; }
@@ -821,10 +763,9 @@ export default function HomePage() {
         </div>
         <div className="marque-feats">
           {[
-            { num:"01", title:"Emplacement idéal", desc:"Gare à pied, accès simple, emplacement idéal pour découvrir Narbonne." },
-            { num:"02", title:"Arrivée autonome", desc:"Check-in flexible et sécurisé — votre séjour commence dès votre arrivée." },
-            { num:"03", title:"+100 séjours réussis", desc:"Communication claire et réactive 7j/7, réponse garantie sous 2h." },
-            { num:"04", title:"Séjour pensé", desc:"Chaque détail a été conçu pour que vous vous sentiez vraiment bien." },
+            { num:"+100", title:"Séjours réussis", desc:"Des centaines de voyageurs comblés depuis l'ouverture." },
+            { num:"4,9 ★", title:"Note Airbnb", desc:"Superhôte certifié, réponse garantie sous 2h." },
+            { num:"9,4", title:"Note Booking", desc:"Parmi les meilleures locations de Narbonne." },
           ].map(f => (
             <div key={f.num} className="marque-feat fade-up">
               <div className="marque-feat-num">{f.num}</div>
@@ -900,26 +841,6 @@ export default function HomePage() {
                     )}
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ATOUTS */}
-      <section id="atouts" style={{ background:"var(--ink)", color:"white" }}>
-        <div style={{ maxWidth:1300, margin:"0 auto" }}>
-          <p className="section-label fade-up" style={{ color:"var(--terra-lt)" }}>Pourquoi HTS Habitat</p>
-          <h2 className="section-title fade-up" style={{ color:"white" }}>Ce qui fait<br /><em style={{ color:"var(--terra)" }}>la différence</em></h2>
-          <div className="atouts-grid">
-            {[
-              { num:"+100", title:"Séjours réussis", desc:"Des centaines de voyageurs comblés depuis l'ouverture." },
-              { num:"4,9★", title:"Note Airbnb", desc:"Une note quasi-parfaite, maintenue séjour après séjour." },
-              { num:"2h", title:"Temps de réponse", desc:"Réponse garantie sous 2h, 7 jours sur 7." },
-              { num:"9,4", title:"Note Booking", desc:"Parmi les meilleures locations de Narbonne sur Booking.com." },
-            ].map((a, i) => (
-              <div key={a.title} className={`atout fade-up d${i+1}`}>
-                <div className="atout-num">{a.num}</div><h4>{a.title}</h4><p>{a.desc}</p>
               </div>
             ))}
           </div>
