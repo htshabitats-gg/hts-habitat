@@ -928,8 +928,48 @@ export default function HomePage() {
                     <option>Je ne sais pas encore</option>
                   </select>
                 </div>
-                <div className="form-group"><label>Message</label><textarea rows={4} placeholder="Votre question ou demande…" value={contactForm.message} onChange={e => setContactForm({ ...contactForm, message: e.target.value })} required /></div>
-                <button type="submit" className="form-submit">Envoyer le message</button>
+                <<div className="form-group">
+  <label>Message</label>
+  <textarea
+    rows={4}
+    placeholder="Votre question ou demande…"
+    value={contactForm.message}
+    onChange={e => setContactForm({ ...contactForm, message: e.target.value })}
+    required
+  />
+</div>
+
+<div className={`form-consent${consentError ? " field-error" : ""}`}>
+  <input
+    id="rgpd-consent"
+    type="checkbox"
+    checked={consent}
+    onChange={(e) => {
+      setConsent(e.target.checked);
+      if (e.target.checked) setConsentError(false);
+    }}
+  />
+  <label htmlFor="rgpd-consent">
+    J’accepte que les informations renseignées soient utilisées uniquement pour
+    répondre à ma demande. Je peux exercer mes droits à l’adresse{" "}
+    <a href="mailto:hts.habitats@gmail.com">hts.habitats@gmail.com</a>.
+  </label>
+</div>
+
+{consentError && (
+  <div className="form-error">
+    Merci de cocher la case de consentement avant d’envoyer votre message.
+  </div>
+)}
+
+<div className="form-info">
+  Les données transmises via ce formulaire sont utilisées uniquement pour répondre
+  à votre demande. Pour en savoir plus, consultez nos{" "}
+  <a href="/mentions-legales">mentions légales</a> et notre{" "}
+  <a href="/politique-de-confidentialite">politique de confidentialité</a>.
+</div>
+
+<button type="submit" className="form-submit">Envoyer le message</button>
               </form>
             )}
           </div>
@@ -937,11 +977,13 @@ export default function HomePage() {
       </section>
 
       <footer>
-        <div className="footer-brand">HTS <em>Habitat</em></div>
         <div className="footer-links">
-          <a href="#logements">Logements</a>
-          <a href="#reservation">Réserver</a>
-          <a href="#contact">Contact</a>
+  <a href="#logements">Logements</a>
+  <a href="#reservation">Réserver</a>
+  <a href="#contact">Contact</a>
+  <a href="/mentions-legales">Mentions légales</a>
+  <a href="/politique-de-confidentialite">Politique de confidentialité</a>
+</div>
         </div>
         <span className="footer-copy">© {new Date().getFullYear()} HTS Habitat · Narbonne</span>
       </footer>
