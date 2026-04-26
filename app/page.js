@@ -257,13 +257,16 @@ function useFadeIn() {
 }
 
 function useCounter(target, suffix, decimals = 0) {
-  const [val, setVal] = useState("0");
+  const finalVal = (decimals ? target.toFixed(decimals) : target.toString()) + suffix;
+  const [val, setVal] = useState(finalVal);
   const ref = useRef(null);
+  const animated = useRef(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return;
+      if (!entry.isIntersecting || animated.current) return;
+      animated.current = true;
       observer.disconnect();
       const start = performance.now();
       const duration = 1400;
@@ -273,12 +276,13 @@ function useCounter(target, suffix, decimals = 0) {
         const v = target * ease;
         setVal((decimals ? v.toFixed(decimals) : Math.floor(v).toString()) + suffix);
         if (p < 1) requestAnimationFrame(tick);
+        else setVal(finalVal);
       };
       requestAnimationFrame(tick);
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
     observer.observe(el);
     return () => observer.disconnect();
-  }, [target, suffix, decimals]);
+  }, [target, suffix, decimals, finalVal]);
   return { ref, val };
 }
 
@@ -729,7 +733,7 @@ export default function HomePage() {
           <span className="reveal-wrap"><span className="reveal-text">Votre séjour à Narbonne,</span></span>
           <em><span className="reveal-wrap"><span className="reveal-text d1" style={{ color:"var(--terra)" }}>autrement.</span></span></em>
         </h1>
-        <p className="hero-story">HTS Habitat, c'est l'histoire de Grégory — hôte narbonnais passionné par le soin du détail. Chaque appartement a été pensé comme un espace de vie à part entière : décoration soignée, confort réel, atmosphère chaleureuse. Pas un simple hébergement. Une vraie expérience.</p>
+        <p className="hero-story">Deux appartements de caractère au cœur de Narbonne — pensés pour ceux qui voyagent avec goût. Proche gare, arrivée autonome, ambiance soignée.</p>
         <div className="hero-btns">
           <a href="#logements" className="btn-primary">Voir les logements</a>
           <a href="#reservation" className="btn-outline">Réserver</a>
@@ -753,7 +757,7 @@ export default function HomePage() {
               <h2 className="marque-hero-title">Une même vision<br /><em>de l'hospitalité</em></h2>
             </div>
             <div className="fade-up d2">
-              <p className="marque-hero-story">HTS Habitat, c'est l'histoire de Grégory — hôte narbonnais passionné par le soin du détail. Chaque appartement a été pensé pour allier confort, décoration soignée et atmosphère chaleureuse.</p>
+              <p className="marque-hero-story">HTS Habitat, c'est l'histoire de Grégory — natif de Narbonne, passionné par le détail et l'hospitalité vraie. Chaque logement a été aménagé comme on aménage chez soi : avec soin, avec goût, avec l'envie que vous vous sentiez bien dès le premier instant.</p>
               <div className="host-badge">
                 <div className="host-avatar">G</div>
                 <div><div className="host-name">Grégory</div><div className="host-role">Votre hôte · Narbonne · Superhôte certifié</div></div>
